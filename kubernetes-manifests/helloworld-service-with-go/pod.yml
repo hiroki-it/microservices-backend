@@ -1,2 +1,14 @@
 apiVersion: v1
 kind: Pod
+spec:
+  containers:
+    - name: hswp-gin
+      image: hswp-gin
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+    - name: hswp-nginx
+      image: hswp-nginx
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8000
