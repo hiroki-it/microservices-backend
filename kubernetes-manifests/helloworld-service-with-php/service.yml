@@ -1,5 +1,7 @@
 apiVersion: v1
 kind: Service
+metadata:
+  name: hswg-service
 spec:
   ports:
     - protocol: TCP
