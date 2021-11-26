@@ -1,5 +1,7 @@
 apiVersion: v1
 kind: Pod
+metadata:
+  name: hswg-pod
 spec:
   containers:
     - name: hswp-gin
