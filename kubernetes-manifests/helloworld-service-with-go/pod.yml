@@ -4,13 +4,13 @@ metadata:
   name: hswg-pod
 spec:
   containers:
-    - name: hswp-gin
-      image: hswp-gin
+    - name: hswg-gin
+      image: hswg-gin
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8080
-    - name: hswp-nginx
-      image: hswp-nginx
+    - name: hswg-nginx
+      image: hswg-nginx
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8000
