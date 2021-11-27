@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+
+  # appコンテナ
+  app:
+    build:
+      dockerfile: ./docker/app/Dockerfile
+      target: develop
+      context: .
+    image: hswp-lumen:dev
+
+  # webコンテナ
+  web:
+    build:
+      dockerfile: ./docker/web/Dockerfile
+      target: develop
+      context: .
+    image: hswp-nginx:dev
+    depends_on:
+      - app
