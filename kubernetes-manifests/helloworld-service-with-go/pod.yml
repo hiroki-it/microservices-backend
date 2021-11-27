@@ -5,12 +5,12 @@ metadata:
 spec:
   containers:
     - name: hswg-gin
-      image: hswg-gin
+      image: hswg-gin:dev
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8080
     - name: hswg-nginx
-      image: hswg-nginx
+      image: hswg-nginx:dev
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8000

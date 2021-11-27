@@ -5,12 +5,12 @@ metadata:
 spec:
   containers:
     - name: hswp-lumen
-      image: hswp-lumen
+      image: hswp-lumen:dev
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 9000
     - name: hswp-nginx
-      image: hswp-nginx
+      image: hswp-nginx:dev
       imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 8000
