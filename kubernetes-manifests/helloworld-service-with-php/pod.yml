@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: hswp-pod
+  labels:
+    app: hswp
 spec:
   containers:
     - name: hswp-lumen
