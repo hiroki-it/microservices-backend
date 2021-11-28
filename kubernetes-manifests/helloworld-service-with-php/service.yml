@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: hswp-service
 spec:
+  type: NodePort
+  selector:
+    app: hswp-pod
   ports:
     - protocol: TCP
       port: 80
