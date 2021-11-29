@@ -9,6 +9,10 @@ services:
       target: develop
       context: .
     image: hswp-lumen:dev
+    volumes:
+      # bindマウント
+      - .:/var/www/helloworld-service-with-php
+    working_dir: /var/www/helloworld-service-with-php
 
   # webコンテナ
   web:
@@ -17,5 +21,9 @@ services:
       target: develop
       context: .
     image: hswp-nginx:dev
+    volumes:
+      # bindマウント
+      - .:/var/www/helloworld-service-with-php
+    working_dir: /var/www/helloworld-service-with-php    
     depends_on:
       - app
