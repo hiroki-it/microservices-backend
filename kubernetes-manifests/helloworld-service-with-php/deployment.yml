@@ -9,6 +9,7 @@ spec:
       app: hswp
   template:
     metadata:
+      name: hswp-pod
       labels:
         app: hswp
     spec:
