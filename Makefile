@@ -1,4 +1,5 @@
 start:
+	minikube delete
 	minikube start --driver=hyperkit --mount=true --mount-string="$HOME/projects/hiroki-it/microservices-with-kubernetes:/data"
 
 docker-compose-hswg:
