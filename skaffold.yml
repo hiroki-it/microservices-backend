@@ -22,7 +22,7 @@ build:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
   tagPolicy:
-    gitCommit: { }
+    sha256: {}
   local:
     useBuildkit: false
   
