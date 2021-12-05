@@ -22,7 +22,7 @@ RUN apt-get update -y \
 FROM build as development
 LABEL mantainer=${LABEL}
 
-COPY ./docker/web/development.nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/nginx/development.nginx.conf /etc/nginx/nginx.conf
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
@@ -32,6 +32,6 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 FROM build as production
 LABEL mantainer=${LABEL}
 
-COPY ./docker/web/production.nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/nginx/production.nginx.conf /etc/nginx/nginx.conf
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
