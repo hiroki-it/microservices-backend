@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: hswp-lumen
-          image: hswp-lumen:dev
+          image: hswp-lumen:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9000
@@ -26,7 +26,7 @@ spec:
               mountPath: /var/www/hswp
           workingDir: /var/www/hswp
         - name: hswp-nginx
-          image: hswp-nginx:dev
+          image: hswp-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
