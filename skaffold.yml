@@ -1,0 +1,32 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+build:
+  artifacts:
+    - image: hwsp-app
+      context: ./src/helloworld-service-with-php
+      docker:
+        dockerfile: ./docker/app/Dockerfile
+        target: develop
+    - image: hwsp-web
+      context: ./src/helloworld-service-with-php
+      docker:
+        dockerfile: ./docker/web/Dockerfile
+        target: develop
+    - image: hwsg-app
+      context: ./src/helloworld-service-with-php
+      docker:
+        dockerfile: ./docker/app/Dockerfile
+    - image: hwsg-web
+      context: ./src/helloworld-service-with-php
+      docker:
+        dockerfile: ./docker/web/Dockerfile
+        target: develop
+  tagPolicy:
+    gitCommit: { }
+  local:
+    useBuildkit: false
+  
+deploy:
+  kubectl:
+    manifests:
+      - ./kubernetes-manifests/**/**.yml
