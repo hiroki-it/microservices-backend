@@ -30,11 +30,11 @@ FROM golang:${GO_VERSION}-alpine
 
 LABEL maintainer=${LABEL}
 
-WORKDIR /go/src
-
 # /go/binにパスを通す．
 ENV PATH $PATH:/go/bin
 
-COPY --from=build /go /
+COPY --from=build /go /go
+
+WORKDIR /go/src
 
 CMD ["/go/bin/cmd"]
