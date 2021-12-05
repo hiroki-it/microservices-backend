@@ -5,6 +5,9 @@ metadata:
   labels:
     app: hswg
 spec:
+  type: NodePort
+  selector:
+    app: hswg
   ports:
     - protocol: TCP
       port: 80
