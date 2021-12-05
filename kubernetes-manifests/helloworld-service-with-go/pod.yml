@@ -1,16 +1,28 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: hswg-pod
+  name: hswg-deployment
+  labels:
+    app: hswg
 spec:
-  containers:
-    - name: hswg-gin
-      image: hswg-gin:dev
-      imagePullPolicy: IfNotPresent
-      ports:
-        - containerPort: 8080
-    - name: hswg-nginx
-      image: hswg-nginx:dev
-      imagePullPolicy: IfNotPresent
-      ports:
-        - containerPort: 8000
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hswg
+  template:
+    metadata:
+      name: hswg-pod
+      labels:
+        app: hswg
+    spec:
+      containers:
+        - name: hswg-gin
+          image: hswg-gin:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+        - name: hswg-nginx
+          image: hswg-nginx:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
