@@ -2,18 +2,18 @@ apiVersion: skaffold/v2beta26
 kind: Config
 build:
   artifacts:
-    - image: hwsp-app
+    - image: hwsp-lumen
       context: ./src/helloworld-service-with-php
       docker:
         dockerfile: ./docker/lumen/Dockerfile
         target: development
-    - image: hwsp-web
+    - image: hwsp-nginx
       context: ./src/helloworld-service-with-php
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
-    - image: hwsg-app
-      context: ./src/helloworld-service-with-php
+    - image: hwsg-gin
+      context: ./src/helloworld-service-with-go
       docker:
         dockerfile: ./docker/gin/Dockerfile
     - image: hwsg-nginx
