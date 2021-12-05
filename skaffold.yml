@@ -6,12 +6,12 @@ build:
       context: ./src/helloworld-service-with-php
       docker:
         dockerfile: ./docker/app/Dockerfile
-        target: develop
+        target: development
     - image: hwsp-web
       context: ./src/helloworld-service-with-php
       docker:
         dockerfile: ./docker/web/Dockerfile
-        target: develop
+        target: development
     - image: hwsg-app
       context: ./src/helloworld-service-with-php
       docker:
@@ -20,7 +20,7 @@ build:
       context: ./src/helloworld-service-with-php
       docker:
         dockerfile: ./docker/web/Dockerfile
-        target: develop
+        target: development
   tagPolicy:
     gitCommit: { }
   local:

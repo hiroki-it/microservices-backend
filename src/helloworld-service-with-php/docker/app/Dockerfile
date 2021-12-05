@@ -28,9 +28,9 @@ RUN apt-get update -y \
 COPY --from=composer:1.10.23 /usr/bin/composer /usr/bin/composer
 
 #===================
-# Develop Stage
+# development Stage
 #===================
-FROM base as develop
+FROM base as development
 LABEL mantainer=${LABEL}
 
 #===================
