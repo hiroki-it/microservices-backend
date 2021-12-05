@@ -33,7 +33,7 @@ LABEL maintainer=${LABEL}
 # /go/binにパスを通す．
 ENV PATH $PATH:/go/bin
 
-COPY --from=build /go /go
+COPY --from=build /go /go/
 
 WORKDIR /go/src
 
