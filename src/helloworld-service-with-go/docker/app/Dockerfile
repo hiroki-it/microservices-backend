@@ -1,7 +1,7 @@
 #===================
 # Global ARG
 #===================
-ARG GO_VERSION="1.16.5"
+ARG GO_VERSION=1.16.5
 ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
 
 #===================
