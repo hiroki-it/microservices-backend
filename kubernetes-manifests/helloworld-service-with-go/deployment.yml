@@ -21,6 +21,9 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: hswg-gin
+              mountPath: /go/src
         - name: hswg-nginx
           image: hswg-nginx:latest
           imagePullPolicy: IfNotPresent
@@ -40,3 +43,8 @@ spec:
               value: dev_user
             - name: MYSQL_PASSWORD
               value: dev_password
+      volumes:
+        - name: hswg-gin
+          hostPath:
+            path: /data/src/helloworld-service-with-go
+            type: DirectoryOrCreate

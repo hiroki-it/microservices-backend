@@ -46,6 +46,6 @@ spec:
               value: dev_password
       volumes:
         - name: hswp-lumen
-          emptyDir: {}
-        - name: hswp-nginx
-          emptyDir: {}
+          hostPath:
+            path: /data/src/helloworld-service-with-php
+            type: DirectoryOrCreate
