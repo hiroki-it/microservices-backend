@@ -1,7 +1,7 @@
 #===================
 # Global ARG
 #===================
-ARG GO_VERSION=1.16.5
+ARG GO_VERSION=1.16.11
 ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
 
 #===================
@@ -15,7 +15,7 @@ WORKDIR /go/src
 COPY go.mod go.sum /go/src/
 
 # ライブラリをインストールする．
-RUN go get github.com/cosmtrek/air@v1.27.3
+RUN go get github.com/cosmtrek/air@v1.27.8
 
 COPY . /go/src/
 

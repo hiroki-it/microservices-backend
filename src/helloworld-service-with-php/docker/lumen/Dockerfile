@@ -1,7 +1,7 @@
 #===================
 # Global ARG
 #===================
-ARG PHP_FPM_VERSION=7.4.9
+ARG PHP_FPM_VERSION=8.0.13
 ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
 
 #===================
