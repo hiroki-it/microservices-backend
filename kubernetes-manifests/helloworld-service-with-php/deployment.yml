@@ -32,7 +32,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
-          # MySQLコンテナ（開発環境のみ）
+        # MySQLコンテナ（開発環境のみ）
         - name: hswp-mysql
           image: hswp-mysql:latest
           imagePullPolicy: IfNotPresent
