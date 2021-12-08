@@ -32,7 +32,7 @@ build:
   tagPolicy:
     sha256: {}
   local:
-    useBuildkit: false
+    useBuildkit: true
   
 deploy:
   kubectl:
