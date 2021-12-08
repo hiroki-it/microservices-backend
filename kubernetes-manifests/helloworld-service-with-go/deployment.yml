@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hswg-pod
+  name: hswg-pod-gin-nginx
   labels:
     app: hswg
 spec:
@@ -30,6 +30,29 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
+      volumes:
+        - name: hswg-gin
+          hostPath:
+            path: /data/src/helloworld-service-with-go
+            type: DirectoryOrCreate
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hswg-pod-mysql
+  labels:
+    app: hswg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hswg
+  template:
+    metadata:
+      labels:
+        app: hswg
+    spec:
+      containers:
         # MySQLコンテナ（開発環境のみ）
         - name: hswg-mysql
           image: hswg-mysql:latest
@@ -45,8 +68,4 @@ spec:
               value: dev_user
             - name: MYSQL_PASSWORD
               value: dev_password
-      volumes:
-        - name: hswg-gin
-          hostPath:
-            path: /data/src/helloworld-service-with-go
-            type: DirectoryOrCreate
+              
