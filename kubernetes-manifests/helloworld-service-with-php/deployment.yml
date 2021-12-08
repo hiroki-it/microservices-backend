@@ -16,6 +16,7 @@ spec:
         app: hswp
     spec:
       containers:
+        # Lumenコンテナ
         - name: hswp-lumen
           image: hswp-lumen:latest
           imagePullPolicy: IfNotPresent
@@ -25,11 +26,13 @@ spec:
             - name: hswp-lumen
               mountPath: /var/www/hswp
           workingDir: /var/www/hswp
+        # Nginxコンテナ
         - name: hswp-nginx
           image: hswp-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
+          # MySQLコンテナ（開発環境のみ）
         - name: hswp-mysql
           image: hswp-mysql:latest
           imagePullPolicy: IfNotPresent
