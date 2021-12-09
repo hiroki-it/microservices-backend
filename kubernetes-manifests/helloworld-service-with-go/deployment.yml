@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         # Ginコンテナ
-        - name: hswg-gin
+        - name: gin
           image: hswg-gin:latest
           imagePullPolicy: IfNotPresent
           ports:
@@ -25,7 +25,7 @@ spec:
             - name: hswg-gin
               mountPath: /go/src
         # Nginxコンテナ
-        - name: hswg-nginx
+        - name: nginx
           image: hswg-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
         # MySQLコンテナ（開発環境のみ）
-        - name: hswg-mysql
+        - name: mysql
           image: hswg-mysql:latest
           imagePullPolicy: IfNotPresent
           ports:
