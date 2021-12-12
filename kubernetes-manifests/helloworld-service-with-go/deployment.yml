@@ -29,7 +29,7 @@ spec:
           image: hswg-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8000
+            - containerPort: 80
       volumes:
         - name: hswg-gin
           hostPath:
