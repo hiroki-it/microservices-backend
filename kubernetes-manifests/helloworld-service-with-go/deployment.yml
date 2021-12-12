@@ -35,37 +35,3 @@ spec:
           hostPath:
             path: /data/src/helloworld-service-with-go
             type: DirectoryOrCreate
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hswg-pod-mysql
-  labels:
-    app: hswg
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: hswg
-  template:
-    metadata:
-      labels:
-        app: hswg
-    spec:
-      containers:
-        # MySQLコンテナ（開発環境のみ）
-        - name: mysql
-          image: hswg-mysql:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 3306
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: root
-            - name: MYSQL_DATABASE
-              value: dev_hswg
-            - name: MYSQL_USER
-              value: dev_user
-            - name: MYSQL_PASSWORD
-              value: dev_password
-              

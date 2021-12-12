@@ -36,37 +36,3 @@ spec:
           hostPath:
             path: /data/src/helloworld-service-with-php
             type: DirectoryOrCreate
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hswp-pod-mysql
-  labels:
-    app: hswp
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: hswp
-  template:
-    metadata:
-      labels:
-        app: hswp
-    spec:
-      containers:
-          # MySQLコンテナ（開発環境のみ）
-          - name: mysql
-            image: hswp-mysql:latest
-            imagePullPolicy: IfNotPresent
-            ports:
-              - containerPort: 3306
-            env:
-              - name: MYSQL_ROOT_PASSWORD
-                value: root
-              - name: MYSQL_DATABASE
-                value: dev_hswp
-              - name: MYSQL_USER
-                value: dev_user
-              - name: MYSQL_PASSWORD
-                value: dev_password
-                
