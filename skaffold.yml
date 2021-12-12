@@ -3,21 +3,21 @@ kind: Config
 build:
   artifacts:
     - image: hswp-lumen
-      context: ./src/helloworld-service-with-php
+      context: ./src/service-with-php
       docker:
         dockerfile: ./docker/lumen/Dockerfile
         target: development
     - image: hswp-nginx
-      context: ./src/helloworld-service-with-php
+      context: ./src/service-with-php
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
     - image: hswg-gin
-      context: ./src/helloworld-service-with-go
+      context: ./src/service-with-go
       docker:
         dockerfile: ./docker/gin/Dockerfile
     - image: hswg-nginx
-      context: ./src/helloworld-service-with-go
+      context: ./src/service-with-go
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development

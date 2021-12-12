@@ -1,38 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hswp-nginx-gin-pod
+  name: hswg-nginx-gin-pod
   labels:
-    app: hswp
+    app: hswg
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hswp
+      app: hswg
   template:
     metadata:
       labels:
-        app: hswp
+        app: hswg
     spec:
       containers:
-        # Lumenコンテナ
-        - name: lumen
-          image: hswp-lumen:latest
+        # Ginコンテナ
+        - name: gin
+          image: hswg-gin:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9000
+            - containerPort: 8080
           volumeMounts:
-            - name: hswp-lumen
-              mountPath: /var/www/hswp
-          workingDir: /var/www/hswp
+            - name: hswg-gin
+              mountPath: /go/src
         # Nginxコンテナ
         - name: nginx
-          image: hswp-nginx:latest
+          image: hswg-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
       volumes:
-        - name: hswp-lumen
+        - name: hswg-gin
           hostPath:
-            path: /data/src/helloworld-service-with-php
+            path: /data/src/service-with-go
             type: DirectoryOrCreate

@@ -4,8 +4,8 @@
 
 | マイクロサービス            | 言語 | フレームワーク | 説明                                                         |
 | --------------------------- | ---- | -------------- | ------------------------------------------------------------ |
-| helloworld-service-with-php | PHP  | Lumen          |                                                              |
-| helloworld-service-with-go  | Go   | Gin            |                                                              |
+| service-with-php | PHP  | Lumen          |                                                              |
+| service-with-go  | Go   | Gin            |                                                              |
 | database                    | -    | -              | MySQLを用いたデータベースです．各マイクロサービスが共有します．開発環境のみで使用します． |
 
 <br>
