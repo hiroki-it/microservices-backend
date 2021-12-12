@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hswp-pod-lumen-nginx
+  name: hswp-nginx-gin-pod
   labels:
     app: hswp
 spec:
