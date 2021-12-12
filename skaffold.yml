@@ -12,10 +12,6 @@ build:
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
-    - image: hswp-mysql
-      context: ./src/helloworld-service-with-php
-      docker:
-        dockerfile: ./docker/mysql/Dockerfile
     - image: hswg-gin
       context: ./src/helloworld-service-with-go
       docker:
@@ -25,10 +21,6 @@ build:
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
-    - image: hswg-mysql
-      context: ./src/helloworld-service-with-go
-      docker:
-        dockerfile: ./docker/mysql/Dockerfile
   tagPolicy:
     sha256: {}
   local:

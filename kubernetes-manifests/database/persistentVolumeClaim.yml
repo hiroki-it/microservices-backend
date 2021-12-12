@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: hswp-mysql-pv-claim
+  name: mysql-pv-claim
   labels:
-    app: hswp
+    app: database
 spec:
   storageClassName: slow
   accessModes:
