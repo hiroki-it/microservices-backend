@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hswp-nginx-gin-pod
+  name: swp-nginx-gin-pod
   labels:
-    app: hswp
+    app: swp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hswp
+      app: swp
   template:
     metadata:
       labels:
-        app: hswp
+        app: swp
     spec:
       containers:
         # Lumenコンテナ
         - name: lumen
-          image: hswp-lumen:latest
+          image: swp-lumen:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9000
           volumeMounts:
-            - name: hswp-lumen
-              mountPath: /var/www/hswp
-          workingDir: /var/www/hswp
+            - name: swp-lumen
+              mountPath: /var/www/swp
+          workingDir: /var/www/swp
         # Nginxコンテナ
         - name: nginx
-          image: hswp-nginx:latest
+          image: swp-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
       volumes:
-        - name: hswp-lumen
+        - name: swp-lumen
           hostPath:
             path: /data/src/service-with-php
             type: DirectoryOrCreate

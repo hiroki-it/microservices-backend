@@ -2,21 +2,21 @@ apiVersion: skaffold/v2beta26
 kind: Config
 build:
   artifacts:
-    - image: hswp-lumen
+    - image: swp-lumen
       context: ./src/service-with-php
       docker:
         dockerfile: ./docker/lumen/Dockerfile
         target: development
-    - image: hswp-nginx
+    - image: swp-nginx
       context: ./src/service-with-php
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
-    - image: hswg-gin
+    - image: swg-gin
       context: ./src/service-with-go
       docker:
         dockerfile: ./docker/gin/Dockerfile
-    - image: hswg-nginx
+    - image: swg-nginx
       context: ./src/service-with-go
       docker:
         dockerfile: ./docker/nginx/Dockerfile

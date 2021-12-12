@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hswg-nginx-gin-pod
+  name: swg-nginx-gin-pod
   labels:
-    app: hswg
+    app: swg
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hswg
+      app: swg
   template:
     metadata:
       labels:
-        app: hswg
+        app: swg
     spec:
       containers:
         # Ginコンテナ
         - name: gin
-          image: hswg-gin:latest
+          image: swg-gin:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: hswg-gin
+            - name: swg-gin
               mountPath: /go/src
         # Nginxコンテナ
         - name: nginx
-          image: hswg-nginx:latest
+          image: swg-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
       volumes:
-        - name: hswg-gin
+        - name: swg-gin
           hostPath:
             path: /data/src/service-with-go
             type: DirectoryOrCreate
