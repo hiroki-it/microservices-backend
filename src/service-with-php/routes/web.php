@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -15,4 +17,12 @@
 
 $router->get('/', function () use ($router) {
     return "Hello world!";
+});
+
+$router->post('/', function () use ($router) {
+    return (new User())->fill([
+            "name"  => "John Doe",
+            "email" => "test@gmail.com"
+        ]
+    )->save();
 });
