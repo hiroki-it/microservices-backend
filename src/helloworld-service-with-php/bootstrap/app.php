@@ -25,7 +25,8 @@ $app = new Laravel\Lumen\Application(
 
 // $app->withFacades();
 
-// $app->withEloquent();
+// コメントアウトを外し，Eloquentを有効化します．
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
