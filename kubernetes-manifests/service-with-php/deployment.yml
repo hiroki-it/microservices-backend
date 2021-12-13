@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: swp-nginx-gin-pod
+  name: swp-nginx-lumen-pod
   labels:
     app: swp
 spec:
