@@ -96,6 +96,9 @@ $app->configure('app');
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
+// マイグレーションマイクロサービスプロバイダー
+$app->register(App\Providers\MigrationMacroServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
