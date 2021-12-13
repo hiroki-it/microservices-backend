@@ -22,7 +22,7 @@ $router->get('/', function () use ($router) {
 $router->post('/', function () use ($router) {
     return (new User())->fill([
             "name"  => "John Doe",
-            "email" => "test@gmail.com"
+            "email_address" => "test@gmail.com"
         ]
     )->save();
 });
