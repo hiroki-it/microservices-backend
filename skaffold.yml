@@ -29,4 +29,5 @@ build:
 deploy:
   kubectl:
     manifests:
+      - ./kubernetes-manifests/**.yml
       - ./kubernetes-manifests/**/**.yml
