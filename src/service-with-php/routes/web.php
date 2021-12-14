@@ -15,14 +15,17 @@ use App\Models\User;
 |
 */
 
-$router->get('/', function () use ($router) {
-    return "Hello world!";
-});
+$router->group(['prefix' => 'swp'], function () use ($router) {
 
-$router->post('/', function () use ($router) {
-    return (new User())->fill([
-            "name"  => "John Doe",
-            "email_address" => "test@gmail.com"
-        ]
-    )->save();
+    $router->get('/', function () use ($router) {
+        return "Hello world!";
+    });
+
+    $router->post('/', function () use ($router) {
+        return (new User())->fill([
+                "name"          => "John Doe",
+                "email_address" => "test@gmail.com"
+            ]
+        )->save();
+    });
 });

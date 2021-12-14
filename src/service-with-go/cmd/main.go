@@ -7,7 +7,7 @@ import (
 func main() {
     r := gin.Default()
     
-    r.GET("/", func(c *gin.Context) {
+    r.GET("/swg/", func(c *gin.Context) {
         c.String(200, "Hello world!")
     })
     
