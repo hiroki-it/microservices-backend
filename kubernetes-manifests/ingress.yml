@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /swp
+            pathType: Prefix
+            backend:
+              service:
+                name: swp-service
+                port:
+                  number: 80
+    - http:
+        paths:
+          - path: /swg
+            pathType: Prefix
+            backend:
+              service:
+                name: swg-service
+                port:
+                  number: 80

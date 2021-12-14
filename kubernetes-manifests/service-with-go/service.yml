@@ -5,7 +5,7 @@ metadata:
   labels:
     app: swg
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: swg
   ports:

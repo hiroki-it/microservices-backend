@@ -5,7 +5,7 @@ metadata:
   labels:
     app: swp
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: swp
   ports:
