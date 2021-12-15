@@ -1,0 +1,8 @@
+# ディレクトリ
+**/air_tmp
+**/.idea
+
+# ファイル
+.air.toml
+*.out
+*.html
