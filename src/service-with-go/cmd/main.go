@@ -17,6 +17,7 @@ func main() {
 			c.String(200, "Hello world!")
 		})
 
+		// 簡単な計算を実行します．
 		r.POST("/", func(c *gin.Context) {
 			input := &Input{}
 			_ = c.Bind(input)
