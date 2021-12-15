@@ -11,9 +11,11 @@ type Input struct {
 func main() {
 	r := gin.Default()
 
-	r.GET("/swg/", func(c *gin.Context) {
-		c.String(200, "Hello world!")
-	})
+	r.Group("/swg")
+	{
+		r.GET("/", func(c *gin.Context) {
+			c.String(200, "Hello world!")
+		})
 
 		r.POST("/", func(c *gin.Context) {
 			input := &Input{}
