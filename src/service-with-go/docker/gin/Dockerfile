@@ -35,6 +35,13 @@ LABEL maintainer=${LABEL}
 # /go/binにパスを通す．
 ENV PATH $PATH:/go/bin
 
+ENV LANG ja_JP.UTF-8
+ENV TZ Asia/Tokyo
+# ビルドするバイナリファイルを静的リンク化する．
+ENV CGO_ENABLED 0 
+ENV GOARCH amd64
+ENV GOOS linux
+
 COPY --from=build /go /go/
 
 WORKDIR /go/src
