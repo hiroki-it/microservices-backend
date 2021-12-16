@@ -15,10 +15,10 @@ use App\Models\User;
 |
 */
 
-$router->group(['prefix' => 'swp'], function () use ($router) {
+$router->group(['prefix' => 'users'], function () use ($router) {
 
     $router->get('/', function () use ($router) {
-        return "Hello world!";
+        return (new User)->find(1);
     });
 
     $router->post('/', function () use ($router) {
