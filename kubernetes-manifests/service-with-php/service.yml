@@ -18,11 +18,11 @@ kind: Service
 metadata:
   name: swp-mysql-service
   labels:
-    app: database
+    app: swp-database
 spec:
   clusterIP: None
   selector:
-    app: database
+    app: swp-database
   ports:
     - protocol: TCP
       port: 3306
