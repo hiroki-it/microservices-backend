@@ -99,6 +99,9 @@ $app->configure('app');
 // マイグレーションマイクロサービスプロバイダー
 $app->register(App\Providers\MigrationMacroServiceProvider::class);
 
+// IdeHelperサービスプロバイダー
+$app->register(Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
