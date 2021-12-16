@@ -2,7 +2,7 @@
 
 ## マイクロサービスアーキテクチャの構成
 
-| マイクロサービス            | 言語 | フレームワーク | 説明                                                         |
+| マイクロサービス            | 言語 | フレームワーク | 機能の説明                                                         |
 | --------------------------- | ---- | -------------- | ------------------------------------------------------------ |
 | [service-with-php](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/service-with-php) | PHP  | Lumen          |                                                              |
 | [service-with-go](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/service-with-go) | Go   | Gin            |                                                              |
