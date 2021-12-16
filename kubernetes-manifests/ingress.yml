@@ -13,12 +13,3 @@ spec:
                 name: swp-service
                 port:
                   number: 80
-    - http:
-        paths:
-          - path: /swg
-            pathType: Prefix
-            backend:
-              service:
-                name: swg-service
-                port:
-                  number: 80
