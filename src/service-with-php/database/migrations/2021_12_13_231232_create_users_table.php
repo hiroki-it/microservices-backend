@@ -18,9 +18,6 @@ class CreateUsersTable extends Migration
                 ->comment("ユーザID");
             $table->string("name")
                 ->comment("ユーザ名");
-            $table->string('email_address')
-                ->unique()
-                ->comment('メールアドレス');
 
             $table->systemColumns();
         });

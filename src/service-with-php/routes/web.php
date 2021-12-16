@@ -24,7 +24,6 @@ $router->group(['prefix' => 'swp'], function () use ($router) {
     $router->post('/', function () use ($router) {
         return (new User())->fill([
                 "name"          => "John Doe",
-                "email_address" => "test@gmail.com"
             ]
         )->save();
     });
