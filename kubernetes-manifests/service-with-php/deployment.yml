@@ -36,3 +36,36 @@ spec:
           hostPath:
             path: /data/src/service-with-php
             type: DirectoryOrCreate
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swp-mysql-pod
+  labels:
+    app: swp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swp
+  template:
+    metadata:
+      labels:
+        app: swp
+    spec:
+      containers:
+        # MySQLコンテナ（開発環境のみ）
+        - name: mysql
+          image: mysql:5.7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: dev_db
+            - name: MYSQL_USER
+              value: dev_user
+            - name: MYSQL_PASSWORD
+              value: dev_password
