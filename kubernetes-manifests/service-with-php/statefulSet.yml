@@ -31,3 +31,18 @@ spec:
               value: dev_user
             - name: MYSQL_PASSWORD
               value: dev_password
+          volumeMounts:
+            - name: swp-slow-volume-claim
+              mountPath: /var/lib/data
+  volumeClaimTemplates:
+    - metadata:
+        name: swp-slow-volume-claim
+        labels:
+          app: swp
+      spec:
+        storageClassName: slow
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 3Gi
