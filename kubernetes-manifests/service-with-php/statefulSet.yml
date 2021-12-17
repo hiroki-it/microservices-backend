@@ -15,6 +15,11 @@ spec:
       labels:
         app: swp-database
     spec:
+      # mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
+      # @see https://github.com/MariaDB/mariadb-docker/issues/208#issuecomment-434583493
+      securityContext:
+        runAsUser: 999
+        fsGroup: 999
       containers:
         # MySQLコンテナ（開発環境のみ）
         - name: mysql
