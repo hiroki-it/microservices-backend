@@ -33,7 +33,7 @@ spec:
               value: dev_password
           volumeMounts:
             - name: swp-slow-volume-claim
-              mountPath: /var/lib/data
+              mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
         name: swp-slow-volume-claim
