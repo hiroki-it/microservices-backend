@@ -18,6 +18,8 @@ RUN apt-get update -y \
   && docker-php-ext-install \
       bcmath \
       pdo_mysql \
+  # gRPC
+  && pecl install grpc-1.42.0
   # キャッシュ削除
   && apt-get clean
 
