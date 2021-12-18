@@ -33,6 +33,9 @@ spec:
               value: dev_password
           volumeMounts:
             - name: swp-slow-volume-claim
+              # NOTE:
+              # mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
+              # datadirにマウントできない．
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
