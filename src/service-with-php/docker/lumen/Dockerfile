@@ -22,7 +22,7 @@ RUN apt-get update -y \
   # gRPC
   && apt-get install -y \
       zlib1g-dev \
-  && pecl install grpc-1.42.0
+  && pecl install grpc-1.42.0 \
   # キャッシュ削除
   && apt-get clean
 
