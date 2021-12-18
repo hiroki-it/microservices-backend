@@ -20,6 +20,8 @@ RUN apt-get update -y \
       bcmath \
       pdo_mysql \
   # gRPC
+  && apt-get install -y \
+      zlib1g-dev \
   && pecl install grpc-1.42.0
   # キャッシュ削除
   && apt-get clean
