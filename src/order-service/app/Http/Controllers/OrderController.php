@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     /**
-     * @param int $id
+     * @param Request $request
      * @return JsonResponse
      */
-    public function showOrder(int $id)
+    public function showOrder(Request $request)
     {
         $order = new Order();
 
-        return response()->json($order->find($id));
+        return response()->json($order->find($request->route('id')));
     }
 
     /**
@@ -38,12 +38,11 @@ class OrderController extends Controller
 
     /**
      * @param Request $request
-     * @param int     $id
      * @return JsonResponse
      */
-    public function updateOrder(Request $request, int $id)
+    public function updateOrder(Request $request)
     {
-        $order = (new Order())->find($id);
+        $order = (new Order())->find($request->route('id'));
 
         $order->fill([
                 "food_id"  => $request->food_id,
@@ -55,14 +54,14 @@ class OrderController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param Request $request
      * @return JsonResponse
      */
-    public function deleteOrder(int $id)
+    public function deleteOrder(Request $request)
     {
         $order = new Order();
 
-        $order->find($id)->delete();
+        $order->find($request->route('id'))->delete();
 
         return response()->json([],204);
     }
