@@ -19,7 +19,10 @@ use Laravel\Lumen\Routing\Router;
 $router->group(['prefix' => 'orders'], function () use ($router) {
 
     $router->get('/', function () use ($router) {
-        return (new Order())->find(1);
+
+        $order = (new Order())->find(1);
+
+        return response()->json($order);
     });
 
     $router->post('/', function () use ($router) {
