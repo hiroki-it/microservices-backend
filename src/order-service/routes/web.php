@@ -23,10 +23,15 @@ $router->group(['prefix' => 'orders'], function () use ($router) {
     });
 
     $router->post('/', function () use ($router) {
+
         $order = (new Order())->create([
                 "food_id"  => 1,
                 "drink_id" => 1
             ]
         );
+
+        $order = (new Order())->find($order->id());
+
+        return response()->json($order);
     });
 });
