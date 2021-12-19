@@ -23,10 +23,10 @@ $router->group(['prefix' => 'orders'], function () use ($router) {
     });
 
     $router->post('/', function () use ($router) {
-        return (new Order())->fill([
+        $order = (new Order())->create([
                 "food_id"  => 1,
                 "drink_id" => 1
             ]
-        )->save();
+        );
     });
 });
