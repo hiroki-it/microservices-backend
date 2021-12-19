@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Order;
+use App\Http\Controllers\OrderController;
 use Laravel\Lumen\Routing\Router;
 
 /** @var Router $router */
@@ -17,24 +17,8 @@ use Laravel\Lumen\Routing\Router;
 */
 
 $router->group(['prefix' => 'orders'], function () use ($router) {
-
-    $router->get('/', function () use ($router) {
-
-        $order = (new Order())->find(1);
-
-        return response()->json($order);
-    });
-
-    $router->post('/', function () use ($router) {
-
-        $order = (new Order())->create([
-                "food_id"  => 1,
-                "drink_id" => 1
-            ]
-        );
-
-        $order = (new Order())->find($order->id());
-
-        return response()->json($order);
-    });
+    $router->get('/{id}', [OrderController::class, 'showOrder']);
+    $router->post('/', [OrderController::class, 'createOrder']);
+    $router->put('/', [OrderController::class, 'updateOrder']);
+    $router->delete('/', [OrderController::class, 'deleteOrder']);
 });
