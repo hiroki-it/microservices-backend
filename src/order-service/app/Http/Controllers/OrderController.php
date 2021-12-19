@@ -38,11 +38,12 @@ class OrderController extends Controller
 
     /**
      * @param Request $request
+     * @param int     $id
      * @return JsonResponse
      */
-    public function updateOrder(Request $request)
+    public function updateOrder(Request $request, int $id)
     {
-        $order = new Order();
+        $order = (new Order())->find($id);
 
         $order->fill([
                 "food_id"  => $request->food_id,
