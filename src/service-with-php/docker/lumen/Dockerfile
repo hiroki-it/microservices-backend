@@ -28,6 +28,8 @@ RUN apt-get update -y \
 
 COPY --from=composer:1.10.23 /usr/bin/composer /usr/bin/composer
 
+COPY ./docker/lumen/custom.php.ini /usr/local/etc/php/php.ini
+
 #===================
 # development Stage
 #===================
