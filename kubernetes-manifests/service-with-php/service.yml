@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: swp-service
+  name: order-service
   labels:
-    app: swp
+    app: order
 spec:
   type: ClusterIP
   selector:
-    app: swp
+    app: order
   ports:
     - protocol: TCP
       port: 80
@@ -16,13 +16,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: swp-database-service
+  name: order-database-service
   labels:
-    app: swp-database
+    app: order-database
 spec:
   clusterIP: None
   selector:
-    app: swp-database
+    app: order-database
   ports:
     - protocol: TCP
       port: 3306

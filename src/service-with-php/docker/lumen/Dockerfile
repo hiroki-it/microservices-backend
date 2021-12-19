@@ -42,4 +42,4 @@ LABEL mantainer=${LABEL}
 FROM base as production
 LABEL mantainer=${LABEL}
 
-COPY ./ /var/www/service-with-php/
+COPY ./ /var/www/order-service/

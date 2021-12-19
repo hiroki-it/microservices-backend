@@ -1,39 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: swp-nginx-lumen-pod
-  labels:
-    app: swp
+  name: order-nginx-lumen-pod
+  labels: 
+    app: order
 spec:
   replicas: 1
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: swp
+      app: order
   template:
     metadata:
       labels:
-        app: swp
+        app: order
     spec:
       containers:
         # Lumenコンテナ
         - name: lumen
-          image: swp-lumen:latest
+          image: order-lumen:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9000
           volumeMounts:
-            - name: swp-lumen
-              mountPath: /var/www/swp
-          workingDir: /var/www/swp
+            - name: order-lumen
+              mountPath: /var/www/order
+          workingDir: /var/www/order
         # Nginxコンテナ
         - name: nginx
-          image: swp-nginx:latest
+          image: order-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
       volumes:
-        - name: swp-lumen
+        - name: order-lumen
           hostPath:
-            path: /data/src/service-with-php
+            path: /data/src/order-service
             type: DirectoryOrCreate

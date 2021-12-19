@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind:  StatefulSet
 metadata:
-  name: swp-mysql-pod
+  name: order-mysql-pod
   labels:
-    app: swp-database
+    app: order-database
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: swp-database
-  serviceName: swp-database-service
+      app: order-database
+  serviceName: order-database-service
   template:
     metadata:
       labels:
-        app: swp-database
+        app: order-database
     spec:
       containers:
         # MySQLコンテナ（開発環境のみ）
@@ -32,16 +32,16 @@ spec:
             - name: MYSQL_PASSWORD
               value: dev_password
           volumeMounts:
-            - name: swp-slow-volume-claim
+            - name: order-slow-volume-claim
               # NOTE:
               # mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
               # datadirにマウントできない．
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
-        name: swp-slow-volume-claim
+        name: order-slow-volume-claim
         labels:
-          app: swp
+          app: order
       spec:
         storageClassName: slow
         accessModes:

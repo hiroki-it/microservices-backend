@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use GuzzleHttp\Client;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 

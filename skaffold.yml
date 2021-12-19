@@ -2,13 +2,13 @@ apiVersion: skaffold/v2beta26
 kind: Config
 build:
   artifacts:
-    - image: swp-lumen
-      context: ./src/service-with-php
+    - image: order-lumen
+      context: ./src/order-service
       docker:
         dockerfile: ./docker/lumen/Dockerfile
         target: development
-    - image: swp-nginx
-      context: ./src/service-with-php
+    - image: order-nginx
+      context: ./src/order-service
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
