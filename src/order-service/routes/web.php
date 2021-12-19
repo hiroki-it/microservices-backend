@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\Order;
+use Laravel\Lumen\Routing\Router;
 
-/** @var \Laravel\Lumen\Routing\Router $router */
+/** @var Router $router */
 
 /*
 |--------------------------------------------------------------------------
