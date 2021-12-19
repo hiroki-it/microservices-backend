@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: swg-service
+  name: payment-service
   labels:
-    app: swg
+    app: payment
 spec:
   type: ClusterIP
   selector:
-    app: swg
+    app: payment
   ports:
     - protocol: TCP
       port: 80

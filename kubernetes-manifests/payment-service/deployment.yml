@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: swg-nginx-gin-pod
+  name: payment-nginx-gin-pod
   labels:
-    app: swg
+    app: payment
 spec:
   replicas: 1
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: swg
+      app: payment
   template:
     metadata:
       labels:
-        app: swg
+        app: payment
     spec:
       containers:
         # Ginコンテナ
         - name: gin
-          image: swg-gin:latest
+          image: payment-gin:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: swg-gin
+            - name: payment-gin
               mountPath: /go/src
         # Nginxコンテナ
         - name: nginx
-          image: swg-nginx:latest
+          image: payment-nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
       volumes:
-        - name: swg-gin
+        - name: payment-gin
           hostPath:
             path: /data/src/payment-service
             type: DirectoryOrCreate

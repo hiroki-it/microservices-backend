@@ -11,7 +11,7 @@ type Input struct {
 func main() {
 	r := gin.Default()
 
-	r.Group("/swg")
+	r.Group("/payment")
 	{
 		r.GET("/", func(c *gin.Context) {
 			c.String(200, "Hello world!")
