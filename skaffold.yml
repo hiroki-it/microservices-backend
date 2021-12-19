@@ -13,11 +13,11 @@ build:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
     - image: swg-gin
-      context: ./src/service-with-go
+      context: ./src/payment-service
       docker:
         dockerfile: ./docker/gin/Dockerfile
     - image: swg-nginx
-      context: ./src/service-with-go
+      context: ./src/payment-service
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
