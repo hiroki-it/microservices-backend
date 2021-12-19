@@ -4,8 +4,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Input struct {
-	Number int `json:"number"`
+type Order struct {
+	Id      int `json:"number"`
+	FoodId  int `json:"number"`
+	DrinkId int `json:"number"`
 }
 
 func main() {
