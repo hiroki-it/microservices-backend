@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\User;
-use GuzzleHttp\Client;
+use App\Models\Order;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -16,15 +15,16 @@ use GuzzleHttp\Client;
 |
 */
 
-$router->group(['prefix' => 'users'], function () use ($router) {
+$router->group(['prefix' => 'orders'], function () use ($router) {
 
     $router->get('/', function () use ($router) {
-        return (new User)->find(1);
+        return (new Order())->find(1);
     });
 
     $router->post('/', function () use ($router) {
-        return (new User())->fill([
-                "name"          => "John Doe",
+        return (new Order())->fill([
+                "food_id"  => 1,
+                "drink_id" => 1
             ]
         )->save();
     });
