@@ -12,5 +12,5 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /data/pv
+    path: /data/order
     type: DirectoryOrCreate
