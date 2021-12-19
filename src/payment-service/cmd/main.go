@@ -1,32 +1,25 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
+
+	"github.com/hiroki-it/payment-service/cmd/infrastructure/database"
+	"github.com/hiroki-it/payment-service/cmd/infrastructure/routers"
 )
 
-type Order struct {
-	Id      int `json:"number"`
-	FoodId  int `json:"number"`
-	DrinkId int `json:"number"`
-}
-
 func main() {
-	r := gin.Default()
+	// データベースに接続します．
+	db, err := database.NewDB()
 
-	r.Group("/payment")
-	{
-		r.GET("/", func(c *gin.Context) {
-			c.String(200, "Hello world!")
-		})
-
-		// 簡単な計算を実行します．
-		r.POST("/", func(c *gin.Context) {
-			input := &Input{}
-			_ = c.Bind(input)
-			result := input.Number * 2
-			c.JSON(200, result)
-		})
+	if err != nil {
+		panic(err)
 	}
 
-	r.Run()
+	// 最後にデータベースとの接続を切断します．
+	defer func(db *gorm.DB) {
+		database.Close(db)
+	}(db)
+
+	// コントローラにルーティングします．
+	routers.Run()
 }
