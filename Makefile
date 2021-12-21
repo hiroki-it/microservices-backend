@@ -11,6 +11,8 @@ minikube-start:
 	minikube addons enable ingress
 	# dockerクライアントの向き先の変更
 	minikube docker-env
+	# 手動で実行
+	# eval $(minikube -p minikube docker-env)
 
 kubectl-proxy:
 	kubectl proxy --address=0.0.0.0 --accept-hosts='.*' 
