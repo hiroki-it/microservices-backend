@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: VirtualService
+metadata:
+  name: virtual-service
+spec:
+  hosts:
+    - "*"
+  gateway:
+    - ingress-gateway
+  http:
+    - route:
+        - destination:
+            host: order-service
+            port:
+              number: 80
