@@ -31,3 +31,4 @@ deploy:
     manifests:
       - ./kubernetes-manifests/**.yml
       - ./kubernetes-manifests/**/**.yml
+      - ./istio-manifests/**.yml
