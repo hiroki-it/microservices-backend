@@ -10,4 +10,4 @@ spec:
       protocol: HTTP
       number: 80
     hosts:
-     - "*" 
+      - "*" 
