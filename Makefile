@@ -1,6 +1,9 @@
 POD=
 
 minikube-start:
+	# Istioを使用するために必要な最低限のスペック
+	minikube config set cpus 4
+	minikube config set memory 16384
 	# ノードの構築
 	minikube delete
 	minikube start --driver=hyperkit --mount=true --mount-string="${HOME}/projects/hiroki-it/microservices-with-kubernetes:/data"
