@@ -19,8 +19,11 @@ RUN go get github.com/cosmtrek/air@v1.27.8
 
 COPY . /go/src/
 
-# コンテナが起動後にすぐ終了しないように，起動前にフレームワークをインストールしておく．
-RUN go mod download -x \
+# go mod tidyの実行を忘れると，次回のイメージのビルド時に，goのビルドに失敗するようになってしまう．
+# そのため，保険としてgo mod tidyを実行しておく．
+RUN go mod tidy \
+  # コンテナが起動後にすぐ終了しないように，起動前にフレームワークをインストールしておく．
+  && go mod download -x \
 # ビルドのアーティファクトを/go/binに配置する．
 # NOTE: netパッケージは標準で動的リンクのため，静的リンクを明示的に指定する必要がある．
   && go build -x -a -tags netgo -installsuffix netgo -o /go/bin ./cmd
