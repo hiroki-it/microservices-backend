@@ -4,6 +4,8 @@ import (
 	"github.com/hiroki-it/payment-service/cmd/infrastructure/database"
 	"github.com/hiroki-it/payment-service/cmd/infrastructure/logger"
 	"github.com/hiroki-it/payment-service/cmd/infrastructure/routers"
+	"github.com/joho/godotenv"
+	"gorm.io/gorm"
 )
 
 func main() {
@@ -14,11 +16,17 @@ func main() {
 		panic(err)
 	}
 
+	err = godotenv.Load()
+
+	if err != nil {
+		log.Log().Error(err.Error())
+	}
+
 	// データベースに接続します．
 	db, err := database.NewDB()
 
 	if err != nil {
-		panic(err)
+		log.Log().Error(err.Error())
 	}
 
 	// 最後にデータベースとの接続を切断します．
