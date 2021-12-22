@@ -1,13 +1,19 @@
 package main
 
 import (
-	"gorm.io/gorm"
-
 	"github.com/hiroki-it/payment-service/cmd/infrastructure/database"
+	"github.com/hiroki-it/payment-service/cmd/infrastructure/logger"
 	"github.com/hiroki-it/payment-service/cmd/infrastructure/routers"
 )
 
 func main() {
+
+	log, err := logger.NewLogger()
+
+	if err != nil {
+		panic(err)
+	}
+
 	// データベースに接続します．
 	db, err := database.NewDB()
 
