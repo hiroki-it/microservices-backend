@@ -24,7 +24,7 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - name: payment-gin
-              mountPath: /go/src
+              mountPath: /go/src/payment-service
         # Nginxコンテナ
         - name: nginx
           image: payment-nginx:latest

@@ -24,8 +24,8 @@ spec:
             - containerPort: 9000
           volumeMounts:
             - name: order-lumen
-              mountPath: /var/www/order
-          workingDir: /var/www/order
+              mountPath: /var/www/order-service
+          workingDir: /var/www/order-service
         # Nginxコンテナ
         - name: nginx
           image: order-nginx:latest
