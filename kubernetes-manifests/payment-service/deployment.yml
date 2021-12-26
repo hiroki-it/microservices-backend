@@ -20,6 +20,7 @@ spec:
       labels:
         app: payment
     spec:
+      hostname: payment-nginx-gin-pod
       containers:
         # Ginコンテナ
         - name: gin

@@ -20,6 +20,7 @@ spec:
       labels:
         app: order
     spec:
+      hostname: order-nginx-lumen-pod
       containers:
         # Lumenコンテナ
         - name: lumen
