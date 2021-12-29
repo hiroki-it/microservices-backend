@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  namespace: microservices-with-kubernetes
   name: order-persistent-volume
   labels:
     app: order

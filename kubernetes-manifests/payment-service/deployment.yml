@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: microservices-with-kubernetes
   name: payment-nginx-gin-pod
   labels:
     app: payment

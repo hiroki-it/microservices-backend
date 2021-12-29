@@ -1,6 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Gateway
 metadata:
+  namespace: microservices-with-kubernetes
   name: order-service-gateway
 spec:
   selector:

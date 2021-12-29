@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind:  StatefulSet
 metadata:
+  namespace: microservices-with-kubernetes
   name: order-mysql-pod
   labels:
     app: order-database
