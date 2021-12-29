@@ -20,6 +20,12 @@ $ make minikube-start
 $ eval $(minikube -p minikube docker-env)
 ```
 
+### istioの有効化
+
+```bash
+$ make enable-istio
+```
+
 ### kubernetesオブジェクトのビルド&デプロイ
 
 ```bash
