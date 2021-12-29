@@ -6,7 +6,7 @@ metadata:
 spec:
   hosts:
     - "*"
-  gateway:
+  gateways:
     - ingress-gateway
   http:
     - route:
