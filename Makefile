@@ -20,9 +20,6 @@ kubectl-proxy:
 kubectl-exec:
 	kubectl exec -it ${POD} -- bash
 
-kubectl-port-forward-db:
-	kubectl port-forward ${POD} 3308:3306
-
 enable-istio:
 	istioctl install --set profile=demo -y
 	kubectl label namespace default istio-injection=enabled
