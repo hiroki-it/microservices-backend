@@ -11,6 +11,6 @@ spec:
   http:
     - route:
         - destination:
-            host: order-service
+            host: order-service.microservices-with-kubernetes.svc.cluster.local
             port:
               number: 80
