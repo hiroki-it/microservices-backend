@@ -10,7 +10,8 @@ spec:
   selector:
     app: payment
   ports:
-    - appProtocol: http
+    - name: http-payment
+      appProtocol: http
       port: 80
       targetPort: 80
 ---
