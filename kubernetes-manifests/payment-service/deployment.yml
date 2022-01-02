@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: microservices-with-kubernetes
-  name: payment-nginx-gin-pod
+  name: payment-gin-pod
   labels:
     app: payment
 spec:
@@ -21,7 +21,7 @@ spec:
       labels:
         app: payment
     spec:
-      hostname: payment-nginx-gin-pod
+      hostname: payment-gin-pod
       containers:
         # Ginコンテナ
         - name: gin

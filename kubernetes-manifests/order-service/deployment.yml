@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: microservices-with-kubernetes
-  name: order-nginx-lumen-pod
+  name: order-lumen-pod
   labels: 
     app: order
 spec:
@@ -21,7 +21,7 @@ spec:
       labels:
         app: order
     spec:
-      hostname: order-nginx-lumen-pod
+      hostname: order-lumen-pod
       containers:
         # Lumenコンテナ
         - name: lumen
