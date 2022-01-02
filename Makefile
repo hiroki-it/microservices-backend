@@ -23,5 +23,7 @@ kubectl-exec:
 	kubectl exec -it ${POD} -- bash
 
 enable-istio:
-	istioctl install --set profile=default -y
+	kubectl apply -f ./istio-manifests/operator.yml
 	istioctl verify-install
+	kubectl apply -f ./istio-manifests/gateway.yml
+	kubectl apply -f ./istio-manifests/virtualService.yml
