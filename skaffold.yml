@@ -7,20 +7,10 @@ build:
       docker:
         dockerfile: ./docker/lumen/Dockerfile
         target: development
-    - image: order-nginx
-      context: ./src/order-service
-      docker:
-        dockerfile: ./docker/nginx/Dockerfile
-        target: development
     - image: payment-gin
       context: ./src/payment-service
       docker:
         dockerfile: ./docker/gin/Dockerfile
-    - image: payment-nginx
-      context: ./src/payment-service
-      docker:
-        dockerfile: ./docker/nginx/Dockerfile
-        target: development
   tagPolicy:
     sha256: {}
   local:
