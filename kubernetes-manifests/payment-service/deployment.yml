@@ -41,5 +41,5 @@ spec:
       volumes:
         - name: payment-gin
           hostPath:
-            path: /go/src/payment-service
+            path: /data/src/payment-service
             type: DirectoryOrCreate
