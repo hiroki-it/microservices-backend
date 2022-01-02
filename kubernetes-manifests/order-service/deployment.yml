@@ -33,12 +33,6 @@ spec:
             - name: order-lumen
               mountPath: /var/www/order-service
           workingDir: /var/www/order-service
-        # Nginxコンテナ
-        - name: nginx
-          image: order-nginx:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
       volumes:
         - name: order-lumen
           hostPath:

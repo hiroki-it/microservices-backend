@@ -32,12 +32,6 @@ spec:
           volumeMounts:
             - name: payment-gin
               mountPath: /go/src
-        # Nginxコンテナ
-        - name: nginx
-          image: payment-nginx:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
       volumes:
         - name: payment-gin
           hostPath:
