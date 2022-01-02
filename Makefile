@@ -21,5 +21,5 @@ kubectl-exec:
 	kubectl exec -it ${POD} -- bash
 
 enable-istio:
-	istioctl install --set profile=demo -y
+	istioctl install --set profile=default -y
 	istioctl verify-install
