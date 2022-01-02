@@ -5,6 +5,7 @@ metadata:
   name: istio-operator
 spec:
   profile: default
+  # Envoyの設定
   meshConfig:
     accessLogFile: /dev/stdout
     enableTracing: true
