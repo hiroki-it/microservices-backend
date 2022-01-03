@@ -25,5 +25,4 @@ kubectl-exec:
 enable-istio:
 	istioctl install -f ./istio-manifests/operator.yml -y
 	istioctl verify-install
-	kubectl apply -f ./istio-manifests/gateway.yml
-	kubectl apply -f ./istio-manifests/virtualService.yml
+	kubectl apply -f ./istio-manifests
