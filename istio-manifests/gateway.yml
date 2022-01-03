@@ -7,9 +7,9 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-  - port:
-      name: http
-      protocol: HTTP
-      number: 80
-    hosts:
-      - "*"
+    - port:
+        name: http
+        protocol: HTTP
+        number: 80
+      hosts:
+        - "*"
