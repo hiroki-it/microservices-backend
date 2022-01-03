@@ -10,7 +10,7 @@ spec:
     - ingress-gateway
   http:
     - route:
-        - destination:
-            host: order-service.microservices-with-kubernetes.svc.cluster.local
-            port:
-              number: 80
+      - destination:
+          host: order-service.microservices-with-kubernetes.svc.cluster.local
+          port:
+            number: 80
