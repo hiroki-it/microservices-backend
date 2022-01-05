@@ -28,9 +28,16 @@ static_resources:
                     domains: ["*"]
                     routes:
                       - match:
-                          prefix: "/"
+                          prefix: "/orders"
                         route:
                           cluster: order_cluster
+                  - name: payment_service
+                    domains: ["*.microservices-with-kubernetes.svc.cluster.local"]
+                    routes:
+                      - match:
+                          prefix: "/payment"
+                        route:
+                          cluster: payment_cluster
   clusters:
     - name: order_cluster
       connect_timeout: 10s
@@ -44,3 +51,15 @@ static_resources:
                   socket_address:
                     address: 127.0.0.1
                     port_value: 9000
+    - name: payment_cluster
+      connect_timeout: 10s
+      lb_policy: round_robin
+      load_assignment:
+        cluster_name: payment_cluster
+        endpoints:
+          - lb_endpoints:
+            - endpoint:
+                address:
+                  socket_address:
+                    address: 127.0.0.1
+                    port_value: 8080
