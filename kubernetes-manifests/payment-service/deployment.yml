@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    proxy.istio.io/config: |
-      configPath: ./envoy/envoy.yml
+    sidecar.istio.io/proxyImage: envoy
   namespace: microservices-with-kubernetes
   name: payment-gin-pod
   labels:
