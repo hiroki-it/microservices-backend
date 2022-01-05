@@ -25,14 +25,14 @@ static_resources:
                 name: http_route
                 virtual_hosts:
                   - name: order_service
-                    domains: ["*"]
+                    domains: ["orders.*"]
                     routes:
                       - match:
                           prefix: "/orders"
                         route:
                           cluster: order_cluster
                   - name: payment_service
-                    domains: ["*.microservices-with-kubernetes.svc.cluster.local"]
+                    domains: ["payment.*"]
                     routes:
                       - match:
                           prefix: "/payment"
