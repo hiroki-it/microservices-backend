@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
+  namespace: microservices-with-kubernetes
   name: virtual-service
 spec:
   hosts:
