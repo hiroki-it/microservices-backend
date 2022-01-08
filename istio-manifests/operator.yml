@@ -9,8 +9,6 @@ spec:
   meshConfig:
     accessLogFile: /dev/stdout
     enableTracing: true
-    ingressSelector: ingress-gateway
-    ingressService: ingress-gateway
   components:
     ingressGateways:
       - name: istio-ingressgateway
