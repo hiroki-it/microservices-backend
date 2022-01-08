@@ -12,3 +12,9 @@ spec:
     enableTracing: true
     ingressSelector: ingress-gateway
     ingressService: ingress-gateway
+  components:
+    ingressGateways:
+      - name: ingress-gateway
+        enabled: true
+        label:
+          istio: ingress-gateway
