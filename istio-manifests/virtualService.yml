@@ -7,7 +7,7 @@ spec:
   hosts:
     - "*"
   gateways:
-    - ingress-gateway
+    - gateway
   http:
     - name: order-route
       route:
