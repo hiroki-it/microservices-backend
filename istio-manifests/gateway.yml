@@ -5,7 +5,7 @@ metadata:
   name: ingress-gateway
 spec:
   selector:
-    istio: ingressgateway
+    istio: ingress-gateway
   servers:
     - port:
         name: http
