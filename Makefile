@@ -23,5 +23,6 @@ kubectl-exec:
 	kubectl exec -it ${POD} -- bash
 
 enable-istio:
-	kubectl apply -f ./istio-manifests
+	istioctl operator init
+	kubectl apply -f ./istio-manifests/operator.yml
 	istioctl verify-install
