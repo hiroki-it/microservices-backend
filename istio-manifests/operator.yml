@@ -13,7 +13,5 @@ spec:
     ingressService: ingress-gateway
   components:
     ingressGateways:
-      - name: ingress-gateway
+      - name: istio-ingressgateway
         enabled: true
-        label:
-          istio: ingress-gateway
