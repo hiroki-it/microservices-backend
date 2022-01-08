@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: microservices-with-kubernetes
+  namespace: istio-system
   name: ingress-gateway
 spec:
   selector:

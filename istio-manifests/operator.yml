@@ -1,7 +1,7 @@
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
-  namespace: microservices-with-kubernetes
+  namespace: istio-system
   name: istio-operator
 spec:
   profile: default
