@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    sidecar.istio.io/proxyImage: envoy
   namespace: microservices-with-kubernetes
   name: order-lumen-pod
   labels: 
