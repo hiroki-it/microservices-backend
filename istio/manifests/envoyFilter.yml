@@ -1,0 +1,84 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: network-filter
+spec:
+  configPatches:
+    - applyTo: NETWORK_FILTER
+      match:
+        listener:
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+      patch:
+        operation: ADD
+        value:
+          name: "envoy.filters.network.http_connection_manager"
+          typed_config:
+            "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager"
+            http_filters:
+              - name: envoy.filters.http.router
+            stat_prefix: ingress_http
+            codec_type: AUTO
+            route_config:
+              name: http_route
+              virtual_hosts:
+                - name: order_service
+                  domains: [ "*" ]
+                  routes:
+                    - match:
+                        prefix: "/orders"
+                      route:
+                        cluster: order_cluster
+                - name: payment_service
+                  domains: [ "payment.*" ]
+                  routes:
+                    - match:
+                        prefix: "/payment"
+                      route:
+                        cluster: payment_cluster
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: cluster-filter
+spec:
+  configPatches:
+    - applyTo: CLUSTER
+      match:
+        cluster:
+          name: order_cluster
+      patch:
+        operation: ADD
+        value:
+          connect_timeout: 10s
+          lb_policy: ROUND_ROBIN
+          load_assignment:
+            cluster_name: order_cluster
+            endpoints:
+              - lb_endpoints:
+                  - endpoint:
+                      address:
+                        socket_address:
+                          address: 127.0.0.1
+                          port_value: 9000
+    - applyTo: CLUSTER
+      match:
+        cluster:
+          name: payment_cluster
+      patch:
+        operation: ADD
+        value:
+          connect_timeout: 10s
+          lb_policy: ROUND_ROBIN
+          load_assignment:
+            cluster_name: payment_cluster
+            endpoints:
+              - lb_endpoints:
+                  - endpoint:
+                      address:
+                        socket_address:
+                          address: 127.0.0.1
+                          port_value: 8080
