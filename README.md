@@ -20,16 +20,16 @@ $ make minikube-start
 $ eval $(minikube -p minikube docker-env)
 ```
 
-### ビルドとデプロイ
+### デプロイ
 
 #### ・kubernetesの場合
 
 ```bash
-$ make build-kubernetes
+$ make deploy-kubernetes
 ```
 
 #### ・Istioの場合
 
 ```bash
-$ make build-istio
+$ make deploy-istio
 ```
