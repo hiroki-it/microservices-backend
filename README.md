@@ -20,14 +20,16 @@ $ make minikube-start
 $ eval $(minikube -p minikube docker-env)
 ```
 
-### ビルドとデプロイ（kubernetesオブジェクト）
+### ビルドとデプロイ
+
+#### ・kubernetesの場合
 
 ```bash
-$ skaffold run --force --no-prune=false --cache-artifacts=false
+$ make build-kubernetes
 ```
 
-### ビルドとデプロイ（Istioオブジェクト）
+#### ・Istioの場合
 
 ```bash
-$ make enable-istio
+$ make build-istio
 ```
