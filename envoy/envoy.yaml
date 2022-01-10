@@ -25,7 +25,7 @@ static_resources:
                 name: http_route
                 virtual_hosts:
                   - name: order_service
-                    domains: ["orders.*"]
+                    domains: ["*"]
                     routes:
                       - match:
                           prefix: "/orders"
