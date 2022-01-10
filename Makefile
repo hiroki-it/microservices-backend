@@ -1,5 +1,3 @@
-POD=
-
 minikube-start:
 	# Istioを使用するために必要な最低限のスペック
 	minikube config set cpus 4
@@ -18,9 +16,6 @@ minikube-start:
 
 kubectl-proxy:
 	kubectl proxy --address=0.0.0.0 --accept-hosts='.*' 
-
-kubectl-exec:
-	kubectl exec -it ${POD} -- bash
 
 enable-istio:
 	istioctl operator init
