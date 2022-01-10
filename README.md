@@ -22,7 +22,7 @@ $ eval $(minikube -p minikube docker-env)
 
 ### デプロイ
 
-#### ・kubernetesの場合
+#### ・Kubernetesの場合
 
 ```bash
 $ make deploy-kubernetes
