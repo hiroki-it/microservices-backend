@@ -9,6 +9,7 @@ spec:
   meshConfig:
     accessLogFile: /dev/stdout
     enableTracing: true
+    rootNamespace: istio-system
   components:
     ingressGateways:
       - name: istio-ingressgateway
