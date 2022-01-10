@@ -17,7 +17,7 @@ minikube-start:
 kubectl-proxy:
 	kubectl proxy --address=0.0.0.0 --accept-hosts='.*' 
 
-enable-istio:
+build-istio:
 	istioctl operator init
 	istioctl install -y -f ./istio/operator/operator.yml
 	kubectl apply -f ./istio/manifests
