@@ -1,4 +1,4 @@
-minikube-start:
+start-minikube:
 	# Istioを使用するために必要な最低限のスペック
 	minikube config set cpus 4
 	minikube config set memory 16384
