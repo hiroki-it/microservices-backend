@@ -25,3 +25,6 @@ deploy-istio:
 	istioctl install -y -f ./istio/operator/operator.yml
 	kubectl apply -f ./istio/manifests
 	istioctl verify-install
+
+destroy-istio:
+	istioctl x uninstall --purge -y
