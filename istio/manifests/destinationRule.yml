@@ -4,7 +4,9 @@ metadata:
   namespace: istio-system
   name: order-cluster
 spec:
-  host: order-service.microservices-with-kubernetes.svc.cluster.local
+  exportTo:
+    - "*"
+  host: order-service.default.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN

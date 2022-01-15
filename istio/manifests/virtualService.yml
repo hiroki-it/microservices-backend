@@ -4,6 +4,8 @@ metadata:
   namespace: istio-system
   name: virtual-service
 spec:
+  exportTo:
+    - "*"
   hosts:
     - "*"
   gateways:
