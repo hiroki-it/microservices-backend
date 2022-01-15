@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: microservices-with-kubernetes
+  namespace: istio-system
   name: order-cluster
 spec:
   host: order-service.microservices-with-kubernetes.svc.cluster.local
