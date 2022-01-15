@@ -6,7 +6,7 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: order-service.default.svc.cluster.local
+  host: order-service.microservices-with-kubernete.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
