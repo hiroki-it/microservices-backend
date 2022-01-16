@@ -34,4 +34,6 @@ LABEL mantainer=${LABEL}
 
 COPY ./docker/nginx/production.nginx.conf /etc/nginx/nginx.conf
 
+COPY ./ /var/www/order-service/
+
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
