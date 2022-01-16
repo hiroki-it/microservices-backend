@@ -2,9 +2,6 @@ apiVersion: skaffold/v2beta26
 kind: Config
 build:
   artifacts:
-    - image: envoy
-      docker:
-        dockerfile: ./envoy/Dockerfile
     - image: order-lumen
       context: ./src/order-service
       docker:
