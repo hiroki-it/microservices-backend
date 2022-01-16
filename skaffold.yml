@@ -8,6 +8,12 @@ build:
       docker:
         dockerfile: ./docker/lumen/Dockerfile
         target: development
+    - image: order-nginx
+      context: ./src/order-service
+      docker:
+        dockerfile: ./docker/nginx/Dockerfile
+        target: development
+    # payment-service
     - image: payment-gin
       context: ./src/payment-service
       docker:

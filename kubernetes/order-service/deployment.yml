@@ -20,6 +20,8 @@ spec:
     metadata:
       labels:
         app: order
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       hostname: order-lumen-pod
       containers:
@@ -30,11 +32,20 @@ spec:
           ports:
             - containerPort: 9000
           volumeMounts:
-            - name: order-lumen
+            - name: order-volume
+              mountPath: /var/www/order-service
+          workingDir: /var/www/order-service
+        - name: nginx
+          image: order-nginx:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: order-volume
               mountPath: /var/www/order-service
           workingDir: /var/www/order-service
       volumes:
-        - name: order-lumen
+        - name: order-volume
           hostPath:
             path: /data/src/order-service
             type: DirectoryOrCreate
