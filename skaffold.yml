@@ -2,6 +2,7 @@ apiVersion: skaffold/v2beta26
 kind: Config
 build:
   artifacts:
+    # order-service
     - image: order-lumen
       context: ./src/order-service
       docker:
