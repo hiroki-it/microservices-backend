@@ -2,11 +2,14 @@
 
 ## マイクロサービスアーキテクチャの構成
 
-| マイクロサービス                                             | 言語   | フレームワーク | プロキシコンテナ   | 機能の説明                 |
-| ------------------------------------------------------------ | ------ | -------------- | ------------------ | -------------------------- |
-| [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx              | 受注機能を提供します．     |
-| [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy（Istioによる） | 金額計算機能を提供します． |
-| ***-service（作成予定）                                      | Python | Flask          | Envoy（Istioによる） |                            |
+
+
+| マイクロサービス                                             | 言語   | フレームワーク | プロキシコンテナ     | 機能の説明                             |
+| ------------------------------------------------------------ | ------ | -------------- | -------------------- | -------------------------------------- |
+| [gateway-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/gateway-service) | Go     | Gin            |         -             | インバウンド通信をルーティングします． |
+| [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx                | 受注機能を提供します．                 |
+| [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy（Istioによる） | 金額計算機能を提供します．             |
+| ***-service（作成予定）                                      | Python | Flask          | Envoy（Istioによる） |                  -                      |                             |
 
 
 <br>
