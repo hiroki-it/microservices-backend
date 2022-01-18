@@ -10,3 +10,5 @@ spec:
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
+    tls:
+      mode: DISABLE
