@@ -19,4 +19,4 @@ spec:
         - destination:
             host: order-service.microservices-with-kubernetes.svc.cluster.local
             port:
-              number: 8080
+              number: 80
