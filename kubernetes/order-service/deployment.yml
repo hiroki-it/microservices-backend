@@ -20,8 +20,6 @@ spec:
     metadata:
       labels:
         app: order
-      annotations:
-        sidecar.istio.io/inject: "false"
     spec:
       hostname: order-lumen-pod
       containers:
