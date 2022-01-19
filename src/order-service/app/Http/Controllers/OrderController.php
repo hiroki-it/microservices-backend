@@ -12,7 +12,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function showOrder(Request $request)
+    public function showOrder(Request $request): JsonResponse
     {
         $order = new Order();
 
@@ -23,7 +23,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function createOrder(Request $request)
+    public function createOrder(Request $request): JsonResponse
     {
         $order = new Order();
 
@@ -40,7 +40,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function updateOrder(Request $request)
+    public function updateOrder(Request $request): JsonResponse
     {
         $order = (new Order())->find($request->route('id'));
 
@@ -57,7 +57,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function deleteOrder(Request $request)
+    public function deleteOrder(Request $request): JsonResponse
     {
         $order = new Order();
 
