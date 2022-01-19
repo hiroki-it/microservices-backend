@@ -8,7 +8,7 @@
 | ------------------------------------------------------------ | ------ | -------------- | -------------------- | -------------------------------------- |
 | api-gateway（作成予定） | -     | -            |         -             | インバウンド通信を各マイクロサービスにルーティングします．Kubernetes外に配置するとし，AWS API Gatewayを使いたい（願望）． |
 | [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx，Envoy                | 受注業務を実現します．                 |
-| [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy | 会計業務を提供します．             |
+| [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy | 会計業務を実現します．             |
 | ***-service（作成予定）                                      | Python | Flask          | Envoy |                  -                      |                             |
 
 
