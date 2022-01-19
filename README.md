@@ -4,11 +4,11 @@
 
 
 
-| マイクロサービス                                             | 言語   | フレームワーク | プロキシコンテナ     | 機能の説明                             |
+| マイクロサービス                                             | 言語   | フレームワーク | プロキシコンテナ     | 境界付けられたコンテキストの説明                             |
 | ------------------------------------------------------------ | ------ | -------------- | -------------------- | -------------------------------------- |
 | api-gateway（作成予定） | -     | -            |         -             | インバウンド通信を各マイクロサービスにルーティングします．Kubernetes外に配置するとし，AWS API Gatewayを使いたい（願望）． |
-| [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx，Envoy                | 受注機能を提供します．                 |
-| [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy | 金額計算機能を提供します．             |
+| [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx，Envoy                | 受注業務を実現します．                 |
+| [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy | 会計業務を提供します．             |
 | ***-service（作成予定）                                      | Python | Flask          | Envoy |                  -                      |                             |
 
 
