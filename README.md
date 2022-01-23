@@ -37,9 +37,9 @@ CI/CDを構成するツールの一覧です．
 
 | 役割                         | ツール               | 導入の状況      |
 | ---------------------------- | -------------------- | --------------- |
-| 開発環境のCI/CD              | Skaffold             | ◯               |
-| CI                           | CircleCI               | coming soon... |
-| CD                           | ArgoCD               | coming soon... |
+| CI/CD（開発環境）              | Skaffold             | ◯               |
+| CI（本番環境）                           | CircleCI               | coming soon... |
+| CD（本番環境）                      | ArgoCD               | coming soon... |
 
 <br>
 
