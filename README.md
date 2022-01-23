@@ -8,7 +8,7 @@
 | ------------------------------------------------------------ | ------ | -------------- | -------------------- | -------------------------------------- |
 | [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx，Envoy                | 受注業務を実現します．                 |
 | [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy | 会計業務を実現します．             |
-| ***-service（comming soon...）                                      | Python | Flask          | Envoy |                  -                      |                             |
+| ***-service（coming soon...）                                      | Python | Flask          | Envoy |                  -                      |                             |
 
 ### インフラ
 
@@ -18,10 +18,11 @@
 | コンテナオーケストレーション              | Kubernetes             | ◯               |
 | サービスメッシュミドルウェア | Istio，IstioOperator | ◯               |
 | 開発環境のCI/CD              | Skaffold             | ◯               |
-| テンプレート管理             | Helm                 | comming soon... |
-| CD                           | ArgoCD               | comming soon... |
-| API Gateway                  | AWS API Gateway      | comming soon... |
-| 実運用環境                           | AWS EKS               | comming soon... |
+| テンプレート管理             | Helm                 | coming soon... |
+| CI                           | CircleCI               | coming soon... |
+| CD                           | ArgoCD               | coming soon... |
+| API Gateway                  | AWS API Gateway      | coming soon... |
+| Kubernetesの実行環境                         | AWS EKS               | coming soon... |
 
 <br>
 
