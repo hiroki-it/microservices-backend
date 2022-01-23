@@ -19,11 +19,14 @@
 
 マイクロサービス間の通信はHTTPプロトコルとし，gRPCプロトコルは用いない想定です．
 
+プロキシコンテナはEnvoyとしますが，FastCGIプロトコルで転送する場合にNginxも用いる想定です．
+
 | 役割                         | ツール               | 導入の状況      |
 | ---------------------------- | -------------------- | --------------- |
 | 仮想化              | Docker             | ◯               |
 | コンテナオーケストレーション              | Kubernetes             | ◯               |
 | サービスメッシュミドルウェア | Istio，IstioOperator | ◯               |
+| プロキシコンテナ | Envoy，Nginx | ◯               |
 | テンプレート管理             | Helm                 | coming soon... |
 | API Gateway                  | AWS API Gateway      | coming soon... |
 | Kubernetesの実行環境                         | AWS EKS               | coming soon... |
