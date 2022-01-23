@@ -2,14 +2,25 @@
 
 ## マイクロサービスアーキテクチャの構成
 
+### アプリケーション
 
-
-| マイクロサービス                                             | 言語   | フレームワーク | プロキシコンテナ     | 境界付けられたコンテキストの説明                             |
+| マイクロサービス名                                          | 言語   | フレームワーク | プロキシコンテナ     | 境界付けられたコンテキストの説明                             |
 | ------------------------------------------------------------ | ------ | -------------- | -------------------- | -------------------------------------- |
-| api-gateway（作成予定） | -     | -            |         -             | インバウンド通信を各マイクロサービスにルーティングします．Kubernetes外に配置するとし，AWS API Gatewayを使いたい（願望）． |
 | [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx，Envoy                | 受注業務を実現します．                 |
 | [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy | 会計業務を実現します．             |
-| ***-service（作成予定）                                      | Python | Flask          | Envoy |                  -                      |                             |
+| ***-service（comming soon...）                                      | Python | Flask          | Envoy |                  -                      |                             |
+
+### インフラ
+
+| 役割                         | ツール               | 導入の状況      |
+| ---------------------------- | -------------------- | --------------- |
+| 仮想化              | Docker             | ◯               |
+| コンテナオーケストレーション              | Kubernetes             | ◯               |
+| サービスメッシュミドルウェア | Istio，IstioOperator | ◯               |
+| 開発環境のCI/CD              | Skaffold             | ◯               |
+| テンプレート管理             | Helm                 | comming soon... |
+| API Gateway                  | AWS API Gateway      | comming soon... |
+| CD                           | ArgoCD               | comming soon... |
 
 
 <br>
