@@ -58,11 +58,11 @@ $ eval $(minikube -p minikube docker-env)
 #### ・Kubernetesの場合
 
 ```bash
-$ make deploy-kubernetes
+$ make apply-kubernetes
 ```
 
 #### ・Istioの場合
 
 ```bash
-$ make deploy-istio
+$ make apply-istio
 ```

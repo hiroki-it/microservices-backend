@@ -17,10 +17,10 @@ start-minikube:
 kubectl-proxy:
 	kubectl proxy --address=0.0.0.0 --accept-hosts='.*' 
 
-deploy-kubernetes:
+apply-kubernetes:
 	skaffold run --force --no-prune=false --cache-artifacts=false
 
-deploy-istio:
+apply-istio:
 	istioctl operator init
 	istioctl install -y -f ./istio/operator/operator.yml
 	kubectl apply -f ./istio/manifests
