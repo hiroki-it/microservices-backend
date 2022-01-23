@@ -19,9 +19,9 @@
 | サービスメッシュミドルウェア | Istio，IstioOperator | ◯               |
 | 開発環境のCI/CD              | Skaffold             | ◯               |
 | テンプレート管理             | Helm                 | comming soon... |
-| API Gateway                  | AWS API Gateway      | comming soon... |
 | CD                           | ArgoCD               | comming soon... |
-
+| API Gateway                  | AWS API Gateway      | comming soon... |
+| 実運用環境                           | AWS EKS               | comming soon... |
 
 <br>
 
