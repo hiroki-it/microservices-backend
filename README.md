@@ -8,7 +8,6 @@
 | ------------------------------------------------------------ | ------ | -------------- | -------------------- | -------------------------------------- |
 | [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx，Envoy                | 受注業務を実現します．                 |
 | [payment-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/payment-service) | Go     | Gin            | Envoy | 会計業務を実現します．             |
-| ***-service（coming soon...）                                      | Python | Flask          | Envoy |                  -                      |                             |
 
 ### インフラ
 
