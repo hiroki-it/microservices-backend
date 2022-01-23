@@ -8,6 +8,11 @@
 
 『API Gateway -> マイクロサービスA -> マイクロサービスB』という簡単な構成を想定しております．
 
+実装方法は以下に整理しております．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+
+
 | マイクロサービス名                                          | 言語   | フレームワーク | プロキシコンテナ     | 境界付けられたコンテキストの説明                             |
 | ------------------------------------------------------------ | ------ | -------------- | -------------------- | -------------------------------------- |
 | [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx，Envoy                | 受注業務を実現します．                 |
