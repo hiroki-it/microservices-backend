@@ -30,7 +30,7 @@
 | ---------------------------- | -------------------- | --------------- |
 | 仮想化              | Docker             | ◯               |
 | コンテナオーケストレーション              | Kubernetes             | ◯               |
-| サービスメッシュミドルウェア | Istio，IstioOperator | ◯               |
+| サービスメッシュによるマイクロサービス間連携 | Istio，IstioOperator | ◯               |
 | プロキシコンテナ | Envoy，Nginx | ◯               |
 | テンプレート管理             | Helm                 | coming soon... |
 | API Gateway                  | AWS API Gateway      | coming soon... |
