@@ -2,6 +2,12 @@ apiVersion: skaffold/v2beta26
 kind: Config
 build:
   artifacts:
+    # customer
+    - image: customer-flask
+      context: ./src/customer
+      docker:
+        dockerfile: ./docker/flask/Dockerfile
+        target: development
     # order-service
     - image: order-lumen
       context: ./src/order-service

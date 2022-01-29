@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: microservices-with-kubernetes
+  name: customer
+  labels:
+    app: customer
+spec:
+  type: ClusterIP
+  selector:
+    app: customer
+  ports:
+    - name: http-customer
+      appProtocol: http
+      port: 80
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-database
+  labels:
+    app: customer-database
+spec:
+  clusterIP: None
+  selector:
+    app: customer-database
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306

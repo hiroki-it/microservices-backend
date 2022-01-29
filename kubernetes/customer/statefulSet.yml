@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind:  StatefulSet
+metadata:
+  namespace: microservices-with-kubernetes
+  name: customer-mysql-pod
+  labels:
+    app: customer-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-database
+  serviceName: customer-database-service
+  template:
+    metadata:
+      labels:
+        app: customer-database
+    spec:
+      containers:
+        # MySQLコンテナ（開発環境のみ）
+        - name: mysql
+          image: mysql:5.7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: dev_db
+            - name: MYSQL_USER
+              value: dev_user
+            - name: MYSQL_PASSWORD
+              value: dev_password
+          volumeMounts:
+            - name: customer-slow-volume-claim
+              # NOTE:
+              # mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
+              # datadirにマウントできない．
+              mountPath: /var/volume
+  volumeClaimTemplates:
+    - metadata:
+        name: customer-slow-volume-claim
+        labels:
+          app: customer
+      spec:
+        storageClassName: slow
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
