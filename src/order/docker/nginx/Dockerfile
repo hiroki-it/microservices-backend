@@ -9,6 +9,8 @@ ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
 #===================
 FROM nginx:${NGINX_VERSION} as build
 
+WORKDIR /var/www/order
+
 RUN apt-get update -y \
   && apt-get install -y \
      curl \

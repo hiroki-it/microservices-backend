@@ -32,7 +32,6 @@ spec:
           volumeMounts:
             - name: customer-volume
               mountPath: /var/www/customer
-          workingDir: /var/www/customer
       volumes:
         - name: customer-volume
           hostPath:

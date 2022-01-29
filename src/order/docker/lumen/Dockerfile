@@ -9,6 +9,8 @@ ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
 #===================
 FROM php:${PHP_FPM_VERSION}-fpm as base
 
+WORKDIR /var/www/order
+
 RUN apt-get update -y \
   # Lumen
   && apt-get install -y \

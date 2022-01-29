@@ -32,7 +32,6 @@ spec:
           volumeMounts:
             - name: order-volume
               mountPath: /var/www/order
-          workingDir: /var/www/order
         - name: nginx
           image: order-nginx:latest
           imagePullPolicy: IfNotPresent
