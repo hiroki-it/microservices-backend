@@ -40,7 +40,6 @@ spec:
           volumeMounts:
             - name: order-volume
               mountPath: /var/www/order
-          workingDir: /var/www/order
       volumes:
         - name: order-volume
           hostPath:
