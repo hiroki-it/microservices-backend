@@ -2,7 +2,12 @@ apiVersion: skaffold/v2beta26
 kind: Config
 build:
   artifacts:
-    # customer
+    # accountサービス
+    - image: account-gin
+      context: ./src/account
+      docker:
+        dockerfile: ./docker/gin/Dockerfile
+    # customerサービス
     - image: customer-flask
       context: ./src/customer
       docker:
@@ -19,11 +24,6 @@ build:
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
-    # accountサービス
-    - image: account-gin
-      context: ./src/account
-      docker:
-        dockerfile: ./docker/gin/Dockerfile
   tagPolicy:
     sha256: {}
   local:
@@ -39,11 +39,11 @@ deploy:
 portForward:
   - namespace: microservices-with-kubernetes
     resourceType: pod
-    resourceName: order-mysql-pod-0
-    localPort: 3308 
+    resourceName: account-mysql-pod-0
+    localPort: 3309
     port: 3306
   - namespace: microservices-with-kubernetes
     resourceType: pod
-    resourceName: account-mysql-pod-0  
-    localPort: 3309
+    resourceName: order-mysql-pod-0
+    localPort: 3308 
     port: 3306
