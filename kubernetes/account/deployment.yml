@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: microservices-with-kubernetes
-  name: payment-gin-pod
+  name: account-gin-pod
   labels:
-    app: payment
+    app: account
 spec:
   replicas: 1
   revisionHistoryLimit: 5
@@ -15,25 +15,25 @@ spec:
       maxUnavailable: 0%
   selector:
     matchLabels:
-      app: payment
+      app: account
   template:
     metadata:
       labels:
-        app: payment
+        app: account
     spec:
-      hostname: payment-gin-pod
+      hostname: account-gin-pod
       containers:
         # Ginコンテナ
         - name: gin
-          image: payment-gin:latest
+          image: account-gin:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: payment-gin
+            - name: account-gin
               mountPath: /go/src
       volumes:
-        - name: payment-gin
+        - name: account-gin
           hostPath:
-            path: /data/src/payment-service
+            path: /data/src/account
             type: DirectoryOrCreate

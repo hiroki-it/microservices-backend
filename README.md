@@ -16,8 +16,8 @@
 | マイクロサービス名                                          | 言語   | フレームワーク | プロキシコンテナ     | 境界付けられたコンテキストの説明                             |
 | ------------------------------------------------------------ | ------ | -------------- | -------------------- | -------------------------------------- |
 | [customerサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/customer) | Python    | Flask          | Envoy                | 顧客データ管理業務を実現します．                 |
-| [order-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order-service) | PHP    | Lumen          | Nginx，Envoy                | 受注データ管理業務を実現します．                 |
-| [account-service](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/account-service) | Go     | Gin            | Envoy | 会計データ管理業務を実現します．             |
+| [orderサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order) | PHP    | Lumen          | Nginx，Envoy                | 受注データ管理業務を実現します．                 |
+| [accountサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/account) | Go     | Gin            | Envoy | 会計データ管理業務を実現します．             |
 
 ### インフラ
 

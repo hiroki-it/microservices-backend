@@ -31,8 +31,8 @@ spec:
             - containerPort: 9000
           volumeMounts:
             - name: order-volume
-              mountPath: /var/www/order-service
-          workingDir: /var/www/order-service
+              mountPath: /var/www/order
+          workingDir: /var/www/order
         - name: nginx
           image: order-nginx:latest
           imagePullPolicy: IfNotPresent
@@ -40,10 +40,10 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - name: order-volume
-              mountPath: /var/www/order-service
-          workingDir: /var/www/order-service
+              mountPath: /var/www/order
+          workingDir: /var/www/order
       volumes:
         - name: order-volume
           hostPath:
-            path: /data/src/order-service
+            path: /data/src/order
             type: DirectoryOrCreate

@@ -43,4 +43,4 @@ LABEL mantainer=${LABEL}
 FROM base as production
 LABEL mantainer=${LABEL}
 
-COPY ./ /var/www/order-service/
+COPY ./ /var/www/order/

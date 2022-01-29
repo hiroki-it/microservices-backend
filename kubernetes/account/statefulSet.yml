@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind:  StatefulSet
 metadata:
   namespace: microservices-with-kubernetes
-  name: payment-mysql-pod
+  name: account-mysql-pod
   labels:
-    app: payment-database
+    app: account-database
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payment-database
-  serviceName: payment-database-service
+      app: account-database
+  serviceName: account-database-service
   template:
     metadata:
       labels:
-        app: payment-database
+        app: account-database
     spec:
       containers:
         # MySQLコンテナ（開発環境のみ）
@@ -33,16 +33,16 @@ spec:
             - name: MYSQL_PASSWORD
               value: dev_password
           volumeMounts:
-            - name: payment-slow-volume-claim
+            - name: account-slow-volume-claim
               # NOTE:
               # mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
               # datadirにマウントできない．
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
-        name: payment-slow-volume-claim
+        name: account-slow-volume-claim
         labels:
-          app: payment
+          app: account
       spec:
         storageClassName: slow
         accessModes:

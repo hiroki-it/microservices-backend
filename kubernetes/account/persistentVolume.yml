@@ -2,9 +2,9 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: microservices-with-kubernetes
-  name: payment-persistent-volume
+  name: account-persistent-volume
   labels:
-    app: payment
+    app: account
 spec:
   storageClassName: slow
   capacity:
@@ -13,5 +13,5 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /data/src/payment-service
+    path: /data/src/account
     type: DirectoryOrCreate

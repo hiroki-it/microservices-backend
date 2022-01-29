@@ -8,20 +8,20 @@ build:
       docker:
         dockerfile: ./docker/flask/Dockerfile
         target: development
-    # order-service
+    # orderサービス
     - image: order-lumen
-      context: ./src/order-service
+      context: ./src/order
       docker:
         dockerfile: ./docker/lumen/Dockerfile
         target: development
     - image: order-nginx
-      context: ./src/order-service
+      context: ./src/order
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
-    # payment-service
-    - image: payment-gin
-      context: ./src/payment-service
+    # accountサービス
+    - image: account-gin
+      context: ./src/account
       docker:
         dockerfile: ./docker/gin/Dockerfile
   tagPolicy:
@@ -44,6 +44,6 @@ portForward:
     port: 3306
   - namespace: microservices-with-kubernetes
     resourceType: pod
-    resourceName: payment-mysql-pod-0  
+    resourceName: account-mysql-pod-0  
     localPort: 3309
     port: 3306

@@ -2,15 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: microservices-with-kubernetes
-  name: payment-service
+  name: account
   labels:
-    app: payment
+    app: account
 spec:
   type: ClusterIP
   selector:
-    app: payment
+    app: account
   ports:
-    - name: http-payment
+    - name: http-account
       appProtocol: http
       port: 80
       targetPort: 8080
@@ -18,13 +18,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: payment-database-service
+  name: account-database-service
   labels:
-    app: payment-database
+    app: account-database
 spec:
   clusterIP: None
   selector:
-    app: payment-database
+    app: account-database
   ports:
     - protocol: TCP
       port: 3306

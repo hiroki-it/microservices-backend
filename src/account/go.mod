@@ -1,4 +1,4 @@
-module github.com/hiroki-it/payment-service
+module github.com/hiroki-it/account
 
 go 1.16
 
@@ -10,4 +10,4 @@ require (
 	gorm.io/gorm v1.22.4
 )
 
-replace github.com/hiroki-it/payment-service => /
+replace github.com/hiroki-it/account => /
