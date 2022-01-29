@@ -28,7 +28,7 @@ spec:
           image: customer-flask:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9000
+            - containerPort: 8080
           volumeMounts:
             - name: customer-volume
               mountPath: /var/www/customer
