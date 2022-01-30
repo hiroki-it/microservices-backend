@@ -1,5 +1,4 @@
 from flask import Flask
-from controllers import *
 
 PREFIX_CUSTOMER = "customer"
 
@@ -11,5 +10,3 @@ def run():
     def show():
         customerController = controllers.CustomerController()
         customerController.show_customer
-
-    app.run(debug=True)
