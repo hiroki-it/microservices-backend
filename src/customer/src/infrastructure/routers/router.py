@@ -1,11 +1,7 @@
-from flask import Flask
+def run(app):
 
-PREFIX_CUSTOMER = "customer"
-
-def run():
-    app = Flask(__name__)
-    
     # customer
+    PREFIX_CUSTOMER = "customer"
     @app.route("/{PREFIX_CUSTOMER}/show", methods=["GET"])
     def show():
         customerController = controllers.CustomerController()
