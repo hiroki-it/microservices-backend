@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: microservices-with-kubernetes
-  name: customer-servoce
+  name: customer-service
   labels:
     app: customer
 spec:
