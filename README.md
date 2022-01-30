@@ -51,7 +51,7 @@ CI/CDを構成するツールの一覧です．
 
 ## 環境構築
 
-### minikubeの起動
+### Minikube
 
 ```bash
 $ make minikube-start
@@ -59,16 +59,18 @@ $ make minikube-start
 $ eval $(minikube -p minikube docker-env)
 ```
 
-### デプロイ
-
-#### ・Kubernetesの場合
+### Kubernetes
 
 ```bash
 $ make apply-kubernetes
 ```
 
-#### ・Istioの場合
+### Istio
 
 ```bash
 $ make apply-istio
 ```
+
+### マイクロサービス
+
+各マイクロサービスのREADMEをご参照ください．
