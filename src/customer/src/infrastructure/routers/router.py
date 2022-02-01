@@ -1,8 +1,9 @@
-def run(app):
+from src.interface.controllers.customer_controller import CustomerController
+
+def set_routes(app):
 
     # customer
     PREFIX_CUSTOMER = "customer"
     @app.route("/{PREFIX_CUSTOMER}/show", methods=["GET"])
-    def show():
-        customerController = controllers.CustomerController()
-        customerController.show_customer
+    customerController = CustomerController()
+    customerController.show_customer()
