@@ -9,14 +9,14 @@ func Run() {
 
 	r := gin.Default()
 
-	c := controllers.NewAccountController()
+	ac := controllers.NewAccountController()
 
 	r.Group("/account")
 	{
-		r.GET("/:id", c.ShowAccount)
-		r.POST("/", c.CreateAccount)
-		r.PUT("/", c.UpdateAccount)
-		r.DELETE("/", c.DeleteAccount)
+		r.GET("/:id", ac.ShowAccount)
+		r.POST("/", ac.CreateAccount)
+		r.PUT("/", ac.UpdateAccount)
+		r.DELETE("/", ac.DeleteAccount)
 	}
 
 	r.Run()
