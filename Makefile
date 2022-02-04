@@ -17,7 +17,7 @@ start-minikube:
 kubectl-proxy:
 	kubectl proxy --address=0.0.0.0 --accept-hosts='.*' 
 
-apply-kubernetes:
+apply-k8s:
 	skaffold run --force --no-prune=false --cache-artifacts=false
 
 apply-istio:
