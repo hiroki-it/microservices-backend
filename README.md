@@ -62,7 +62,7 @@ $ eval $(minikube -p minikube docker-env)
 ### Kubernetes
 
 ```bash
-$ make apply-kubernetes
+$ make apply-k8s
 ```
 
 ### Istio
