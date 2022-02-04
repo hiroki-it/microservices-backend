@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: microservices-with-kubernetes
+  namespace: microservices-with-k8s
   name: order-service
   labels:
     app: order

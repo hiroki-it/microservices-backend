@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind:  StatefulSet
 metadata:
-  namespace: microservices-with-kubernetes
+  namespace: microservices-with-k8s
   name: account-mysql-pod
   labels:
     app: account-database

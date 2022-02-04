@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  namespace: microservices-with-kubernetes
+  namespace: microservices-with-k8s
   name: account-persistent-volume
   labels:
     app: account
