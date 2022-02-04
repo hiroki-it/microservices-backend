@@ -20,6 +20,9 @@ kubectl-proxy:
 apply-k8s:
 	skaffold run --force --no-prune=false --cache-artifacts=false
 
+apply-k8s-with-pf:
+	skaffold run --force --no-prune=false --cache-artifacts=false --port-forward
+
 apply-istio:
 	istioctl operator init
 	istioctl install -y -f ./istio/operator/operator.yml
