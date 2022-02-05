@@ -92,7 +92,7 @@ $app->configure('app');
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -100,6 +100,7 @@ $app->configure('app');
 $app->register(App\Providers\MigrationMacroServiceProvider::class);
 
 // IdeHelperサービスプロバイダー
+// @see https://github.com/barryvdh/laravel-ide-helper#usage-with-lumen
 $app->register(Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
 
 /*
