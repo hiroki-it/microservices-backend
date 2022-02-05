@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -16,20 +16,20 @@ class OrderController extends Controller
     {
         $order = new Order();
 
-        return response()->json($order->find($request->route('id')));
+        return response()->json($order->find($orderRequest->route('id')));
     }
 
     /**
-     * @param Request $request
+     * @param OrderRequest $orderRequest
      * @return JsonResponse
      */
-    public function createOrder(Request $request): JsonResponse
+    public function createOrder(OrderRequest $orderRequest): JsonResponse
     {
         $order = new Order();
 
         $order->create([
-                "food_id"  => $request->food_id,
-                "drink_id" => $request->drink_id
+                "food_id"  => $orderRequest->food_id,
+                "drink_id" => $orderRequest->drink_id
             ]
         );
 
@@ -37,16 +37,16 @@ class OrderController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param OrderRequest $orderRequest
      * @return JsonResponse
      */
-    public function updateOrder(Request $request): JsonResponse
+    public function updateOrder(OrderRequest $orderRequest): JsonResponse
     {
-        $order = (new Order())->find($request->route('id'));
+        $order = (new Order())->find($orderRequest->route('id'));
 
         $order->fill([
-                "food_id"  => $request->food_id,
-                "drink_id" => $request->drink_id
+                "food_id"  => $orderRequest->food_id,
+                "drink_id" => $orderRequest->drink_id
             ]
         )->save();
 
@@ -54,14 +54,14 @@ class OrderController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param OrderRequest $orderRequest
      * @return JsonResponse
      */
-    public function deleteOrder(Request $request): JsonResponse
+    public function deleteOrder(OrderRequest $orderRequest): JsonResponse
     {
         $order = new Order();
 
-        $order->find($request->route('id'))->delete();
+        $order->find($orderRequest->route('id'))->delete();
 
         return response()->json([],204);
     }
