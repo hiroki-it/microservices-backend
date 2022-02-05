@@ -9,10 +9,19 @@ use Illuminate\Http\JsonResponse;
 class OrderController extends Controller
 {
     /**
-     * @param Request $request
+     * @param OrderRequest $orderRequest
      * @return JsonResponse
      */
-    public function showOrder(Request $request): JsonResponse
+    public function indexOrder(OrderRequest $orderRequest): JsonResponse
+    {
+        return response()->json();
+    }
+
+    /**
+     * @param OrderRequest $orderRequest
+     * @return JsonResponse
+     */
+    public function showOrder(OrderRequest $orderRequest): JsonResponse
     {
         $order = new Order();
 
