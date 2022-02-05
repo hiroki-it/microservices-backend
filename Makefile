@@ -29,7 +29,7 @@ apply-istio:
 	kubectl apply -f ./istio/manifests
 	istioctl verify-install
 
-apply-k8s-dashboard:
+apply-istio-dashboard:
 	kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.12/samples/addons/grafana.yaml
 	kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.12/samples/addons/jaeger.yaml
 	kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.12/samples/addons/prometheus.yaml
