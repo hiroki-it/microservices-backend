@@ -37,6 +37,15 @@
 | API Gateway                  | AWS API Gateway      | coming soon... |
 | Kubernetesの実行環境                         | AWS EKS               | coming soon... |
 
+### デバッグツール
+
+開発環境でのみ使用するデバッグツールの一覧です．
+
+| 役割               | ツール                       | 導入の状況      |
+| ----------------- | --------------------------- | --------------- |
+| テレメトリーの可視化  | Grafana，Jaeger，Prometheus | ◯               |
+| ロードテスト         | Fortio                     | ◯               |
+
 ### CI/CD
 
 CI/CDを構成するツールの一覧です．
