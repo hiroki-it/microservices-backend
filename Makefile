@@ -37,6 +37,6 @@ apply-istio-dashboard:
 destroy-istio:
 	istioctl x uninstall --purge -y
 
-ISTIO_INGRESS := $(shell kubectl get service/istio-ingressgateway --namespace=istio-system -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+ISTIO_INGRESS=$(shell kubectl get service/istio-ingressgateway --namespace=istio-system -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 load-test:
 	docker run fortio/fortio load -c 5 -n 100 http://${ISTIO_INGRESS}/order
