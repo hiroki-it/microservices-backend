@@ -5,6 +5,7 @@ metadata:
   name: order-persistent-volume
   labels:
     app: order
+    component: app
 spec:
   storageClassName: slow
   capacity:

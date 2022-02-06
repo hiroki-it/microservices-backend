@@ -5,6 +5,7 @@ metadata:
   name: customer-persistent-volume
   labels:
     app: customer
+    component: app
 spec:
   storageClassName: slow
   capacity:

@@ -2,13 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: microservices-with-k8s
-  name: account-service
+  name: account-app-service
   labels:
     app: account
+    component: app
 spec:
   type: ClusterIP
   selector:
     app: account
+    component: app
   ports:
     - name: http-account
       appProtocol: http
@@ -18,13 +20,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: account-database-service
+  name: account-db-service
   labels:
     app: account
+    component: db
 spec:
   clusterIP: None
   selector:
     app: account
+    component: db
   ports:
     - protocol: TCP
       port: 3306

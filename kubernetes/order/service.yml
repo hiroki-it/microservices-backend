@@ -2,13 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: microservices-with-k8s
-  name: order-service
+  name: order-app-service
   labels:
     app: order
+    component: app
 spec:
   type: ClusterIP
   selector:
     app: order
+    component: app
   ports:
     - name: http-order
       appProtocol: http
@@ -18,13 +20,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: order-database-service
+  name: order-db-service
   labels:
     app: order
+    component: db
 spec:
   clusterIP: None
   selector:
     app: order
+    component: db
   ports:
     - protocol: TCP
       port: 3306

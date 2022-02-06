@@ -5,16 +5,19 @@ metadata:
   name: account-mysql-pod
   labels:
     app: account
+    component: db
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: account
-  serviceName: account-service
+      component: db
+  serviceName: account-app-service
   template:
     metadata:
       labels:
         app: account
+        component: db
     spec:
       containers:
         # MySQLコンテナ（開発環境のみ）

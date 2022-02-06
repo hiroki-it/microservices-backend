@@ -5,16 +5,19 @@ metadata:
   name: order-mysql-pod
   labels:
     app: order
+    component: db
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: order
-  serviceName: order-service
+      component: db
+  serviceName: order-app-service
   template:
     metadata:
       labels:
         app: order
+        component: db
     spec:
       containers:
         # MySQLコンテナ（開発環境のみ）
@@ -43,6 +46,7 @@ spec:
         name: order-slow-volume-claim
         labels:
           app: order
+          component: db
       spec:
         storageClassName: slow
         accessModes:

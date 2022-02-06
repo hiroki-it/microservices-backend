@@ -5,6 +5,7 @@ metadata:
   name: account-persistent-volume
   labels:
     app: account
+    component: app
 spec:
   storageClassName: slow
   capacity:
