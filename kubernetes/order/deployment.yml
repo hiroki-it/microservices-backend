@@ -5,6 +5,7 @@ metadata:
   name: order-nginx-lumen-pod
   labels: 
     app: order
+    component: app
 spec:
   replicas: 1
   revisionHistoryLimit: 5
@@ -16,10 +17,12 @@ spec:
   selector:
     matchLabels:
       app: order
+      component: app
   template:
     metadata:
       labels:
         app: order
+        component: app
     spec:
       hostname: order-nginx-lumen-pod
       containers:

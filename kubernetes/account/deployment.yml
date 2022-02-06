@@ -5,6 +5,7 @@ metadata:
   name: account-gin-pod
   labels:
     app: account
+    component: app
 spec:
   replicas: 1
   revisionHistoryLimit: 5
@@ -16,10 +17,12 @@ spec:
   selector:
     matchLabels:
       app: account
+      component: app
   template:
     metadata:
       labels:
         app: account
+        component: app
     spec:
       hostname: account-gin-pod
       containers:
