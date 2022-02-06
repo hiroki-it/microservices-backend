@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: microservices-with-k8s
-  name: order-nginx-lumen-pod
+  name: order-app-pod
   labels: 
     app: order
     component: app
@@ -24,7 +24,7 @@ spec:
         app: order
         component: app
     spec:
-      hostname: order-nginx-lumen-pod
+      hostname: order-app-pod
       containers:
         # Lumenコンテナ
         - name: lumen

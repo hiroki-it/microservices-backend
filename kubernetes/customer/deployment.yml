@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: microservices-with-k8s
-  name: customer-flask-pod
+  name: customer-app-pod
   labels: 
     app: customer
     component: app
@@ -24,7 +24,7 @@ spec:
         app: customer
         component: app
     spec:
-      hostname: customer-flask-pod
+      hostname: customer-app-pod
       containers:
         # Flaskコンテナ
         - name: flask

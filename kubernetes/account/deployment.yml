@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: microservices-with-k8s
-  name: account-gin-pod
+  name: account-app-pod
   labels:
     app: account
     component: app
@@ -24,7 +24,7 @@ spec:
         app: account
         component: app
     spec:
-      hostname: account-gin-pod
+      hostname: account-app-pod
       containers:
         # Ginコンテナ
         - name: gin

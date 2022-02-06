@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: microservices-with-k8s
-  name: order-persistent-volume
+  name: order-app-persistent-volume
   labels:
     app: order
     component: app

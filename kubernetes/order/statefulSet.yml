@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind:  StatefulSet
 metadata:
   namespace: microservices-with-k8s
-  name: order-mysql-pod
+  name: order-db-pod
   labels:
     app: order
     component: db
@@ -43,7 +43,7 @@ spec:
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
-        name: order-slow-volume-claim
+        name: order-db-slow-volume-claim
         labels:
           app: order
           component: db

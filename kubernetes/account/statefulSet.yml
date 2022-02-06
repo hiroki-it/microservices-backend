@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind:  StatefulSet
 metadata:
   namespace: microservices-with-k8s
-  name: account-mysql-pod
+  name: account-db-pod
   labels:
     app: account
     component: db
@@ -43,9 +43,10 @@ spec:
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
-        name: account-slow-volume-claim
+        name: account-db-slow-volume-claim
         labels:
           app: account
+          component: db
       spec:
         storageClassName: slow
         accessModes:

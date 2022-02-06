@@ -39,16 +39,16 @@ deploy:
 portForward:
   - namespace: microservices-with-k8s
     resourceType: pod
-    resourceName: account-mysql-pod-0
+    resourceName: account-db-pod-0
     localPort: 3309
     port: 3306
   - namespace: microservices-with-k8s
     resourceType: pod
-    resourceName: customer-mysql-pod-0
+    resourceName: customer-db-pod-0
     localPort: 3308
     port: 3306
   - namespace: microservices-with-k8s
     resourceType: pod
-    resourceName: order-mysql-pod-0
+    resourceName: order-db-pod-0
     localPort: 3307
     port: 3306

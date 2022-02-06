@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   namespace: microservices-with-k8s
-  name: customer-persistent-volume
+  name: customer-app-persistent-volume
   labels:
     app: customer
     component: app
