@@ -20,11 +20,11 @@ kind: Service
 metadata:
   name: order-database-service
   labels:
-    app: order-database
+    app: order
 spec:
   clusterIP: None
   selector:
-    app: order-database
+    app: order
   ports:
     - protocol: TCP
       port: 3306

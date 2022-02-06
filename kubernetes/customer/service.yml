@@ -20,11 +20,11 @@ kind: Service
 metadata:
   name: customer-database
   labels:
-    app: customer-database
+    app: customer
 spec:
   clusterIP: None
   selector:
-    app: customer-database
+    app: customer
   ports:
     - protocol: TCP
       port: 3306

@@ -4,17 +4,17 @@ metadata:
   namespace: microservices-with-k8s
   name: order-mysql-pod
   labels:
-    app: order-database
+    app: order
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: order-database
-  serviceName: order-database-service
+      app: order
+  serviceName: order-service
   template:
     metadata:
       labels:
-        app: order-database
+        app: order
     spec:
       containers:
         # MySQLコンテナ（開発環境のみ）

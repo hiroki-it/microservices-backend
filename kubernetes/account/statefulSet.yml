@@ -4,17 +4,17 @@ metadata:
   namespace: microservices-with-k8s
   name: account-mysql-pod
   labels:
-    app: account-database
+    app: account
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: account-database
-  serviceName: account-database-service
+      app: account
+  serviceName: account-service
   template:
     metadata:
       labels:
-        app: account-database
+        app: account
     spec:
       containers:
         # MySQLコンテナ（開発環境のみ）
