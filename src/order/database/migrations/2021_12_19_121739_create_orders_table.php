@@ -16,9 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements("id")
                 ->comment("受注ID");
-            $table->bigIncrements("food_id")
+            $table->unsignedBigInteger("food_id")
                 ->comment("食べ物ID");
-            $table->bigIncrements("drink_id")
+            $table->unsignedBigInteger("drink_id")
                 ->comment("飲み物ID");
 
             $table->systemColumns();
