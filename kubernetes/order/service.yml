@@ -20,6 +20,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: microservices-with-k8s
   name: order-db-service
   labels:
     app: order
