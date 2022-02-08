@@ -11,8 +11,7 @@ start-minikube:
 	minikube addons enable metrics-server
 	# dockerクライアントの向き先の変更
 	minikube docker-env
-	# 手動で実行
-	# eval $(minikube -p minikube docker-env)
+	eval $(shell minikube -p minikube docker-env)
 
 kubectl-proxy:
 	kubectl proxy --address=0.0.0.0 --accept-hosts='.*' 
