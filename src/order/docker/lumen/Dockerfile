@@ -27,10 +27,7 @@ RUN apt-get update -y \
 #      zlib1g-dev \
 #  && pecl install grpc-1.42.0 \
   # キャッシュ削除
-  && apt-get clean \
-  # laravelがstorageディレクトリにアクセスできるようにする．
-  # @see https://laracasts.com/discuss/channels/laravel/permission-denied-on-storagelogslaravellog
-  && chmod -R 777 /var/www/order/storage
+  && apt-get clean
 
 COPY --from=composer:1.10.23 /usr/bin/composer /usr/bin/composer
 
