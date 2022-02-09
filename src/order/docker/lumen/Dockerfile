@@ -30,7 +30,7 @@ RUN apt-get update -y \
   && apt-get clean \
   # laravelがstorageディレクトリにアクセスできるようにする．
   # @see https://laracasts.com/discuss/channels/laravel/permission-denied-on-storagelogslaravellog
-  && chmod -R 777 /var/www/order/storage
+  && chmod -R 777 /var/www/order/storage/
 
 COPY --from=composer:1.10.23 /usr/bin/composer /usr/bin/composer
 
