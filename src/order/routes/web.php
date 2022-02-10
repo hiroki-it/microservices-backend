@@ -17,9 +17,10 @@ use Laravel\Lumen\Routing\Router;
 */
 
 $router->group(['prefix' => 'orders'], function () use ($router) {
-    $router->get('/{id}', [OrderController::class, 'showOrder']);
-    $router->get('/', [OrderController::class, 'indexOrder']);
-    $router->post('/', [OrderController::class, 'createOrder']);
-    $router->put('/{id}', [OrderController::class, 'updateOrder']);
-    $router->delete('/{id}', [OrderController::class, 'deleteOrder']);
+    // NOTE: Laravel8系のRouteの記法には非対応
+    $router->get('/{id}', 'OrderController@showOrder');
+    $router->get('/', 'OrderController@indexOrder');
+    $router->post('/', 'OrderController@createOrder');
+    $router->put('/{id}', 'OrderController@updateOrder');
+    $router->delete('/{id}', 'OrderController@deleteOrder');
 });
