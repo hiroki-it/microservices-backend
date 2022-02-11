@@ -40,8 +40,8 @@ destroy-istio:
 # @see https://github.com/fortio/fortio#command-line-arguments
 ISTIO_INGRESS=$(shell kubectl get service/istio-ingressgateway --namespace=istio-system -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 load-test-account:
-	docker run fortio/fortio load -c 1 -n 100 http://${ISTIO_INGRESS}/account
+	docker run fortio/fortio load -c 1 -n 100 http://${ISTIO_INGRESS}/account/
 load-test-customer:
-	docker run fortio/fortio load -c 1 -n 100 http://${ISTIO_INGRESS}/customers
+	docker run fortio/fortio load -c 1 -n 100 http://${ISTIO_INGRESS}/customers/
 load-test-order:
-	docker run fortio/fortio load -c 1 -n 100 http://${ISTIO_INGRESS}/orders
+	docker run fortio/fortio load -c 1 -n 100 http://${ISTIO_INGRESS}/orders/
