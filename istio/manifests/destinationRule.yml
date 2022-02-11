@@ -6,7 +6,7 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: account-app-service.microservices-with-kubernete.svc.cluster.local
+  host: account-app-service.microservices-with-k8s.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
@@ -21,7 +21,7 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: customer-app-service.microservices-with-kubernete.svc.cluster.local
+  host: customer-app-service.microservices-with-k8s.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
@@ -36,7 +36,7 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: order-app-service.microservices-with-kubernete.svc.cluster.local
+  host: order-app-service.microservices-with-k8s.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
