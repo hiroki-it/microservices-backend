@@ -2,11 +2,11 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   namespace: istio-system
-  name: distination-rule
+  name: account-app-destination-rule
 spec:
   exportTo:
     - "*"
-  host: order-app-service.microservices-with-kubernete.svc.cluster.local
+  host: account-app-service.microservices-with-kubernete.svc.cluster.local
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
