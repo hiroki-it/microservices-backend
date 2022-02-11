@@ -1,4 +1,4 @@
 class CustomerController:
 
-    def show_customer():
+    def index_customer():
         return "Hello, World!"
