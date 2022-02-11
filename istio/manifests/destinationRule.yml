@@ -12,3 +12,18 @@ spec:
       simple: ROUND_ROBIN
     tls:
       mode: DISABLE
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: customer-app-destination-rule
+spec:
+  exportTo:
+    - "*"
+  host: customer-app-service.microservices-with-kubernete.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+    tls:
+      mode: DISABLE
