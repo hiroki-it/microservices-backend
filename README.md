@@ -44,7 +44,7 @@
 | 役割               | ツール                             | 導入の状況      |
 | ----------------- | --------------------------------- | --------------- |
 | メトリクスの可視化     | Prometheus，Kiali               | ◯               |
-| ログの可視化          | FluentBit，ElasticSearch，Kiban  | coming soon...  |
+| ログの可視化          | FluentBit，ElasticSearch，Kibana | coming soon...  |
 | 分散トレースの可視化   | Jaeger                    　　　 | ◯               |
 | ロードテスト         | Fortio                           | ◯               |
 
