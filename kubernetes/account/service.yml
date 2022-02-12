@@ -31,6 +31,7 @@ spec:
     app: account
     component: db
   ports:
-    - protocol: TCP
+    - name: tcp-account
+      appProtocol: tcp
       port: 3306
       targetPort: 3306

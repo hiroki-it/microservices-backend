@@ -31,6 +31,7 @@ spec:
     app: order
     component: db
   ports:
-    - protocol: TCP
+    - name: tcp-order
+      appProtocol: tcp
       port: 3306
       targetPort: 3306
