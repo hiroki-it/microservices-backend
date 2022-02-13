@@ -25,7 +25,11 @@ apply-k8s-with-pf:
 apply-istio:
 	istioctl operator init
 	istioctl install -y -f ./istio/operator/operator.yml
-	kubectl apply -f ./istio/manifests
+	kubectl apply \
+	  -f ./istio/manifests \
+	  -f ./istio/manifests/account \
+	  -f ./istio/manifests/customer \
+	  -f ./istio/manifests/order
 	istioctl verify-install
 
 ISTIO_VERSION=1.12
