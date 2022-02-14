@@ -33,7 +33,7 @@ spec:
           ports:
             - containerPort: 9000
           volumeMounts:
-            - name: order-volume
+            - name: order-app-persistent-volume
               mountPath: /var/www/order
         - name: nginx
           image: order-nginx:latest
@@ -41,10 +41,9 @@ spec:
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: order-volume
+            - name: order-app-persistent-volume
               mountPath: /var/www/order
       volumes:
-        - name: order-volume
-          hostPath:
-            path: /data/src/order
-            type: DirectoryOrCreate
+        - name: order-app-persistent-volume
+          persistentVolumeClaim:
+            claimName: order-app-standard-persistent-volume-claim

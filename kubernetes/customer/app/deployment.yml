@@ -33,10 +33,9 @@ spec:
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: customer-volume
+            - name: customer-app-persistent-volume
               mountPath: /var/www/customer
       volumes:
-        - name: customer-volume
-          hostPath:
-            path: /data/src/customer
-            type: DirectoryOrCreate
+        - name: customer-app-persistent-volume
+          persistentVolumeClaim:
+            claimName: customer-app-standard-persistent-volume-claim

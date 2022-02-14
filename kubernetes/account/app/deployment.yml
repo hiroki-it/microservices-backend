@@ -33,10 +33,9 @@ spec:
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: account-gin
+            - name: account-app-persistent-volume
               mountPath: /go/src
       volumes:
-        - name: account-gin
-          hostPath:
-            path: /data/src/account
-            type: DirectoryOrCreate
+        - name: account-app-persistent-volume
+          persistentVolumeClaim:
+            claimName: account-app-standard-persistent-volume-claim
