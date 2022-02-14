@@ -36,19 +36,19 @@ spec:
             - name: MYSQL_PASSWORD
               value: dev_password
           volumeMounts:
-            - name: order-db-slow-volume-claim
+            - name: order-db-standard-volume-claim
               # NOTE:
               # mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
               # datadirにマウントできない．
               mountPath: /var/volume
   volumeClaimTemplates:
     - metadata:
-        name: order-db-slow-volume-claim
+        name: order-db-standard-volume-claim
         labels:
           app: order
           component: db
       spec:
-        storageClassName: slow
+        storageClassName: standard
         accessModes:
           - ReadWriteOnce
         resources:

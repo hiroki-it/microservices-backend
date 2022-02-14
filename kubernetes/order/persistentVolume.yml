@@ -7,7 +7,7 @@ metadata:
     app: order
     component: app
 spec:
-  storageClassName: slow
+  storageClassName: standard
   capacity:
     storage: 5Gi
   accessModes:
