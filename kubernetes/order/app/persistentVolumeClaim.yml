@@ -13,3 +13,6 @@ spec:
   resources:
     requests:
       storage: 2Gi
+  selector:
+    matchLabels:
+      type: hostPath
