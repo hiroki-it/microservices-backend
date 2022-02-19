@@ -38,4 +38,4 @@ spec:
       volumes:
         - name: customer-app-persistent-volume
           persistentVolumeClaim:
-            claimName: customer-app-standard-persistent-volume-claim
+            claimName: customer-app-host-path-persistent-volume-claim

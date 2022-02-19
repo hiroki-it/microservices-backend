@@ -46,4 +46,4 @@ spec:
       volumes:
         - name: order-app-persistent-volume
           persistentVolumeClaim:
-            claimName: order-app-standard-persistent-volume-claim
+            claimName: order-app-host-path-persistent-volume-claim

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: microservices-with-k8s
-  name: customer-app-standard-persistent-volume-claim
+  name: customer-app-host-path-persistent-volume-claim
   labels:
     app: customer
     component: app
