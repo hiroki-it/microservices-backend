@@ -15,4 +15,5 @@ spec:
       storage: 2Gi
   selector:
     matchLabels:
+      component: app
       type: hostPath

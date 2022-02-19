@@ -54,3 +54,7 @@ spec:
         resources:
           requests:
             storage: 5Gi
+        selector:
+          matchLabels:
+            component: db
+            type: hostPath
