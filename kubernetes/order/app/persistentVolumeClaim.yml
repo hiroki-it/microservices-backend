@@ -15,5 +15,6 @@ spec:
       storage: 2Gi
   selector:
     matchLabels:
+      app: order
       component: app
       type: hostPath
