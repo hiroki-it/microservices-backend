@@ -6,6 +6,7 @@ metadata:
   labels:
     app: order
     component: app
+    type: hostPath
 spec:
   storageClassName: standard
   capacity:
