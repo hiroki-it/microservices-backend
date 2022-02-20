@@ -8,19 +8,19 @@
 
 リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
 
-マイクロサービスアーキテクチャについては，以下に整理しております．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
-
-境界づけられたコンテキストについては，以下に整理しております．
-
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
-
 | マイクロサービス名                                          | 言語   | フレームワーク | プロキシコンテナ     | 境界付けられたコンテキストの説明 |
 | ------------------------------------------------------------ | ------ | -------------- | -------------------- |-----------------|
 | [accountサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/account) | Go     | Gin            | Envoy | 会計業務ドメインを解決します． |
 | [customerサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/customer) | Python    | Flask          | Envoy                | 顧客管理業務ドメインを解決します． |
 | [orderサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order) | PHP    | Lumen          | Nginx，Envoy                | 受注業務ドメインを解決します． |
+
+なお，マイクロサービスアーキテクチャについては，以下に整理しております．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+
+また，境界づけられたコンテキストについては，以下に整理しております．
+
+参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 ### インフラ
 
