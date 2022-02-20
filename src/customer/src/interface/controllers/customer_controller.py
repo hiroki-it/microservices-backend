@@ -1,4 +1,6 @@
+from flask import jsonify
+
 class CustomerController:
 
     def index_customer(self):
-        return "Hello, World!"
+        return jsonify({ 1 :"foo" })
