@@ -6,5 +6,5 @@ def set_routes(app):
     PREFIX_CUSTOMER = "customers"
     customerController = CustomerController()
     @app.route("/{PREFIX_CUSTOMER}/", methods=["GET"])
-    def index_customer():
+    def route_index_customer():
         return customerController.index_customer()
