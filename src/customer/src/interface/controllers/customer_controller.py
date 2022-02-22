@@ -1,6 +1,6 @@
-from fastapi import jsonify
+from fastapi.responses import JSONResponse
 
 class CustomerController:
 
     def index_customer(self):
-        return jsonify({ "name" : "foo" })
+        return JSONResponse({ "name" : "foo" })
