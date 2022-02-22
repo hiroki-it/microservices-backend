@@ -33,7 +33,7 @@ COPY ./docker/flask/uwsgi.ini /etc/uwsgi/uwsgi.ini
 FROM base as development
 LABEL mantainer=${LABEL}
 
-CMD ["uwsgi", "--ini", "/etc/uwsgi/uwsgi.ini"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 
 #===================
 # Production Stage
@@ -43,4 +43,4 @@ LABEL mantainer=${LABEL}
 
 COPY ./ /var/www/customer/
 
-CMD ["uwsgi", "--ini", "/etc/uwsgi/uwsgi.ini"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
