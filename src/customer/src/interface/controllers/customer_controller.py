@@ -10,6 +10,6 @@ class CustomerController:
             },
             {
                  "first_name" : "taro",
-                 "last_name" : "yamada"
+                 "last_name" : "suzuki"
             }
         ])
