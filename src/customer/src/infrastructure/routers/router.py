@@ -1,6 +1,5 @@
-from src.interface.controllers.customer_controller import CustomerController
-
 def set_routes(app):
+    from src.interface.controllers.customer_controller import CustomerController
 
     # customer
     PREFIX_CUSTOMER = "customers"
