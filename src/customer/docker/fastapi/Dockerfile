@@ -15,10 +15,7 @@ ENV TZ Asia/Tokyo
 
 COPY ./requirements.txt /var/www/customer/requirements.txt
 
-RUN apt-get update -y \
-  && apt-get install -y \
-    gcc \
-  && pip install \
+RUN pip install \
     --upgrade pip \
     -r requirements.txt
 
