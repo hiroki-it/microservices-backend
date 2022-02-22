@@ -8,10 +8,10 @@ build:
       docker:
         dockerfile: ./docker/gin/Dockerfile
     # customerサービス
-    - image: customer-flask
+    - image: customer-fastapi
       context: ./src/customer
       docker:
-        dockerfile: ./docker/flask/Dockerfile
+        dockerfile: ./docker/fastapi/Dockerfile
         target: development
     # orderサービス
     - image: order-lumen

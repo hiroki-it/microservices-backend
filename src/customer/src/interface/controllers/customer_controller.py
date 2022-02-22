@@ -1,4 +1,4 @@
-from flask import jsonify
+from fastapi import jsonify
 
 class CustomerController:
 

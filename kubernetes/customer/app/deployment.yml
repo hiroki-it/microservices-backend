@@ -26,9 +26,9 @@ spec:
     spec:
       hostname: customer-app-pod
       containers:
-        # Flaskコンテナ
-        - name: flask
-          image: customer-flask:latest
+        # FastAPIコンテナ
+        - name: fastapi
+          image: customer-fastapi:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
