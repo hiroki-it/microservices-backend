@@ -16,7 +16,11 @@ ENV TZ Asia/Tokyo
 COPY ./requirements.txt /var/www/customer/requirements.txt
 
 RUN apt-get update -y \
-  && apt-get install -y gcc \
+  && apt-get install -y \
+    gcc \
+    # Flaskの重複するプロセスをキルできるようにする．
+    # @see https://stackoverflow.com/questions/19071512/socket-error-errno-48-address-already-in-use
+    procps \
   && pip install \
     --upgrade pip \
     -r requirements.txt
