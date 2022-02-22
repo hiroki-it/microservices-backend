@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from flask import Flask
 
 def create_app():
