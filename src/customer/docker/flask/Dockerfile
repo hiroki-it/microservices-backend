@@ -25,7 +25,7 @@ RUN apt-get update -y \
     --upgrade pip \
     -r requirements.txt
 
-COPY ./docker/flask/uwsgi.ini /etc/wsgi/wsgi.ini
+COPY ./docker/flask/uwsgi.ini /etc/uwsgi/uwsgi.ini
 
 #===================
 # development Stage
@@ -33,7 +33,7 @@ COPY ./docker/flask/uwsgi.ini /etc/wsgi/wsgi.ini
 FROM base as development
 LABEL mantainer=${LABEL}
 
-CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
+CMD ["uwsgi", "--ini", "/etc/uwsgi/uwsgi.ini"]
 
 #===================
 # Production Stage
@@ -43,4 +43,4 @@ LABEL mantainer=${LABEL}
 
 COPY ./ /var/www/customer/
 
-CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
+CMD ["uwsgi", "--ini", "/etc/uwsgi/uwsgi.ini"]
