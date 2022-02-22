@@ -35,4 +35,4 @@ LABEL mantainer=${LABEL}
 
 COPY ./ /var/www/customer/
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
