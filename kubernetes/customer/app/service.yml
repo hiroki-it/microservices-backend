@@ -15,4 +15,4 @@ spec:
     - name: http-customer
       appProtocol: http
       port: 80
-      targetPort: 8080
+      targetPort: 5000
