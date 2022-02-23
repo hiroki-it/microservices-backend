@@ -2,6 +2,7 @@ from fastapi.responses import JSONResponse
 
 class CustomerController:
 
+    # 顧客の索引を取得します．
     def index_customer(self):
         return JSONResponse([
             {
