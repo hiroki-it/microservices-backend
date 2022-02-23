@@ -16,8 +16,8 @@ ENV TZ Asia/Tokyo
 COPY ./requirements.txt /var/www/customer/requirements.txt
 
 RUN pip3 install \
-    --upgrade pip \
-    -r requirements.txt
+     --upgrade pip \
+     -r requirements.txt
 
 #===================
 # development Stage

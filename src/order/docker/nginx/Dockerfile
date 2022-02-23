@@ -13,8 +13,8 @@ WORKDIR /var/www/order
 
 RUN apt-get update -y \
   && apt-get install -y \
-     curl \
-     vim \
+      curl \
+      vim \
   # キャッシュ削除
   && apt-get clean
 
