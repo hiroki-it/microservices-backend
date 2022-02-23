@@ -15,7 +15,7 @@ ENV TZ Asia/Tokyo
 
 COPY ./requirements.txt /var/www/customer/requirements.txt
 
-RUN pip install \
+RUN pip3 install \
     --upgrade pip \
     -r requirements.txt
 
