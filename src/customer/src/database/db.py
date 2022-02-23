@@ -13,9 +13,7 @@ class DB():
                 db_host = os.getenv("DB_HOST"),
                 db_database = os.getenv("DB_DATABASE")
             )
-        
-        print(db_url)
-        
+
         engine = create_engine(
             db_url,
             connect_args = {"check_same_thread": False}
