@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/hiroki-it/account/cmd/interface/controllers"
+	"github.com/hiroki-it/account/cmd/controllers"
 )
 
 func Run() {

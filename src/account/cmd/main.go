@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/hiroki-it/account/cmd/infrastructure/database"
-	"github.com/hiroki-it/account/cmd/infrastructure/logger"
-	"github.com/hiroki-it/account/cmd/infrastructure/routers"
+	"github.com/hiroki-it/account/cmd/database"
+	"github.com/hiroki-it/account/cmd/logger"
+	"github.com/hiroki-it/account/cmd/routers"
 	"github.com/joho/godotenv"
 	"gorm.io/gorm"
 )

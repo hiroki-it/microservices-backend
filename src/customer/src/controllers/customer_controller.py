@@ -16,3 +16,18 @@ class CustomerController(Controller):
                  "last_name" : "suzuki"
             }
         ])
+        
+    # 顧客を登録します．
+    def create_customer(self):
+        customer = Customer({
+            "first_name" : "ichiro" ,
+            "last_name" : "yamada"
+        })
+        
+        self.db.add(customer)
+        
+        self.db.commit()
+        
+        self.db.refresh(customer)
+        
+        return customer
