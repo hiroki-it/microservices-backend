@@ -25,7 +25,6 @@ def create_session_local():
 def get_db():
     try:
         session_local = create_session_local()
-        print(vars(session_local))
         yield session_local
     finally:
         session_local.close()
