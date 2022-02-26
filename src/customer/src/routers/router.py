@@ -1,9 +1,11 @@
-from fastapi import Depends
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from src.database.db import get_db
 
-def set_routes(app):
+def set_routes():
+    from src.database.db import get_db
     from src.controllers.customer_controller import CustomerController
+
+    router = APIRouter()
 
     # customer
     PREFIX_CUSTOMER = "customers"
