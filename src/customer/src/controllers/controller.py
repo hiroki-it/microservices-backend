@@ -6,6 +6,5 @@ from src.database.db import get_db
 class Controller:
 
     # コンストラクタ
-    # @see https://fastapi.tiangolo.com/tutorial/dependencies/
-    def __init__(self, db: Session = Depends(get_db)):
+    def __init__(self, db: Session):
         self.db = db

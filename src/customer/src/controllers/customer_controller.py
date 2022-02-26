@@ -7,6 +7,11 @@ from src.controllers.controller import Controller
 
 class CustomerController(Controller):
 
+    # コンストラクタ
+    def __init__(self, db: Session):
+        # DBセッションを基底クラスに保持します．
+        super().__init__(db)
+
     # 顧客の索引を取得します．
     def index_customer(self):
         return JSONResponse(
