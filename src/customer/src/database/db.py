@@ -13,7 +13,7 @@ def create_session_local():
         db_database=os.getenv("DB_DATABASE"),
     )
 
-    engine = create_engine(db_url, connect_args={"check_same_thread": False})
+    engine = create_engine(db_url)
 
     session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     
