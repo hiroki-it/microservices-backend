@@ -1,6 +1,8 @@
 from fastapi import Depends
 from sqlalchemy.orm import Session
 from src.database.db import get_db
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 
 
 class Controller:
@@ -19,3 +21,7 @@ class Controller:
         self.db.refresh(model)
 
         return model
+
+    # モデルをJSONレスポンスで返却します．
+    def send_json_response(self, model):
+        return JSONResponse(jsonable_encoder(model))
