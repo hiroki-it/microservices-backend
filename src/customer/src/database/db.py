@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 # SessionLocalクラスを作成します．
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-sessionlocal-class
-def create_session_local(self):
+def create_session_local():
     db_url = "{db_driver}://{db_user}:{db_password}@{db_host}/{db_database}?charset=utf8".format(
         db_driver=os.getenv("DB_DRIVER"),
         db_user=os.getenv("DB_USER"),
@@ -25,6 +25,7 @@ def create_session_local(self):
 def get_db():
     try:
         session_local = create_session_local()
+        print(vars(session_local))
         yield session_local
     finally:
         session_local.close()
