@@ -1,6 +1,9 @@
 from fastapi.responses import JSONResponse
+from sqlalchemy.orm import Session
+from fastapi.encoders import jsonable_encoder
+from src.models.customer.customer import Customer
 from src.controllers.controller import Controller
-from src.models.customer import Customer
+
 
 class CustomerController(Controller):
 
