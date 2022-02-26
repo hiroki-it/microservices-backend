@@ -1,10 +1,10 @@
-import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
 # SessionLocalクラスを作成します．
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-sessionlocal-class
 def create_session_local():
+    import os
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+
     db_url = "{db_driver}://{db_user}:{db_password}@{db_host}/{db_database}?charset=utf8".format(
         db_driver=os.getenv("DB_DRIVER"),
         db_user=os.getenv("DB_USER"),

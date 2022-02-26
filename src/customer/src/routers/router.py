@@ -1,9 +1,8 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-
 # @see https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter
 # @see https://fastapi.tiangolo.com/tutorial/dependencies/
 def set_routes():
+    from fastapi import APIRouter, Depends
+    from sqlalchemy.orm import Session
     from src.database.db import get_db
     from src.controllers.customer_controller import CustomerController
 
