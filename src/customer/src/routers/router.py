@@ -18,3 +18,5 @@ def set_routes():
     @router.post("/{PREFIX_CUSTOMER}/")
     def route_create_customer():
         return customerController.create_customer()
+
+    return router
