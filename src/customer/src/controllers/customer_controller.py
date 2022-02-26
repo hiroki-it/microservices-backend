@@ -6,17 +6,13 @@ class CustomerController(Controller):
 
     # 顧客の索引を取得します．
     def index_customer(self):
-        return JSONResponse([
-            {
-                 "first_name" : "ichiro" ,
-                 "last_name" : "yamada"
-            },
-            {
-                 "first_name" : "taro",
-                 "last_name" : "suzuki"
-            }
-        ])
-        
+        return JSONResponse(
+            [
+                {"first_name": "ichiro", "last_name": "yamada"},
+                {"first_name": "taro", "last_name": "suzuki"},
+            ]
+        )
+
     # 顧客を登録します．
     def create_customer(self):
         customer = Customer({
