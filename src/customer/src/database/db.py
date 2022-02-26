@@ -15,7 +15,9 @@ def create_session_local(self):
 
     engine = create_engine(db_url, connect_args={"check_same_thread": False})
 
-    return sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    
+    return session_local()
 
 
 # DBに接続します．
