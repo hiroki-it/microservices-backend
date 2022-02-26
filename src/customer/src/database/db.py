@@ -20,7 +20,7 @@ def create_session_local(self):
 
 # DBに接続します．
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-dependency
-def get_db(self):
+def get_db():
     try:
         session_local = create_session_local()
         yield session_local
