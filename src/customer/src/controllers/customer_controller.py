@@ -1,6 +1,4 @@
-from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
-from fastapi.encoders import jsonable_encoder
 from src.models.customer.customer import Customer
 from src.controllers.controller import Controller
 
@@ -23,15 +21,8 @@ class CustomerController(Controller):
 
     # 顧客を登録します．
     def create_customer(self):
-        customer = Customer({
-            "first_name" : "ichiro" ,
-            "last_name" : "yamada"
-        })
-        
-        self.db.add(customer)
-        
-        self.db.commit()
-        
-        self.db.refresh(customer)
-        
-        return customer
+        customer = Customer(first_name="ichiro", last_name="yamada")
+
+        self.create(customer)
+
+        return self.send_json_response(customer)
