@@ -8,3 +8,7 @@ def set_routes(app):
     @app.route("/{PREFIX_CUSTOMER}/", methods=["GET"])
     def route_index_customer(self):
         return customerController.index_customer()
+
+    @app.route("/{PREFIX_CUSTOMER}/", methods=["POST"])
+    def route_create_customer(self):
+        return customerController.create_customer()
