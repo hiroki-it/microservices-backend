@@ -11,14 +11,15 @@ def set_routes():
 
     # customer
     PREFIX_CUSTOMER = "customers"
-    customerController = CustomerController()
 
     @router.get("/{PREFIX_CUSTOMER}/")
-    async def route_index_customer():
+    async def route_index_customer(db: Session = Depends(get_db)):
+        customerController = CustomerController(db)
         return customerController.index_customer()
 
     @router.post("/{PREFIX_CUSTOMER}/")
-    async def route_create_customer():
+    async def route_create_customer(db: Session = Depends(get_db)):
+        customerController = CustomerController(db)
         return customerController.create_customer()
 
     return router
