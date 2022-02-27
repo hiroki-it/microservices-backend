@@ -21,17 +21,14 @@
 #### ■ トランザクション
 
 オーケストレーションベースのSagaパターンを採用する想定です．
-
 オペレーションサービスを用意し，これが各マイクロサービスのローカルトランザクションを連続的に実行します．
 
 #### ■ 参考
 
 マイクロサービスアーキテクチャについては，以下に整理しております．
-
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
 
 また，境界づけられたコンテキストについては，以下に整理しております．
-
 参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 ### インフラ
@@ -52,9 +49,9 @@
 
 #### ■ マイクロサービス間の通信方式
 
-マイクロサービス間の通信はHTTPプロトコルによる同期通信とし，gRPCプロトコルは用いない想定です．
-
+マイクロサービス間の通信方式はサービスメッシュを採用します．
 プロキシコンテナはEnvoyとしますが，インバウンド通信をFastCGIプロトコルでルーティングする場合にNginxも用いる想定です．
+この時，HTTPプロトコルによる同期通信を行い，gRPCプロトコルは用いない想定です．
 
 ### デバッグツール
 
