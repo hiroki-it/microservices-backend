@@ -25,6 +25,16 @@
 オーケストレーションベースのSagaパターンを採用する想定です．
 [**orchestratorサービス**](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/orchestrator) を用意し，これが各マイクロサービスの一連のローカルトランザクションを連続的に実行します．
 
+```mermaid
+%%{init:{'theme':'dark'}}%%
+graph TD
+    A([Internet]) --> B[API Gateway]
+    B             ---> C[customer-service]
+    B             --> D[orchestrator-service]
+    D             --> E[order-service]
+    D             --> F[account-service]
+```
+
 #### ■ 参考
 
 マイクロサービスアーキテクチャについては，以下に整理しております．
