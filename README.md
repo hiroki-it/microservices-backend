@@ -26,10 +26,10 @@
 #### ■ 参考
 
 マイクロサービスアーキテクチャについては，以下に整理しております．
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
 
 また，境界づけられたコンテキストについては，以下に整理しております．
-参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 ### インフラ
 
