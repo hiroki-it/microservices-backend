@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: orchestrator-virtual-service
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - "*"
+  gateways:
+    - gateway
+  http:
+    - name: orchestrator-route
+      match:
+        - uri:
+            prefix: /orchestrator/
+      route:
+        - destination:
+            host: orchestrator-service.microservices-with-k8s.svc.cluster.local
+            port:
+              number: 80

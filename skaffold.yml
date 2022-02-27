@@ -24,6 +24,12 @@ build:
       docker:
         dockerfile: ./docker/nginx/Dockerfile
         target: development
+    # orchestratorサービス
+    - image: orchestrator-fastapi
+      context: ./src/orchestrator
+      docker:
+        dockerfile: ./docker/fastapi/Dockerfile
+        target: development
   tagPolicy:
     sha256: {}
   local:
@@ -33,6 +39,7 @@ deploy:
   kubectl:
     manifests:
       - ./kubernetes/**.yml
+      - ./kubernetes/**/**.yml
       - ./kubernetes/**/**/**.yml
 
 # NOTE: すでにポートが使用中の場合は，+1されたポート番号が自動的に使用される．
