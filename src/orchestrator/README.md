@@ -1,3 +1,1 @@
-# orchestrator
-
-一連のローカルトランザクションを連続的に実行します．
+# orchestratorサービス
