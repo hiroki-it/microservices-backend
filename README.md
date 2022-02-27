@@ -4,7 +4,7 @@
 
 ### アプリケーション
 
-#### ・一覧
+#### ■ 一覧
 
 アプリケーションを構成するマイクロサービスの一覧です．
 
@@ -14,17 +14,17 @@
 | [customerサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/customer) | Python           | FastAPI          | Envoy            | 顧客管理業務ドメインを解決します．             |
 | [orderサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order)       | PHP              | Lumen            | Nginx，Envoy      | 受注業務ドメインを解決します．               |
 
-#### ・マイクロサービス間の通信方向
+#### ■ マイクロサービス間の通信方向
 
 リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
 
-#### ・トランザクション
+#### ■ トランザクション
 
 オーケストレーションベースのSagaパターンを採用する想定です．
 
 オペレーションサービスを用意し，これが各マイクロサービスのローカルトランザクションを連続的に実行します．
 
-#### ・参考
+#### ■ 参考
 
 マイクロサービスアーキテクチャについては，以下に整理しております．
 
@@ -36,7 +36,7 @@
 
 ### インフラ
 
-#### ・一覧
+#### ■ 一覧
 
 インフラを構成するツールの一覧です．
 
@@ -50,7 +50,7 @@
 | API Gateway            | AWS API Gateway     | coming soon... |
 | Kubernetesの実行環境        | AWS EKS             | coming soon... |
 
-#### ・マイクロサービス間の通信方式
+#### ■ マイクロサービス間の通信方式
 
 マイクロサービス間の通信はHTTPプロトコルによる同期通信とし，gRPCプロトコルは用いない想定です．
 
