@@ -30,9 +30,12 @@
 graph TD
     A([Internet]) --> B[API Gateway]
     B             ---> C[customer-service]
-    B             --> D[orchestrator-service]
-    D             --> E[order-service]
-    D             --> F[account-service]
+    B             --> E[orchestrator-service]
+    C             --> D[(DB)]
+    E             --> F[order-service]
+    E             --> H[account-service]
+    F             --> G[(DB)]
+    H             --> I[(DB)]
 ```
 
 #### ■ 参考
