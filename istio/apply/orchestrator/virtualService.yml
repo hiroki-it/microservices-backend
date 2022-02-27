@@ -11,10 +11,10 @@ spec:
   gateways:
     - gateway
   http:
-    - name: orchestrator-route
+    - name: checkout-route
       match:
         - uri:
-            prefix: /orchestrator/
+            prefix: /checkout/
       route:
         - destination:
             host: orchestrator-service.microservices-with-k8s.svc.cluster.local
