@@ -29,13 +29,14 @@
 %%{init:{'theme':'dark'}}%%
 graph TD
     A([Internet]) --> B[API Gateway]
-    B             ---> C[customer-service]
+    B             ----> C[customer-service]
     B             --> E[orchestrator-service]
     C             --> D[(DB)]
-    E             --> F[order-service]
-    E             --> H[account-service]
-    F             --> G[(DB)]
-    H             --> I[(DB)]
+    E             --> F[Queue]
+    F             --> G[order-service]
+    F             --> I[account-service]
+    G             --> H[(DB)]
+    I             --> J[(DB)]
 ```
 
 #### ■ 参考
