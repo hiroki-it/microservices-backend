@@ -16,7 +16,7 @@
 | [orderサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order)               | PHP    | Lumen   | Nginx，Envoy | 受注業務ドメインを解決します．   |
 
 
-#### ■ マイクロサービス間の通信方向
+#### ■ マイクロサービス間の通信方式
 
 リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
 
@@ -53,21 +53,24 @@ graph TD
 
 インフラを構成するツールの一覧です．
 
-| 役割                     | ツール                 | 導入の状況          |
-|------------------------|---------------------|----------------|
-| 仮想化                    | Docker              | ◯              |
-| コンテナオーケストレーション         | Kubernetes          | ◯              |
-| サービスメッシュによるマイクロサービス間連携 | Istio，IstioOperator | ◯              |
-| プロキシコンテナ               | Envoy，Nginx         | ◯              |
-| テンプレート管理               | Helm                | coming soon... |
-| API Gateway            | AWS API Gateway     | coming soon... |
-| Kubernetesの実行環境        | AWS EKS             | coming soon... |
+| 役割     | ツール                 | 導入の状況          |
+|--------|---------------------|----------------|
+| 仮想化    | Docker              | ◯              |
+| コンテナオーケストレーション | Kubernetes          | ◯              |
+| ネットワーク | Istio，IstioOperator | ◯              |
+| プロキシコンテナ | Envoy，Nginx         | ◯              |
+| テンプレート管理 | Helm                | coming soon... |
+| API Gateway | AWS API Gateway     | coming soon... |
+| Kubernetesの実行環境 | AWS EKS             | coming soon... |
 
-#### ■ マイクロサービス間の通信方式
+#### ■ ネットワーク
 
-マイクロサービス間の通信方式はサービスメッシュを採用します．
+ネットワークは，リクエストリプライ方式に基づき，サービスメッシュを採用します．
 プロキシコンテナはEnvoyとしますが，インバウンド通信をFastCGIプロトコルでルーティングする場合にNginxも用いる想定です．
 この時，HTTPプロトコルによる同期通信を行い，gRPCプロトコルは用いない想定です．
+ちなみに，イベント駆動方式を採用している場合は，イベントメッシュになります．
+
+参考：https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
 
 ### デバッグツール
 
