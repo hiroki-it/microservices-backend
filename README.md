@@ -16,7 +16,7 @@
 | [orderサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order)               | PHP    | Lumen   | Nginx，Envoy | 受注業務ドメインを解決します．   |
 
 
-#### ■ マイクロサービス間の通信方式
+#### ■ マイクロサービス間通信の方式
 
 リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
 
@@ -53,17 +53,17 @@ graph TD
 
 インフラを構成するツールの一覧です．
 
-| 役割     | ツール                 | 導入の状況          |
-|--------|---------------------|----------------|
-| 仮想化    | Docker              | ◯              |
-| コンテナオーケストレーション | Kubernetes          | ◯              |
-| ネットワーク | Istio，IstioOperator | ◯              |
-| プロキシコンテナ | Envoy，Nginx         | ◯              |
-| テンプレート管理 | Helm                | coming soon... |
-| API Gateway | AWS API Gateway     | coming soon... |
+| 役割              | ツール                 | 導入の状況          |
+|-----------------|---------------------|----------------|
+| 仮想化             | Docker              | ◯              |
+| コンテナオーケストレーション  | Kubernetes          | ◯              |
+| ネットワーク          | Istio，IstioOperator | ◯              |
+| プロキシコンテナ        | Envoy，Nginx         | ◯              |
+| テンプレート管理        | Helm                | coming soon... |
+| API Gateway     | AWS API Gateway     | coming soon... |
 | Kubernetesの実行環境 | AWS EKS             | coming soon... |
 
-#### ■ ネットワーク
+#### ■ マイクロサービス間通信の管理
 
 ネットワークは，リクエストリプライ方式に基づき，サービスメッシュを採用します．
 プロキシコンテナはEnvoyとしますが，インバウンド通信をFastCGIプロトコルでルーティングする場合にNginxも用いる想定です．
