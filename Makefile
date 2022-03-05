@@ -4,7 +4,7 @@ start-minikube:
 	minikube config set memory 16384
 	# ノードの構築
 	minikube delete
-	minikube start --driver=hyperkit --mount=true --mount-string="${HOME}/projects/hiroki-it/microservices-with-kubernetes:/data"
+	minikube start --driver=hyperkit --mount=true --mount-string="${HOME}/projects/hiroki-it/microservices-backend:/data"
 	# イングレスの有効化
 	# minikube addons enable ingress
 	# メトリクスの有効化

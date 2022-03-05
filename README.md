@@ -1,4 +1,4 @@
-# microservices-with-kubernetes
+# microservices-backend
 
 ## マイクロサービスアーキテクチャの構成
 
@@ -10,10 +10,10 @@
 
 | マイクロサービス名                                                                                                 | 言語     | フレームワーク | プロキシコンテナ    | 境界付けられたコンテキストの説明  |
 |-----------------------------------------------------------------------------------------------------------|--------|---------|-------------|-------------------|
-| [accountサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/account)           | Go     | Gin     | Envoy       | 会計業務ドメインを解決します．   |
-| [customerサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/customer)         | Python | FastAPI | Envoy       | 顧客管理業務ドメインを解決します． |
-| [orchestratorサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/orchestrator) | Python | FastAPI | Envoy       | トランザクションの項目を参照．   |
-| [orderサービス](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/order)               | PHP    | Lumen   | Nginx，Envoy | 受注業務ドメインを解決します．   |
+| [accountサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/account)           | Go     | Gin     | Envoy       | 会計業務ドメインを解決します．   |
+| [customerサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/customer)         | Python | FastAPI | Envoy       | 顧客管理業務ドメインを解決します． |
+| [orchestratorサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) | Python | FastAPI | Envoy       | トランザクションの項目を参照．   |
+| [orderサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/order)               | PHP    | Lumen   | Nginx，Envoy | 受注業務ドメインを解決します．   |
 
 
 #### ■ マイクロサービス間通信の方式
@@ -23,7 +23,7 @@
 #### ■ トランザクション
 
 オーケストレーションベースのSagaパターンを採用する想定です．
-[**orchestratorサービス**](https://github.com/hiroki-it/microservices-with-kubernetes/tree/main/src/orchestrator) を用意し，これが各マイクロサービスの一連のローカルトランザクションを連続的に実行します．
+[**orchestratorサービス**](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) を用意し，これが各マイクロサービスの一連のローカルトランザクションを連続的に実行します．
 
 ```mermaid
 %%{init:{'theme':'dark'}}%%
