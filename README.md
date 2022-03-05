@@ -42,11 +42,10 @@ graph TD
 #### ■ 参考
 
 マイクロサービスアーキテクチャ：
-
-<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+<br>https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
 
 境界づけられたコンテキスト：
-<br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+<br>https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 ### インフラ
 
