@@ -41,10 +41,11 @@ graph TD
 
 #### ■ 参考
 
-マイクロサービスアーキテクチャについては，以下に整理しております．
+マイクロサービスアーキテクチャ：
+
 <br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
 
-また，境界づけられたコンテキストについては，以下に整理しております．
+境界づけられたコンテキスト：
 <br>参考：https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 ### インフラ
@@ -52,6 +53,7 @@ graph TD
 #### ■ 一覧
 
 インフラを構成するツールの一覧です．
+
 ソースコードは **[別のリポジトリ](https://github.com/hiroki-it/microservices-infrastructure)** で管理しています
 
 | 役割              | ツール                 | 導入の状況          |
@@ -67,8 +69,11 @@ graph TD
 #### ■ マイクロサービス間通信の管理
 
 マイクロサービス間通信の管理方法は，リクエストリプライ方式に基づくサービスメッシュを実現するIstioを採用します．
+
 プロキシコンテナはEnvoyとしますが，インバウンド通信をFastCGIプロトコルでルーティングする場合にNginxも用いる想定です．
+
 この時，HTTPプロトコルによる同期通信を行い，gRPCプロトコルは用いない想定です．
+
 ちなみに，イベント駆動方式を採用している場合は，イベントメッシュになります．
 
 参考：https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
