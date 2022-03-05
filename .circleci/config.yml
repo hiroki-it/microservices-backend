@@ -1,5 +1,10 @@
 version: 2.1
 
+executors:
+  docker_compose_executor:
+    machine:
+      image: ubuntu-1604:201903-01
+
 commands:
   # 環境変数を準備します．
   setup_env_files:
@@ -84,11 +89,6 @@ commands:
           name: Create Pull Request
           command: |
             gh pr create -t "GitOpsによるリリース" -b "イメージのタグを最新のハッシュ値に変更します（${CIRCLE_SHA1:0:7}）"
-
-executors:
-  docker_compose_executor:
-    machine:
-      image: ubuntu-1604:201903-01
 
 jobs:
   # accountサービスのビルドを実行します．
