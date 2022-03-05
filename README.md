@@ -52,7 +52,6 @@ graph TD
 #### ■ 一覧
 
 インフラを構成するツールの一覧です．
-
 ソースコードは **[別のリポジトリ](https://github.com/hiroki-it/microservices-infrastructure)** で管理しています
 
 | 役割              | ツール                 | 導入の状況          |
