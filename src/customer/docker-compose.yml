@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+
+  # appコンテナ
+  app:
+    build:
+      context: .
+      dockerfile: docker/fastapi/Dockerfile
+    container_name: customer-app
+    depends_on:
+      - db
+    image: customer-app:latest
+    hostname: app
+    networks:
+      - default
+    tty: true
+    volumes:
+      - .:/var/www/customer
+
+  # dbコンテナ
+  db:
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    container_name: customer-db
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      TZ: "Asia/Tokyo"
+    image: mysql:5.7
+    hostname: db
+    ports:
+      - "3302:3306"
+    networks:
+      - default
+    volumes:
+      - db_volume:/var/lib/mysql
+
+volumes:
+  db_volume:
+    driver: local
+
+networks:
+  default:
+    name: customer-network
