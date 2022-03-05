@@ -146,7 +146,7 @@ jobs:
             git commit -m "release ${CIRCLE_SHA1:0:7} by GitOps"
             git push origin HEAD
       - run:
-          name: Create Pull Request
+          name: Create Pull Request for GitOps
           command: |
             gh pr create -t "GitOpsによるリリース" -b "イメージのタグを最新のハッシュ値に変更します（${CIRCLE_SHA1:0:7}）"
 
