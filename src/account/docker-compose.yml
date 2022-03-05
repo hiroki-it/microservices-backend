@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+
+  # appコンテナ
+  app:
+    build:
+      context: .
+      dockerfile: docker/gin/Dockerfile
+    container_name: account-app
+    depends_on:
+      - db
+    env_file:
+      - .env
+    image: account-app:latest
+    hostname: app
+    networks:
+      - default
+    tty: true
+    volumes:
+      - .:/go/src
+
+  # dbコンテナ
+  db:
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    container_name: account-db
+    env_file:
+      # NOTE: docker-compose.ymlで使用する変数を展開するために読み込む．
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      TZ: "Asia/Tokyo"
+    image: mysql:5.7
+    hostname: db
+    ports:
+      - "3301:3306"
+    networks:
+      - default
+    volumes:
+      - db_volume:/var/lib/mysql
+
+volumes:
+  db_volume:
+    driver: local
+
+networks:
+  default:
+    name: account-network
