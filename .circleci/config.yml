@@ -211,4 +211,3 @@ workflows:
             - build_and_push_order
           service_name: order
           vendor: nginx
-
