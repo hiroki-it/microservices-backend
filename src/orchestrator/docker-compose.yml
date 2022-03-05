@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+
+  # appコンテナ
+  app:
+    build:
+      context: .
+      dockerfile: docker/fastapi/Dockerfile
+    container_name: orchestrator-app
+    depends_on:
+      - db
+    image: orchestrator-app:latest
+    hostname: app
+    networks:
+      - default
+    tty: true
+    volumes:
+      - .:/var/www/orchestrator
+
+networks:
+  default:
+    name: orchestrator-network
