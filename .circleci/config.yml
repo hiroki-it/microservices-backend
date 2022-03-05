@@ -1,0 +1,166 @@
+version: 2.1
+
+commands:
+  # 環境変数を準備します．
+  setup_env_files:
+    steps:
+      - run:
+          name: Copy env file
+          command: |
+            cp .env.docker.example .env.docker
+
+  # docker-compose configを実行します．
+  docker_compose_config:
+    steps:
+      - run:
+          name: Docker compose config
+          command: |
+            docker-compose config
+  
+  # docker-compose up
+  docker_compose_up:
+    steps:
+      - run:
+          name: Docker compose run
+          command: |
+            set -xe
+            docker-compose up -d
+  
+  docker_login_and_push:
+    parameters:
+      service_name:
+        type: enum
+        enum: [ "account", "customer", "orchestrator", "order" ]
+    steps:
+      - run:
+          name: Docker login
+          command: |
+            source ./ops/export_envs.sh
+            aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ECR_ACCOUNT_URL}
+      - run:
+          name: Docker push
+          command: |
+            source ./ops/export_envs.sh
+            docker tag  << parameters.service_name >>:latest ${AWS_ECR_ACCOUNT_URL}/${APP_ENV}-<< parameters.service_name >>-repository:${CIRCLE_SHA1}
+            docker push ${AWS_ECR_ACCOUNT_URL}/${APP_ENV}-<< parameters.service_name >>:${CIRCLE_SHA1}
+  
+  # 環境変数からcredentialsファイルを用意します．
+  setup_aws_credentials:
+    steps:
+      - run:
+          name: Setup AWS credentials
+          command:
+            source ./ops/setup_aws_credentials.sh
+  
+  # GitOpsのため，microservices-infrastructureリポジトリにプルリクエストを作成します．
+  create_pull_request_for_gitops:
+    docker:
+      - image: cimg/base:2022.03
+    steps:
+      - github-cli/setup
+      - github-cli/clone:
+          repo: git@github.com:hiroki-it/microservices-infrastructure.git
+      - run:
+          name: Edit manifest file using yq
+          command: |
+            wget -q https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_386
+            sudo mv yq_linux_386 /usr/local/bin/yq
+            sudo chmod +x /usr/local/bin/yq
+            yq e -i '.spec.template.spec.containers[0].image |="asia.gcr.io/'${GOOGLE_PROJECT_ID}'/circleci-demo-gitops:'${CIRCLE_SHA1:0:7}'"' deployment.yaml
+      - add_ssh_keys:
+          fingerprints:
+            - $SSH_KEY_FINGERPRINT
+      - run:
+          name: Commit file
+          command: |
+            git config --global user.email "hasegawafeedshop@gmail.com"
+            git config --global user.name "circleci"
+            git remote set-url --push origin git@github.com:hiroki-it/microservices-infrastructure.git
+            git checkout -b release/${CIRCLE_SHA1:0:7}
+            git add .
+            git commit -m "release ${CIRCLE_SHA1:0:7} by GitOps"
+            git push origin HEAD
+      - run:
+          name: Create Pull Request
+          command: |
+            gh pr create -t "GitOpsによるリリース" -b "イメージのタグを最新のハッシュ値に変更します（${CIRCLE_SHA1:0:7}）"
+
+executors:
+  docker_compose_executor:
+    machine:
+      image: ubuntu-1604:201903-01
+
+jobs:
+  # accountサービスのビルドを実行します．
+  build_and_push_account:
+    executor: docker_compose_executor
+    working_directory: ~/microservices-backend/src/account
+    steps:
+      - checkout
+      - setup_env_files
+      - docker_compose_config
+      - docker_compose_up
+      - docker_login_and_push:
+          service_name: account
+  
+  # accountサービスのビルドを実行します．
+  build_and_push_customer:
+    executor: docker_compose_executor
+    working_directory: ~/microservices-backend/src/customer
+    steps:
+      - checkout
+      - setup_env_files
+      - docker_compose_config
+      - docker_compose_up
+      - docker_login_and_push:
+          service_name: customer
+  
+  # orchestratorサービスのビルドを実行します．
+  build_and_push_orchestrator:
+    executor: docker_compose_executor
+    working_directory: ~/microservices-backend/src/orchestrator
+    steps:
+      - checkout
+      - setup_env_files
+      - docker_compose_config
+      - docker_compose_up
+      - docker_login_and_push:
+          service_name: orchestrator
+  
+  # orderサービスのビルドを実行します．
+  build_and_push_order:
+    executor: docker_compose_executor
+    working_directory: ~/microservices-backend/src/order
+    steps:
+      - checkout
+      - setup_env_files
+      - docker_compose_config
+      - docker_compose_up
+      - docker_login_and_push:
+          service_name: order
+
+workflows:
+  # mainブランチフロー
+  main:
+    jobs:
+      - build_and_push_account:
+          name: build_and_push_account
+          filters:
+            branches:
+              only: main
+      - build_and_push_customer:
+          name: build_and_push_customer
+          filters:
+            branches:
+              only: main
+      - build_and_push_orchestrator:
+          name: build_and_push_orchestrator
+          filters:
+            branches:
+              only: main
+      - build_and_push_order:
+          name: build_and_push_order
+          filters:
+            branches:
+              only: main
+
