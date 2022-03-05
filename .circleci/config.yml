@@ -130,7 +130,8 @@ jobs:
             wget -q https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_386
             sudo mv yq_linux_386 /usr/local/bin/yq
             sudo chmod +x /usr/local/bin/yq
-            yq -i '.spec.template.spec.containers[0].image = "<< parameters.service_name >>-<< parameters.vendor >>:${CIRCLE_SHA1:0:7}"'  ./kubernetes/<< parameters.service_name >>/app/deployment.yml 
+            yq -i '.spec.template.spec.containers[0].image = "<< parameters.service_name >>-<< parameters.vendor >>:${CIRCLE_SHA1:0:7}"' \
+              ./kubernetes/<< parameters.service_name >>/app/deployment.yml 
       - add_ssh_keys:
           fingerprints:
             - $SSH_KEY_FINGERPRINT
