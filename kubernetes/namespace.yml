@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: microservices-with-k8s
-  labels:
-    istio-injection: enabled
