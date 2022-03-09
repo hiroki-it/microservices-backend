@@ -4,7 +4,7 @@
 
 マイクロサービスアーキテクチャのアプリケーションのバックエンド領域を管理するリポジトリ．
 
-インフラ領域は **[microservices-infrastructureリポジトリ](https://github.com/hiroki-it/microservices-infrastructure)** で管理しています．
+マニフェストファイルは **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** で管理しています．
 
 ## 使用技術
 
