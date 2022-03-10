@@ -127,6 +127,9 @@ jobs:
 
   # dockerイメージをプッシュを実行します．
   push:
+    parameters:
+      exr:
+        type: executor
     executor: << parameters.exr >>
     steps:
       - run:
