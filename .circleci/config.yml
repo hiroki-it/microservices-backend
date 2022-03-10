@@ -13,6 +13,8 @@ executors:
     machine:
       image: ubuntu-1604:201903-01
   # イメージのプッシュの実行環境を提供します．
+    environment:
+      SERVICE_NAME: << parameters.service_name >>
   push_executor:
     parameters:
       service_name:
