@@ -90,7 +90,7 @@ commands:
       - run:
           name: Docker save image
           command: |
-            docker save ${SERVICE_NAME} > image.tar.gz
+            docker save ${SERVICE_NAME}-${VENDOR_NAME} > image.tar.gz
             ls -la
       - persist_to_workspace:
           root: .
@@ -173,8 +173,8 @@ jobs:
           name: Docker push
           command: |
             source ./ops/export_envs.sh
-            docker tag  ${SERVICE_NAME}:latest ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}-${VENDOR_NAME}-repository:${CIRCLE_SHA1}
-            docker push ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}:${CIRCLE_SHA1}
+            docker tag  ${SERVICE_NAME}-${VENDOR_NAME}:latest ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}-${VENDOR_NAME}-repository:${CIRCLE_SHA1}
+            docker push ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}-${VENDOR_NAME}:${CIRCLE_SHA1}
 
   # GitOpsのため，microservices-infrastructureリポジトリにプルリクエストを作成します．
   create_pull_request_for_gitops:
