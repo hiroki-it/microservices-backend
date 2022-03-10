@@ -48,10 +48,10 @@ commands:
     steps:
       - run:
           name: Copy env file
-          working_directory: ./src/order
+          # NOTE: 移動するディレクトリを環境変数で設定するため，working_directoryオプションは用いない．
           command: |
-            pwd
-            ls -la
+            set -xe
+            cd ./src/${SERVICE_NAME}
             cp .env.example .env
 
   # docker-compose configを実行します．
@@ -59,8 +59,10 @@ commands:
     steps:
       - run:
           name: Docker compose config
-          working_directory: ./src/${SERVICE_NAME}
+          # NOTE: 移動するディレクトリを環境変数で設定するため，working_directoryオプションは用いない．
           command: |
+            set -xe
+            cd ./src/${SERVICE_NAME}
             docker-compose config
   
   # docker-compose upを実行します．
@@ -68,9 +70,10 @@ commands:
     steps:
       - run:
           name: Docker compose run
-          working_directory: ./src/${SERVICE_NAME}
+          # NOTE: 移動するディレクトリを環境変数で設定するため，working_directoryオプションは用いない．
           command: |
             set -xe
+            cd ./src/${SERVICE_NAME}
             docker-compose up -d
   
   # 環境変数からcredentialsファイルを用意します．
