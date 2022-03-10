@@ -12,7 +12,7 @@ executors:
         enum: [ "account", "customer", "orchestrator", "order" ]
     machine:
       image: ubuntu-2004:202107-02
-  # イメージのプッシュの実行環境を提供します．
+    # イメージのプッシュの実行環境を提供します．
     environment:
       SERVICE_NAME: << parameters.service_name >>
   push_executor:
@@ -41,7 +41,7 @@ executors:
       - image: cimg/base:2022.03
     environment:
       VENDOR_NAME: << parameters.vendor_name >>
-      
+
 commands:
   # 環境変数を準備します．
   setup_env_files:
@@ -64,7 +64,7 @@ commands:
             set -xe
             cd ./src/${SERVICE_NAME}
             docker-compose config
-  
+
   # docker-compose upを実行します．
   docker_compose_up:
     steps:
@@ -75,7 +75,7 @@ commands:
             set -xe
             cd ./src/${SERVICE_NAME}
             docker-compose up -d
-  
+
   # 環境変数からcredentialsファイルを用意します．
   setup_aws_credentials:
     steps:
@@ -192,7 +192,7 @@ workflows:
   # mainブランチフロー
   main:
     jobs:
-      
+
       # accountサービス
       - build_account:
           name: build_account
@@ -218,7 +218,7 @@ workflows:
             vendor_name: gin
           requires:
             - push_account
-          
+
       # accountサービス
       - build_customer:
           name: build_customer
@@ -244,7 +244,7 @@ workflows:
             vendor_name: fastapi
           requires:
             - push_customer
-          
+
       # orchestratorサービス
       - build_orchestrator:
           name: build_orchestrator
@@ -270,7 +270,7 @@ workflows:
             vendor_name: fastapi
           requires:
             - push_orchestrator
-      
+
       # orderサービス
       - build_order:
           name: build_order
