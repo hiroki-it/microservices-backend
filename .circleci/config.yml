@@ -77,13 +77,6 @@ commands:
   # dockerイメージをプッシュを実行します．
   push:
     steps:
-      - attach_workspace:
-          at: .
-      - run:
-          name: Docker load image
-          command: |
-            ls -la
-            docker load < image.tar.gz
       - run:
           name: Docker login
           command: |
