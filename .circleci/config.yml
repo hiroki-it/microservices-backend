@@ -188,7 +188,6 @@ workflows:
           exr:
             name: build_executor
             service_name: account
-            vendor_name: gin
           filters:
             branches:
               only: main
@@ -215,7 +214,6 @@ workflows:
           exr:
             name: build_executor
             service_name: customer
-            vendor_name: fastapi
           filters:
             branches:
               only: main
@@ -242,7 +240,6 @@ workflows:
           exr:
             name: build_executor
             service_name: orchestrator
-            vendor_name: fastapi
           filters:
             branches:
               only: main
@@ -269,7 +266,6 @@ workflows:
           exr:
             name: build_executor
             service_name: order
-            vendor_name: lumen
           filters:
             branches:
               only: main
