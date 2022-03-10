@@ -48,6 +48,7 @@ commands:
     steps:
       - run:
           name: Copy env file
+          working_directory: ./src/${SERVICE_NAME}
           command: |
             pwd
             ls -la
@@ -58,6 +59,7 @@ commands:
     steps:
       - run:
           name: Docker compose config
+          working_directory: ./src/${SERVICE_NAME}
           command: |
             docker-compose config
   
@@ -66,6 +68,7 @@ commands:
     steps:
       - run:
           name: Docker compose run
+          working_directory: ./src/${SERVICE_NAME}
           command: |
             set -xe
             docker-compose up -d
