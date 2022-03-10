@@ -15,7 +15,7 @@ commands:
       - run:
           name: Copy env file
           command: |
-            cp .env.docker.example .env.docker
+            cp .env.example .env
 
   # docker-compose configを実行します．
   docker_compose_config:
