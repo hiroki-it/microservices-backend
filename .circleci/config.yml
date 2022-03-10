@@ -4,10 +4,43 @@ orbs:
   github-cli: circleci/github-cli@2.0.0
 
 executors:
-  docker_compose_executor:
+  # イメージのビルドの実行環境を提供します．
+  build_executor:
+    service_name:
+      type: enum
+      enum: [ "account", "customer", "orchestrator", "order" ]
     machine:
       image: ubuntu-1604:201903-01
-
+    working_directory: ~/<< parameters.service_name >>
+  # イメージのプッシュの実行環境を提供します．
+  push_executor:
+    parameters:
+      service_name:
+        type: enum
+        enum: [ "account", "customer", "orchestrator", "order" ]
+      vendor:
+        type: enum
+        enum: [ "fastapi", "gin", "lumen", "nginx" ]
+    machine:
+      image: ubuntu-1604:201903-01
+    working_directory: ~/<< parameters.service_name >>
+    environment:
+      SERVICE_NAME: << parameters.service_name >>
+      VENDOR_NAME: << parameters.vendor_name >>
+  # GitOpsの実行環境を提供します．
+  create_pull_request_for_gitops_executor:
+    parameters:
+      service_name:
+        type: enum
+        enum: [ "account", "customer", "orchestrator", "order" ]
+      vendor:
+        type: enum
+        enum: [ "fastapi", "gin", "lumen", "nginx" ]
+    docker:
+      - image: cimg/base:2022.03
+    environment:
+      VENDOR_NAME: << parameters.vendor_name >>
+      
 commands:
   # 環境変数を準備します．
   setup_env_files:
@@ -25,7 +58,7 @@ commands:
           command: |
             docker-compose config
   
-  # docker-compose up
+  # docker-compose upを実行します．
   docker_compose_up:
     steps:
       - run:
@@ -33,24 +66,6 @@ commands:
           command: |
             set -xe
             docker-compose up -d
-  
-  docker_login_and_push:
-    parameters:
-      service_name:
-        type: enum
-        enum: [ "account", "customer", "orchestrator", "order" ]
-    steps:
-      - run:
-          name: Docker login
-          command: |
-            source ./ops/export_envs.sh
-            aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ECR_ACCOUNT_URL}
-      - run:
-          name: Docker push
-          command: |
-            source ./ops/export_envs.sh
-            docker tag  << parameters.service_name >>:latest ${AWS_ECR_ACCOUNT_URL}/<< parameters.service_name >>-repository:${CIRCLE_SHA1}
-            docker push ${AWS_ECR_ACCOUNT_URL}/<< parameters.service_name >>:${CIRCLE_SHA1}
   
   # 環境変数からcredentialsファイルを用意します．
   setup_aws_credentials:
@@ -62,64 +77,75 @@ commands:
 
 jobs:
   # accountサービスのビルドを実行します．
-  build_and_push_account:
-    executor: docker_compose_executor
-    working_directory: ~/microservices-backend/src/account
+  build_account:
+    parameters:
+      exr:
+        type: executor
+    executor: << parameters.exr >>
     steps:
       - checkout
       - setup_env_files
       - docker_compose_config
       - docker_compose_up
-      - docker_login_and_push:
-          service_name: account
 
   # accountサービスのビルドを実行します．
-  build_and_push_customer:
-    executor: docker_compose_executor
-    working_directory: ~/microservices-backend/src/customer
+  build_customer:
+    parameters:
+      exr:
+        type: executor
+    executor: << parameters.exr >>
     steps:
       - checkout
       - setup_env_files
       - docker_compose_config
       - docker_compose_up
-      - docker_login_and_push:
-          service_name: customer
-  
+
   # orchestratorサービスのビルドを実行します．
-  build_and_push_orchestrator:
-    executor: docker_compose_executor
-    working_directory: ~/microservices-backend/src/orchestrator
+  build_orchestrator:
+    parameters:
+      exr:
+        type: executor
+    executor: << parameters.exr >>
     steps:
       - checkout
       - setup_env_files
       - docker_compose_config
       - docker_compose_up
-      - docker_login_and_push:
-          service_name: orchestrator
-  
+
   # orderサービスのビルドを実行します．
-  build_and_push_order:
-    executor: docker_compose_executor
-    working_directory: ~/microservices-backend/src/order
+  build_order:
+    parameters:
+      exr:
+        type: executor
+    executor: << parameters.exr >>
     steps:
       - checkout
       - setup_env_files
       - docker_compose_config
       - docker_compose_up
-      - docker_login_and_push:
-          service_name: order
+
+  # dockerイメージをプッシュを実行します．
+  push:
+    executor: << parameters.exr >>
+    steps:
+      - run:
+          name: Docker login
+          command: |
+            source ./ops/export_envs.sh
+            aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ECR_ACCOUNT_URL}
+      - run:
+          name: Docker push
+          command: |
+            source ./ops/export_envs.sh
+            docker tag  ${SERVICE_NAME}:latest ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}-${VENDOR_NAME}-repository:${CIRCLE_SHA1}
+            docker push ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}:${CIRCLE_SHA1}
 
   # GitOpsのため，microservices-infrastructureリポジトリにプルリクエストを作成します．
   create_pull_request_for_gitops:
     parameters:
-      service_name:
-        type: enum
-        enum: [ "account", "customer", "orchestrator", "order" ]
-      vendor:
-        type: enum
-        enum: [ "fastapi", "gin", "lumen", "nginx" ]
-    docker:
-      - image: cimg/base:2022.03
+      exr:
+        type: executor
+    executor: << parameters.exr >>
     steps:
       - github-cli/setup
       - github-cli/clone:
@@ -130,8 +156,8 @@ jobs:
             wget -q https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_386
             sudo mv yq_linux_386 /usr/local/bin/yq
             sudo chmod +x /usr/local/bin/yq
-            yq -i '.spec.template.spec.containers[0].image = "<< parameters.service_name >>-<< parameters.vendor >>:${CIRCLE_SHA1:0:7}"' \
-              ./kubernetes/<< parameters.service_name >>/app/deployment.yml 
+            yq -i '.spec.template.spec.containers[0].image = "${SERVICE_NAME}-${VENDOR_NAME}:${CIRCLE_SHA1:0:7}"' \
+              ./kubernetes/${SERVICE_NAME}/app/deployment.yml 
       - add_ssh_keys:
           fingerprints:
             - $SSH_KEY_FINGERPRINT
@@ -156,59 +182,125 @@ workflows:
     jobs:
       
       # accountサービス
-      - build_and_push_account:
-          name: build_and_push_account
+      - build_account:
+          name: build_account
+          exr:
+            name: build_executor
+            service_name: account
+            vendor_name: gin
           filters:
             branches:
               only: main
+      - push:
+          name: push_account
+          exr:
+            name: push_executor
+            service_name: account
+            vendor_name: gin
+          requires:
+            - build_account
       - create_pull_request_for_gitops:
           name: create_pull_request_for_gitops_account
+          exr:
+            name: create_pull_request_for_gitops_executor
+            service_name: account
+            vendor_name: gin
           requires:
-            - build_and_push_account
-          service_name: account
-          vendor: gin
+            - push_account
           
       # accountサービス
-      - build_and_push_customer:
-          name: build_and_push_customer
+      - build_customer:
+          name: build_customer
+          exr:
+            name: build_executor
+            service_name: customer
+            vendor_name: fastapi
           filters:
             branches:
               only: main
+      - push:
+          name: push_customer
+          exr:
+            name: push_executor
+            service_name: customer
+            vendor_name: fastapi
+          requires:
+            - build_customer
       - create_pull_request_for_gitops:
           name: create_pull_request_for_gitops_customer
+          exr:
+            name: create_pull_request_for_gitops_executor
+            service_name: customer
+            vendor_name: fastapi
           requires:
-            - build_and_push_customer
-          service_name: customer
-          vendor: fastapi
+            - push_customer
           
       # orchestratorサービス
-      - build_and_push_orchestrator:
-          name: build_and_push_orchestrator
+      - build_orchestrator:
+          name: build_orchestrator
+          exr:
+            name: build_executor
+            service_name: orchestrator
+            vendor_name: fastapi
           filters:
             branches:
               only: main
+      - push:
+          name: push_orchestrator
+          exr:
+            name: push_executor
+            service_name: orchestrator
+            vendor_name: fastapi
+          requires:
+            - build_orchestrator
       - create_pull_request_for_gitops:
           name: create_pull_request_for_gitops_orchestrator
+          exr:
+            name: create_pull_request_for_gitops_executor
+            service_name: orchestrator
+            vendor_name: fastapi
           requires:
-            - build_and_push_orchestrator
-          service_name: orchestrator
-          vendor: fastapi
+            - push_orchestrator
       
       # orderサービス
-      - build_and_push_order:
-          name: build_and_push_order
+      - build_order:
+          name: build_order
+          exr:
+            name: build_executor
+            service_name: order
+            vendor_name: lumen
           filters:
             branches:
               only: main
+      - push:
+          name: push_order_lumen
+          exr:
+            name: push_executor
+            service_name: order
+            vendor_name: lumen
+          requires:
+            - build_order
+      - push:
+          name: push_order_nginx
+          exr:
+            name: push_executor
+            service_name: order
+            vendor_name: nginx
+          requires:
+            - build_order
       - create_pull_request_for_gitops:
           name: create_pull_request_for_gitops_order_lumen
+          exr:
+            name: create_pull_request_for_gitops_executor
+            service_name: order
+            vendor_name: lumen
           requires:
-            - build_and_push_order
-          service_name: order
-          vendor: lumen
+            - push_order_lumen
       - create_pull_request_for_gitops:
           name: create_pull_request_for_gitops_order_nginx
+          exr:
+            name: create_pull_request_for_gitops_executor
+            service_name: order
+            vendor_name: nginx
           requires:
-            - build_and_push_order
-          service_name: order
-          vendor: nginx
+            - push_order_nginx
