@@ -49,6 +49,8 @@ commands:
       - run:
           name: Copy env file
           command: |
+            pwd
+            ls -la
             cp .env.example .env
 
   # docker-compose configを実行します．
