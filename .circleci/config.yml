@@ -6,9 +6,10 @@ orbs:
 executors:
   # イメージのビルドの実行環境を提供します．
   build_executor:
-    service_name:
-      type: enum
-      enum: [ "account", "customer", "orchestrator", "order" ]
+    parameters:
+      service_name:
+        type: enum
+        enum: [ "account", "customer", "orchestrator", "order" ]
     machine:
       image: ubuntu-1604:201903-01
     working_directory: ~/<< parameters.service_name >>
