@@ -12,7 +12,6 @@ executors:
         enum: [ "account", "customer", "orchestrator", "order" ]
     machine:
       image: ubuntu-1604:201903-01
-    working_directory: ~/src/<< parameters.service_name >>
   # イメージのプッシュの実行環境を提供します．
   push_executor:
     parameters:
@@ -24,7 +23,6 @@ executors:
         enum: [ "fastapi", "gin", "lumen", "nginx" ]
     machine:
       image: ubuntu-1604:201903-01
-    working_directory: ~/src/<< parameters.service_name >>
     environment:
       SERVICE_NAME: << parameters.service_name >>
       VENDOR_NAME: << parameters.vendor_name >>
