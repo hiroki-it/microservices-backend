@@ -19,7 +19,7 @@ executors:
       service_name:
         type: enum
         enum: [ "account", "customer", "orchestrator", "order" ]
-      vendor:
+      vendor_name:
         type: enum
         enum: [ "fastapi", "gin", "lumen", "nginx" ]
     machine:
@@ -34,7 +34,7 @@ executors:
       service_name:
         type: enum
         enum: [ "account", "customer", "orchestrator", "order" ]
-      vendor:
+      vendor_name:
         type: enum
         enum: [ "fastapi", "gin", "lumen", "nginx" ]
     docker:
