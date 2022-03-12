@@ -4,7 +4,7 @@
 
 マイクロサービスアーキテクチャのアプリケーションのバックエンド領域を管理するリポジトリ．
 
-マニフェストファイルは **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** で管理しています．
+GitOpsの [ベストプラクティス](https://blog.argoproj.io/5-gitops-best-practices-d95cb0cbe9ff) に則って，マニフェストファイルは **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** で管理しています．
 
 ## 使用技術
 
