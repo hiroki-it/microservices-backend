@@ -138,7 +138,7 @@ jobs:
       - build_image
       - push_image
 
-  # GitOpsのため，microservices-infrastructureリポジトリにプルリクエストを作成します．
+  # GitOpsのため，microservices-manifestsリポジトリにプルリクエストを作成します．
   create_pull_request_for_gitops:
     parameters:
       exr:
@@ -147,7 +147,7 @@ jobs:
     steps:
       - github-cli/setup
       - github-cli/clone:
-          repo: git@github.com:hiroki-it/microservices-infrastructure.git
+          repo: git@github.com:hiroki-it/microservices-manifests.git
       - run:
           # @see https://github.com/mikefarah/yq
           name: Edit manifest file
@@ -164,7 +164,7 @@ jobs:
           command: |
             git config --global user.email "hasegawafeedshop@gmail.com"
             git config --global user.name "circleci"
-            git remote set-url --push origin git@github.com:hiroki-it/microservices-infrastructure.git
+            git remote set-url --push origin git@github.com:hiroki-it/microservices-manifests.git
             git checkout -b release/${CIRCLE_SHA1:0:7}
             git add .
             git commit -m "release ${CIRCLE_SHA1:0:7} by GitOps"
