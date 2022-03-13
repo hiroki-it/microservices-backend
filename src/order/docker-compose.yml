@@ -8,8 +8,10 @@ services:
     hostname: order-lumen
     build:
       dockerfile: ./docker/lumen/Dockerfile
-      target: development
+      target: ${APP_ENV}
       context: .
+    env_file:
+      - .env
     image: order-lumen:latest
     tty: true
     volumes:
@@ -26,8 +28,10 @@ services:
     hostname: order-nginx
     build:
       dockerfile: ./docker/nginx/Dockerfile
-      target: development
+      target: ${APP_ENV}
       context: .
+    env_file:
+      - .env
     image: order-nginx:latest
     ports:
       - "8000:80"
