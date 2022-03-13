@@ -67,20 +67,11 @@ commands:
             cd ./src/${SERVICE_NAME}
             docker-compose up -d
 
-  # 環境変数からcredentialsファイルを用意します．
-  setup_aws_credentials:
-    steps:
-      - run:
-          name: Setup AWS credentials
-          command:
-            source ./ops/setup_aws_credentials.sh
-
   # dockerイメージをプッシュを実行します．
   push:
     steps:
       - aws-cli/install:
           version: "2.2.5"
-      - setup_aws_credentials
       - run:
           name: Docker login
           command: |
