@@ -45,8 +45,8 @@ commands:
             cd ./src/${SERVICE_NAME}
             cp .env.example .env
 
-  # docker-compose configを実行します．
-  docker_compose_config:
+  # docker-compose.ymlを検証します．
+  validate_docker_compose_yml:
     steps:
       - run:
           name: Docker compose config
@@ -56,19 +56,19 @@ commands:
             cd ./src/${SERVICE_NAME}
             docker-compose config
 
-  # docker-compose upを実行します．
-  docker_compose_up:
+  # イメージをビルドします．
+  build_image:
     steps:
       - run:
-          name: Docker compose run
+          name: Docker compose build
           # NOTE: 移動するディレクトリを環境変数で設定するため，working_directoryオプションは用いない．
           command: |
             set -xe
             cd ./src/${SERVICE_NAME}
             docker-compose up -d
 
-  # dockerイメージをプッシュを実行します．
-  push:
+  # dockerイメージをプッシュします．
+  push_image:
     steps:
       - aws-cli/install:
           version: "2.2.5"
@@ -94,9 +94,9 @@ jobs:
     steps:
       - checkout
       - setup_env_files
-      - docker_compose_config
-      - docker_compose_up
-      - push
+      - validate_docker_compose_yml
+      - build_image
+      - push_image
 
   # accountサービスのビルドを実行します．
   build_and_push_customer:
@@ -107,9 +107,9 @@ jobs:
     steps:
       - checkout
       - setup_env_files
-      - docker_compose_config
-      - docker_compose_up
-      - push
+      - validate_docker_compose_yml
+      - build_image
+      - push_image
 
   # orchestratorサービスのビルドを実行します．
   build_and_push_orchestrator:
@@ -120,9 +120,9 @@ jobs:
     steps:
       - checkout
       - setup_env_files
-      - docker_compose_config
-      - docker_compose_up
-      - push
+      - validate_docker_compose_yml
+      - build_image
+      - push_image
 
   # orderサービスのビルドを実行します．
   build_and_push_order:
@@ -133,9 +133,9 @@ jobs:
     steps:
       - checkout
       - setup_env_files
-      - docker_compose_config
-      - docker_compose_up
-      - push
+      - validate_docker_compose_yml
+      - build_image
+      - push_image
 
   # GitOpsのため，microservices-infrastructureリポジトリにプルリクエストを作成します．
   create_pull_request_for_gitops:
