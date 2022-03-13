@@ -34,9 +34,9 @@ COPY --from=composer:1.10.23 /usr/bin/composer /usr/bin/composer
 COPY ./docker/lumen/custom.php.ini /usr/local/etc/php/conf.d/custom.php.ini
 
 #===================
-# development Stage
+# Dev Stage
 #===================
-FROM base as development
+FROM base as dev
 LABEL mantainer=${LABEL}
 
 #===================

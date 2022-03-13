@@ -19,9 +19,9 @@ RUN apt-get update -y \
   && apt-get clean
 
 #===================
-# Development Stage
+# Dev Stage
 #===================
-FROM build as development
+FROM build as dev
 LABEL mantainer=${LABEL}
 
 COPY ./docker/nginx/development.nginx.conf /etc/nginx/nginx.conf
