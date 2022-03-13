@@ -160,7 +160,7 @@ jobs:
           fingerprints:
             - $SSH_KEY_FINGERPRINT
       - run:
-          name: Commit manifest file
+          name: Commit & Push manifest file
           command: |
             git config --global user.email "hasegawafeedshop@gmail.com"
             git config --global user.name "microservices-backend-circleci"
