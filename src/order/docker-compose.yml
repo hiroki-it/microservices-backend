@@ -4,13 +4,13 @@ services:
 
   # appコンテナ
   app:
-    container_name: order-app
-    hostname: order-app
+    container_name: order-lumen
+    hostname: order-lumen
     build:
       dockerfile: ./docker/lumen/Dockerfile
       target: development
       context: .
-    image: order-app:latest
+    image: order-lumen:latest
     tty: true
     volumes:
       - .:/var/www/order
@@ -22,13 +22,13 @@ services:
 
   # webコンテナ
   web:
-    container_name: order-web
-    hostname: order-web
+    container_name: order-nginx
+    hostname: order-nginx
     build:
       dockerfile: ./docker/nginx/Dockerfile
       target: development
       context: .
-    image: order-web:latest
+    image: order-nginx:latest
     ports:
       - "8000:80"
     volumes:
@@ -42,7 +42,7 @@ services:
   # dbコンテナ
   db:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
-    container_name: order-db
+    container_name: order-mysql
     env_file:
       - .env
     environment:
@@ -51,7 +51,7 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       TZ: "Asia/Tokyo"
-    hostname: order-db
+    hostname: order-mysql
     image: mysql:5.7
     networks:
       - default

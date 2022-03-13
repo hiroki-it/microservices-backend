@@ -7,11 +7,11 @@ services:
     build:
       context: .
       dockerfile: docker/fastapi/Dockerfile
-    container_name: orchestrator-app
+    container_name: orchestrator-fastapi
     depends_on:
       - db
-    image: orchestrator-app:latest
-    hostname: app
+    image: orchestrator-fastapi:latest
+    hostname: orchestrator-fastapi
     networks:
       - default
     tty: true

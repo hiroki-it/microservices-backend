@@ -7,13 +7,13 @@ services:
     build:
       context: .
       dockerfile: docker/gin/Dockerfile
-    container_name: account-app
+    container_name: account-gin
     depends_on:
       - db
     env_file:
       - .env
-    image: account-app:latest
-    hostname: app
+    image: account-gin:latest
+    hostname: account-gin
     networks:
       - default
     tty: true
@@ -23,7 +23,7 @@ services:
   # dbコンテナ
   db:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
-    container_name: account-db
+    container_name: account-mysql
     env_file:
       # NOTE: docker-compose.ymlで使用する変数を展開するために読み込む．
       - .env
@@ -34,7 +34,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       TZ: "Asia/Tokyo"
     image: mysql:5.7
-    hostname: db
+    hostname: account-mysql
     ports:
       - "3301:3306"
     networks:
