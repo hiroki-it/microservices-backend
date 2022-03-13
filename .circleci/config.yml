@@ -148,6 +148,7 @@ jobs:
       - github-cli/setup
       - github-cli/clone:
           repo: git@github.com:hiroki-it/microservices-manifests.git
+      # yqコマンドでマニフェストファイルを編集します．
       # @see https://github.com/mikefarah/yq
       - run:
           name: Edit manifest file
