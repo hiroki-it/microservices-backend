@@ -81,8 +81,8 @@ commands:
           name: Docker push
           command: |
             source ./ops/export_envs.sh
-            docker tag  ${SERVICE_NAME}-${VENDOR_NAME}:latest ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}-${VENDOR_NAME}-repository:${CIRCLE_SHA1}
-            docker push ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}-${VENDOR_NAME}:${CIRCLE_SHA1}
+            docker tag ${SERVICE_NAME}-${VENDOR_NAME}:latest ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}-${VENDOR_NAME}-repository:${CIRCLE_SHA1}
+            docker push ${AWS_ECR_ACCOUNT_URL}/${SERVICE_NAME}-${VENDOR_NAME}-repository:${CIRCLE_SHA1}
 
 jobs:
   # accountサービスのビルドを実行します．
