@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  aws-cli: circleci/aws-cli@2.1.0
   github-cli: circleci/github-cli@2.0.0
 
 executors:
@@ -77,6 +78,8 @@ commands:
   # dockerイメージをプッシュを実行します．
   push:
     steps:
+      - aws-cli/install:
+          version: "2.2.5"
       - run:
           name: Docker login
           command: |
