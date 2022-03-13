@@ -29,9 +29,9 @@ COPY ./docker/nginx/development.nginx.conf /etc/nginx/nginx.conf
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 #===================
-# Production Stage
+# Prd Stage
 #===================
-FROM build as production
+FROM build as prd
 LABEL mantainer=${LABEL}
 
 COPY ./docker/nginx/production.nginx.conf /etc/nginx/nginx.conf

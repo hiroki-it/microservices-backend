@@ -25,7 +25,7 @@ RUN go mod tidy \
   && go build -x -a -tags netgo -installsuffix netgo -o /go/bin ./cmd
 
 #===================
-# Production Stage
+# Prd Stage
 #===================
 FROM golang:${GO_VERSION}-alpine
 

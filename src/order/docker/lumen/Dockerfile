@@ -40,7 +40,7 @@ FROM base as dev
 LABEL mantainer=${LABEL}
 
 #===================
-# Production Stage
+# Prd Stage
 #===================
 FROM base as prd
 LABEL mantainer=${LABEL}
