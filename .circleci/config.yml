@@ -148,6 +148,7 @@ jobs:
       - github-cli/clone:
           repo: git@github.com:hiroki-it/microservices-infrastructure.git
       - run:
+          # @see https://github.com/mikefarah/yq
           name: Edit manifest file
           command: |
             wget -q https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_386
