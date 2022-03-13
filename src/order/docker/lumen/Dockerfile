@@ -42,7 +42,7 @@ LABEL mantainer=${LABEL}
 #===================
 # Production Stage
 #===================
-FROM base as production
+FROM base as prd
 LABEL mantainer=${LABEL}
 
 COPY ./ /var/www/order/

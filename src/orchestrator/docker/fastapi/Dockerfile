@@ -30,7 +30,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 #===================
 # Production Stage
 #===================
-FROM base as production
+FROM base as prd
 LABEL mantainer=${LABEL}
 
 COPY ./ /var/www/orchestrator/
