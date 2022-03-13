@@ -80,6 +80,7 @@ commands:
     steps:
       - aws-cli/install:
           version: "2.2.5"
+      - setup_aws_credentials
       - run:
           name: Docker login
           command: |
