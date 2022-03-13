@@ -65,7 +65,7 @@ commands:
           command: |
             set -xe
             cd ./src/${SERVICE_NAME}
-            docker-compose up -d
+            docker-compose build
 
   # dockerイメージをプッシュします．
   push_image:
