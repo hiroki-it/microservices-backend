@@ -148,8 +148,8 @@ jobs:
       - github-cli/setup
       - github-cli/clone:
           repo: git@github.com:hiroki-it/microservices-manifests.git
+      # @see https://github.com/mikefarah/yq
       - run:
-          # @see https://github.com/mikefarah/yq
           name: Edit manifest file
           command: |
             wget https://github.com/mikefarah/yq/releases/download/v4.22.1/yq_linux_amd64
