@@ -1,0 +1,18 @@
+version: 2.1
+orbs:
+  path-filtering: circleci/path-filtering@0.1.2
+
+setup: true
+
+workflows:
+  generate-config:
+    jobs:
+      - path-filtering/filter:
+          base-revision: main
+          config-path: .circleci/monorepo-ci.yml
+          # ディレクトリ内のファイルが変更された場合に，パイプラインパラメーターの値をtrueに変更します．
+          mapping: |
+            src/account/.* account true
+            src/customer/.* customer true
+            src/orchestrator/.* orchestrator true
+            src/order/.* order true

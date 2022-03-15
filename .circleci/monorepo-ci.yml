@@ -4,6 +4,20 @@ orbs:
   aws-cli: circleci/aws-cli@2.1.0
   github-cli: circleci/github-cli@2.0.0
 
+parameters:
+  account:
+    type: boolean
+    default: false
+  customer:
+    type: boolean
+    default: false
+  orchestrator:
+    type: boolean
+    default: false
+  order:
+    type: boolean
+    default: false
+
 executors:
   # イメージのビルドの実行環境を提供します．
   build_and_push_executor:
@@ -180,11 +194,10 @@ jobs:
               -b "[microservices-backendリポジトリのリリース](https://github.com/hiroki-it/microservices-backend/commit/${CIRCLE_SHA1:0:7}) のため、マニフェストファイルのイメージのタグを更新します。"
 
 workflows:
-  # mainブランチフロー
-  main:
+  # accountワークフロー
+  account:
+    when: << pipeline.parameters.account >>
     jobs:
-
-      # accountサービス
       - build_and_push_account:
           name: build_and_push_account
           exr:
@@ -203,7 +216,10 @@ workflows:
           requires:
             - build_and_push_account
 
-      # accountサービス
+  # customerワークフロー
+  customer:
+    when: << pipeline.parameters.customer >>
+    jobs:
       - build_and_push_customer:
           name: build_and_push_customer
           exr:
@@ -222,7 +238,10 @@ workflows:
           requires:
             - build_and_push_customer
 
-      # orchestratorサービス
+  # orchestratorワークフロー
+  orchestrator:
+    when: << pipeline.parameters.orchestrator >>
+    jobs:
       - build_and_push_orchestrator:
           name: build_and_push_orchestrator
           exr:
@@ -241,7 +260,11 @@ workflows:
           requires:
             - build_and_push_orchestrator
 
-      # orderサービス（lumen）
+  # orderワークフロー
+  order:
+    when: << pipeline.parameters.order >>
+    jobs:
+      # lumen
       - build_and_push_order:
           name: build_and_push_order_lumen
           exr:
@@ -259,7 +282,7 @@ workflows:
             vendor_name: lumen
           requires:
             - build_and_push_order_lumen
-      # orderサービス（nginx）
+      # nginx
       - build_and_push_order:
           name: build_and_push_order_nginx
           exr:
