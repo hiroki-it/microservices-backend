@@ -168,7 +168,7 @@ jobs:
             git config --global user.email "hasegawafeedshop@gmail.com"
             git config --global user.name "microservices-backend-circleci"
             git remote set-url --push origin git@github.com:hiroki-it/microservices-manifests.git
-            git checkout -b release/${CIRCLE_SHA1:0:7}
+            git checkout -b release/${SERVICE_NAME}-${VENDOR_NAME}-${CIRCLE_SHA1:0:7}
             git add .
             git commit -m "release ${CIRCLE_SHA1:0:7} by GitOps"
             git push origin HEAD
