@@ -157,7 +157,7 @@ jobs:
             sudo chmod +x /usr/local/bin/yq
             yq e -i '.spec.template.spec.containers[0].image = "${SERVICE_NAME}-${VENDOR_NAME}:${CIRCLE_SHA1:0:7}"' \
               ./kubernetes/${SERVICE_NAME}/app/deployment.yml
-      # circleciコンテナにmicroservices-backendリポジトリのユーザーキーを配置します．
+      # microservices-backendリポジトリに登録したユーザーキーをCI環境内に作成します．
       # @see https://circleci.com/docs/ja/2.0/add-ssh-key/#adding-ssh-keys-to-a-job
       - add_ssh_keys:
           fingerprints:
