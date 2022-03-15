@@ -161,7 +161,7 @@ jobs:
       # @see https://circleci.com/docs/ja/2.0/add-ssh-key/#adding-ssh-keys-to-a-job
       - add_ssh_keys:
           fingerprints:
-            - $SSH_KEY_FINGERPRINT
+            - ${SSH_KEY_FINGERPRINT}
       - run:
           name: Commit & Push manifest file
           command: |
