@@ -175,7 +175,9 @@ jobs:
       - run:
           name: Create Pull Request for GitOps
           command: |
-            gh pr create -t "GitOpsによるリリース" -b "イメージのタグを最新のハッシュ値に変更します（${CIRCLE_SHA1:0:7}）"
+            gh pr create \
+              -t "GitOpsによるリリース" \
+              -b "[microservices-backendリポジトリのリリース](https://github.com/hiroki-it/microservices-backend/commit/${CIRCLE_SHA1:0:7}) のため、マニフェストファイルのイメージのタグを更新します。"
 
 workflows:
   # mainブランチフロー
