@@ -6,6 +6,8 @@
 
 GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best-practices-d95cb0cbe9ff)** に則って，マニフェストファイルは **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** で管理しています．
 
+現状，フロント領域のリポジトリは用意しておりません．
+
 ## 使用技術
 
 ### 一覧
