@@ -27,9 +27,9 @@ RUN apt-get update -y \
       -r requirements.txt
 
 #===================
-# development Stage
+# Dev Stage
 #===================
-FROM base as development
+FROM base as dev
 LABEL mantainer=${LABEL}
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
