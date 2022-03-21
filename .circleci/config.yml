@@ -6,7 +6,7 @@ orbs:
 setup: true
 
 workflows:
-  generate-config:
+  main:
     jobs:
       - path-filtering/filter:
           base-revision: main
