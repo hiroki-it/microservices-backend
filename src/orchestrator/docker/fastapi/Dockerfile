@@ -35,4 +35,4 @@ LABEL mantainer=${LABEL}
 
 COPY ./ /var/www/orchestrator/
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
+CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker"]
