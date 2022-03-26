@@ -21,30 +21,6 @@ GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best
 | [orchestratorサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) | Python | FastAPI | Envoy       | トランザクションの項目を参照．   |
 | [orderサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/order)               | PHP    | Lumen   | Nginx，Envoy | 受注業務ドメインを解決します．   |
 
-
-### マイクロサービス間通信の方式
-
-リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
-
-### トランザクション
-
-オーケストレーションベースのSagaパターンを採用する想定です．
-[**orchestratorサービス**](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) を用意し，これが各マイクロサービスの一連のローカルトランザクションを連続的に実行します．
-
-```mermaid
-%%{init:{'theme':'dark'}}%%
-graph TD
-    A([Internet]) --> B[API Gateway]
-    B             ----> C[customer-service]
-    B             --> E[orchestrator-service]
-    C             --> D[(DB)]
-    E             --> F[Queue]
-    F             --> G[order-service]
-    F             --> I[account-service]
-    G             --> H[(DB)]
-    I             --> J[(DB)]
-```
-
 ### 開発ツール
 
 開発環境でのみ使用するツールの一覧です．
@@ -66,6 +42,32 @@ CI/CDを構成するツールの一覧です．
 | CD（本番環境）    | ArgoCD   | **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** を参照 |
 
 <br>
+
+### 補足
+
+#### マイクロサービス間通信の方式
+
+リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
+
+#### トランザクション
+
+オーケストレーションベースのSagaパターンを採用する想定です．
+[**orchestratorサービス**](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) を用意し，これが各マイクロサービスの一連のローカルトランザクションを連続的に実行します．
+
+```mermaid
+%%{init:{'theme':'dark'}}%%
+graph TD
+    A([Internet]) --> B[API Gateway]
+    B             ----> C[customer-service]
+    B             --> E[orchestrator-service]
+    C             --> D[(DB)]
+    E             --> F[Queue]
+    F             --> G[order-service]
+    F             --> I[account-service]
+    G             --> H[(DB)]
+    I             --> J[(DB)]
+```
+
 
 ## 環境構築
 
