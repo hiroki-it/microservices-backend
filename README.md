@@ -14,7 +14,7 @@ GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best
 
 バックエンド領域を構成するマイクロサービスの一覧です．
 
-マイクロサービスは，境界づけられたコンテキストに基づいて分割するようにしております．
+マイクロサービスは，境界付けられたコンテキストに基づいて分割するようにしております．
 
 | マイクロサービス名                                                                                         | 言語     | フレームワーク | プロキシコンテナ    | 境界付けられたコンテキストの説明  |
 |---------------------------------------------------------------------------------------------------|--------|---------|-------------|-------------------|
@@ -80,5 +80,5 @@ graph TD
 マイクロサービスアーキテクチャ：
 <br>https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
 
-境界づけられたコンテキスト：
+境界付けられたコンテキスト：
 <br>https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
