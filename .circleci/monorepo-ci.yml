@@ -183,14 +183,14 @@ jobs:
             git config --global user.name "microservices-backend-circleci"
             git remote set-url --push origin git@github.com:hiroki-it/microservices-manifests.git
       - run:
-          name: Commit & Push manifest file
+          name: Git commit & push manifest file
           command: |
             git checkout -b release/${SERVICE_NAME}-${VENDOR_NAME}-${CIRCLE_SHA1:0:7}
             git add ./kubernetes
             git commit -m "release ${CIRCLE_SHA1:0:7} by GitOps"
             git push origin HEAD
       - run:
-          name: Create Pull Request for GitOps
+          name: Git create pull request for GitOps
           command: |
             gh pr create \
               -t "GitOpsによるリリース" \
