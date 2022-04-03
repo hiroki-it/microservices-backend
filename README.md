@@ -43,15 +43,23 @@ CI/CDを構成するツールの一覧です．
 | CI（本番環境）   | CircleCI | ⭕ |
 | CD（本番環境）    | ArgoCD   | **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** を参照 |
 
+以下の流れで，GitOpsを実現します．
+
+1. マイクロサービスのソースコードを変更し，mainブランチにプッシュする．
+2. CircleCIが，変更されたマイクロサービスを検知し，該当のマイクロサービスのイメージをビルド&プッシュする．
+3. CircleCIが，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** にあるマニフェストファイル上のイメージのハッシュ値を上書きする．また，プルリクを自動作成する．
+4. **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 側で，自動作成されたプルリクをmainブランチにマージする．
+5. EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
+
 <br>
 
 ### 補足
 
-#### ・マイクロサービス間通信の方式
+#### ▼ マイクロサービス間通信の方式
 
 リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
 
-#### ・トランザクション
+#### ▼ トランザクション
 
 オーケストレーションベースのSagaパターンを採用する想定です．
 [**orchestratorサービス**](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) を用意し，これが各マイクロサービスの一連のローカルトランザクションを連続的に実行します．
