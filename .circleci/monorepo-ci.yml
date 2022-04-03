@@ -186,7 +186,7 @@ jobs:
           name: Git commit & push manifest file
           command: |
             git checkout -b release/${SERVICE_NAME}-${VENDOR_NAME}-${CIRCLE_SHA1:0:7}
-            git add ./kubernetes
+            git add ./values
             git commit -m "release ${CIRCLE_SHA1:0:7} by GitOps"
             git push origin HEAD
       - run:
