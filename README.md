@@ -46,10 +46,11 @@ CI/CDを構成するツールの一覧です．
 以下の流れで，GitOpsを実現します．
 
 1. マイクロサービスのソースコードを変更し，mainブランチにプッシュする．
-2. CircleCIが，変更されたマイクロサービスを検知し，該当のマイクロサービスのイメージをビルド&プッシュする．
-3. CircleCIが，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** にあるマニフェストファイル上のイメージのハッシュ値を上書きする．また，プルリクを自動作成する．
-4. **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 側で，自動作成されたプルリクをmainブランチにマージする．
-5. EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
+2. CircleCIにて，変更されたマイクロサービスを検知し，該当のマイクロサービスのイメージをビルド&プッシュする．
+3. CircleCIにて，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 上でreleaseブランチをチェックアウトし，マニフェストファイル上のイメージのハッシュ値の上書きをコミットする．またこれをプッシュし，プルリクを自動作成する．
+4. 作成されたプルリク上でGitHub Actionsのワークフローが稼働する．Helmがマニフェストファイルを自動生成し，これがプルリク上にプッシュされる．
+5. **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 側で，プルリクをmainブランチにマージする．
+6. EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
 
 <br>
 
