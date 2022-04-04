@@ -170,7 +170,7 @@ jobs:
             wget https://github.com/mikefarah/yq/releases/download/v4.22.1/yq_linux_amd64
             sudo chmod +x /usr/local/bin/yq
             yq e \
-              -i '.image.tag."'${SERVICE_NAME}'"."'${VENDOR_NAME}'" |="'${CIRCLE_SHA1:0:7}'"' ./values/prd.yaml
+              -i '.kubernetes.image."'${SERVICE_NAME}'"."'${VENDOR_NAME}'" |="'${CIRCLE_SHA1:0:7}'"' ./values/prd.yaml
       # microservices-backendリポジトリに登録したユーザーキーをCI環境内に作成します．
       # @see https://circleci.com/docs/ja/2.0/add-ssh-key/#adding-ssh-keys-to-a-job
       - add_ssh_keys:
