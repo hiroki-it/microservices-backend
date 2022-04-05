@@ -8,8 +8,8 @@ services:
     hostname: order-lumen
     build:
       dockerfile: ./docker/lumen/Dockerfile
-      target: ${APP_ENV}
       context: .
+      target: ${APP_ENV}
     env_file:
       - .env
     image: order-lumen:latest
