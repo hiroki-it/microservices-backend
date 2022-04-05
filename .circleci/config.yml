@@ -12,6 +12,7 @@ workflows:
           base-revision: main
           config-path: .circleci/monorepo-ci.yml
           # ディレクトリ内のファイルが変更された場合に，パイプラインパラメーターの値をtrueに変更します．
+          # より昇順のマイクロサービスが優先され，複数のマイクロサービスのパラメータを同時にtrueに変更することはできません．
           mapping: |
             src/account/.* account true
             src/customer/.* customer true
