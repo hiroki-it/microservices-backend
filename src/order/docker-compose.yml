@@ -40,6 +40,7 @@ services:
     working_dir: /var/www/order
     networks:
       - default
+      - shared
     depends_on:
       - app
 
@@ -69,5 +70,6 @@ volumes:
     driver: local
 
 networks:
-  default:
-    name: order-network
+  outside:
+    external:
+      name: shared

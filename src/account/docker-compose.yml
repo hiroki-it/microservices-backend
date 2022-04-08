@@ -16,6 +16,7 @@ services:
     hostname: account-gin
     networks:
       - default
+      - shared
     tty: true
     volumes:
       - .:/go/src
@@ -47,5 +48,6 @@ volumes:
     driver: local
 
 networks:
-  default:
-    name: account-network
+  outside:
+    external:
+      name: shared

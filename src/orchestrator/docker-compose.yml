@@ -13,10 +13,12 @@ services:
     hostname: orchestrator-fastapi
     networks:
       - default
+      - shared
     tty: true
     volumes:
       - .:/var/www/orchestrator
 
 networks:
-  default:
-    name: orchestrator-network
+  outside:
+    external:
+      name: shared

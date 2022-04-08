@@ -15,6 +15,7 @@ services:
     hostname: customer-fastapi
     networks:
       - default
+      - shared
     tty: true
     volumes:
       - .:/var/www/customer
@@ -45,5 +46,6 @@ volumes:
     driver: local
 
 networks:
-  default:
-    name: customer-network
+  outside:
+    external:
+      name: shared
