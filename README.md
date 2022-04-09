@@ -11,13 +11,13 @@ GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best
 SWEチームが以下のようなシナリオで開発運用していること，を想定しながら練習しております．
 
 1. 境界付けられたコンテキストごとにマイクロサービスが存在しており，それぞれのマイクロサービスは独立したSWEチームによって開発されている．各マイクロサービスにて，SWEはDocker Composeを用いて開発しており，Kubernetesのマニフェストファイルを仕様を知らなくても良い．
-2. SWEチームのいずれかは，マイクロサービスのソースコードを変更し，mainブランチにプッシュする．この時，異なるマイクロサービスの変更が同時にプッシュされることはない．
+2. SWEチームのいずれかは，マイクロサービスのソースコードを変更し，プルリクを作成する．またGitFlowを経て変更がmainブランチにマージされる．この時，異なるマイクロサービスの変更が同時にマージされることはない．
 3. 本リポジトリ上のCircleCIは，変更されたマイクロサービスを検知し，該当のマイクロサービスのイメージをビルドする．また，AWS ECRにプッシュする．
 4. CircleCIは，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** をプルし，releaseブランチをチェックアウトする．さらに，HelmのValuesファイルのイメージのハッシュ値の上書きし，コミット&プッシュする．
 5. CircleCIは，Valuesファイルを変更したプルリクを自動作成する．
 6. **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 上のGitHub Actionsは，releaseブランチのプッシュを検知する．Helmが，Valuesファイルを基にしてマニフェストファイルを自動生成する．また．これをプルリク上にプッシュする．
 7. SWEチームのリリース責任者あるいはSREチームが，プルリクをmainブランチにマージする．
-8. EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
+8. AWS EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
 
 ## 使用技術
 
