@@ -8,6 +8,17 @@ GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best
 
 現状，フロントエンド領域のリポジトリは用意しておりません．
 
+以下のようなシナリオを想定しながら練習しております．
+
+1. 境界付けられたコンテキストごとにマイクロサービスが存在しており，それぞれのマイクロサービスは独立したSWEチームによって開発されている．SWEは，Docker Composeで開発しており，Kubernetesのマニフェストファイルを仕様を知らなくても良い．
+2. SWEチームは，マイクロサービスのソースコードを変更し，mainブランチにプッシュする．
+3. 本リポジトリ上のCircleCIは，変更されたマイクロサービスを検知し，該当のマイクロサービスのイメージをビルドする．また，AWS ECRにプッシュする．
+4. CircleCIは，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** をプルし，releaseブランチをチェックアウトする．さらに，HelmのValuesファイルのイメージのハッシュ値の上書きし，コミット&プッシュする．
+5. CircleCIは，Valuesファイルを変更したプルリクを自動作成する．
+6. **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 上のGitHub Actionsは，releaseブランチのプッシュを検知する．Helmが，Valuesファイルを基にしてマニフェストファイルを自動生成する．また．これをプルリク上にプッシュする．
+7. SWEチームのリリース責任者あるいはSREチームが，プルリクをmainブランチにマージする．
+8. EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
+
 ## 使用技術
 
 ### マイクロサービスの一覧
@@ -42,15 +53,6 @@ CI/CDを構成するツールの一覧です．
 |------|----------|----------------|
 | CI（本番環境）   | CircleCI | ⭕ |
 | CD（本番環境）    | ArgoCD   | **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** を参照 |
-
-以下の流れで，GitOpsを実現します．
-
-1. マイクロサービスのソースコードを変更し，mainブランチにプッシュする．
-2. CircleCIにて，変更されたマイクロサービスを検知し，該当のマイクロサービスのイメージをビルド&プッシュする．
-3. CircleCIにて，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 上でreleaseブランチをチェックアウトし，マニフェストファイル上のイメージのハッシュ値の上書きをコミットする．またこれをプッシュし，プルリクを自動作成する．
-4. 作成されたプルリク上でGitHub Actionsのワークフローが稼働する．Helmがマニフェストファイルを自動生成し，これがプルリク上にプッシュされる．
-5. **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 側で，プルリクをmainブランチにマージする．
-6. EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
 
 <br>
 
