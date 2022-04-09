@@ -24,6 +24,18 @@ SWEチームが以下のようなシナリオで開発運用していること�
 - マイクロサービスアーキテクチャ: https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
 - 境界付けられたコンテキスト: https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
+<br>
+
+## ディレクトリ構成
+
+```bash
+.
+├── ops # CIで用いるスクリプト
+└── src # マイクロサービス
+```
+
+<br>
+
 ## 使用技術
 
 ### マイクロサービスの一覧
