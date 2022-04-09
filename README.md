@@ -11,7 +11,7 @@ GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best
 以下のようなシナリオを想定しながら練習しております．
 
 1. 境界付けられたコンテキストごとにマイクロサービスが存在しており，それぞれのマイクロサービスは独立したSWEチームによって開発されている．SWEは，Docker Composeで開発しており，Kubernetesのマニフェストファイルを仕様を知らなくても良い．
-2. SWEチームは，マイクロサービスのソースコードを変更し，mainブランチにプッシュする．
+2. SWEチームのいずれかは，マイクロサービスのソースコードを変更し，mainブランチにプッシュする．この時，異なるマイクロサービスの変更が同時にプッシュされることはない．
 3. 本リポジトリ上のCircleCIは，変更されたマイクロサービスを検知し，該当のマイクロサービスのイメージをビルドする．また，AWS ECRにプッシュする．
 4. CircleCIは，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** をプルし，releaseブランチをチェックアウトする．さらに，HelmのValuesファイルのイメージのハッシュ値の上書きし，コミット&プッシュする．
 5. CircleCIは，Valuesファイルを変更したプルリクを自動作成する．
