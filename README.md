@@ -19,6 +19,11 @@ SWEチームが以下のようなシナリオで開発運用していること�
 7. SWEチーム/SREチームのリリース責任者が，プルリクをmainブランチにマージする．
 8. AWS EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
 
+参考：
+
+- マイクロサービスアーキテクチャ: https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+- 境界付けられたコンテキスト: https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+
 ## 使用技術
 
 ### マイクロサービスの一覧
@@ -85,11 +90,3 @@ graph TD
 ## 環境構築
 
 各マイクロサービスのREADMEをご参照ください．
-
-## 参考
-
-マイクロサービスアーキテクチャ：
-<br>https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
-
-境界付けられたコンテキスト：
-<br>https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
