@@ -16,7 +16,7 @@ SWEチームが以下のようなシナリオで開発運用していること�
 4. CircleCIは，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** をプルし，releaseブランチをチェックアウトする．さらに，HelmのValuesファイルのイメージのハッシュ値の上書きし，コミット&プッシュする．
 5. CircleCIは，Valuesファイルを変更したプルリクを自動作成する．
 6. **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 上のGitHub Actionsは，releaseブランチのプッシュを検知する．Helmが，Valuesファイルを基にしてマニフェストファイルを自動生成する．また．これをプルリク上にプッシュする．
-7. SWEチームのリリース責任者あるいはSREチームが，プルリクをmainブランチにマージする．
+7. SWEチーム/SREチームのリリース責任者が，プルリクをmainブランチにマージする．
 8. AWS EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
 
 ## 使用技術
