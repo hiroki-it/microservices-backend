@@ -18,10 +18,10 @@ SWEチームが以下のようなシナリオで開発運用していること�
 2. SWEチームのいずれかは，マイクロサービスのソースコードを変更し，プルリクを作成する．またGitFlowを経て変更がmainブランチにマージされる．この時，異なるマイクロサービスの変更が同時にマージされることはない．
 3. 本リポジトリ上のCircleCIは，変更されたマイクロサービスを検知し，該当のマイクロサービスのイメージをビルドする．また，AWS ECRにプッシュする．
 4. CircleCIは，**[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** をプルし，releaseブランチをチェックアウトする．さらに，HelmのValuesファイルのイメージのハッシュ値の上書きし，コミット&プッシュする．
-5. CircleCIは，Valuesファイルを変更したプルリクを自動作成する．
+5. CircleCIは，Valuesファイルを変更したプルリクを自動作成する．また，AWS ECRにチャートをプッシュする．
 6. **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 上のGitHub Actionsは，releaseブランチのプッシュを検知する．Helmが，Valuesファイルを基にしてマニフェストファイルを自動生成する．また．これをプルリク上にプッシュする．
 7. SWEチーム/SREチームのリリース責任者が，プルリクをmainブランチにマージする．
-8. AWS EKS上で稼働するArgoCDがmainブランチの変更を検知し，マニフェストの状態をプルする．
+8. AWS EKS上で稼働するArgoCDがmainブランチの変更を検知し，AWS ECRからチャートをプルする．
 
 参考：
 
