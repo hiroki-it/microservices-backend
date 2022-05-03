@@ -8,6 +8,12 @@ GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best
 
 現状，フロントエンド領域のリポジトリは用意しておりません．
 
+
+参考：
+
+- マイクロサービスアーキテクチャ: https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
+- ドメイン駆動設計: https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
+
 <br>
 
 ## 開発運用シナリオ
@@ -22,11 +28,6 @@ SWEチームが以下のようなシナリオで開発運用していること�
 6. SWEチーム/SREチームのリリース責任者が，生成されたマニフェストファイルをレビューし，プルリクをmainブランチにマージする． 
 7. GitHub Actionが，mainブランチのマージを検知し，AWS ECRにチャートをプッシュする．
 8. AWS EKS上で稼働するArgoCDは，AWS ECRのチャートの変更を検知し，AWS ECRからチャートをプルする．
-
-参考：
-
-- マイクロサービスアーキテクチャ: https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html
-- 境界付けられたコンテキスト: https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html
 
 <br>
 
@@ -55,38 +56,11 @@ project/
 | [orchestratorサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) | Python | FastAPI | Envoy       | トランザクションの項目を参照．   |
 | [orderサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/order)               | PHP    | Lumen   | Nginx，Envoy | 受注業務ドメインを解決します．   |
 
-### 開発ツール
-
-開発環境でのみ使用するツールの一覧です．
-
-| 役割         | ツール                            | 導入の状況          |
-|------------|--------------------------------|----------------|
-| メトリクスの可視化  | Prometheus，Kiali               | ⭕              |
-| ログの可視化     | FluentBit，ElasticSearch，Kibana | coming soon... |
-| 分散トレースの可視化 | Jaeger                    　　　  | ⭕              |
-| ロードテスト     | Fortio                         | ⭕              |
-
-### CI/CD
-
-CI/CDを構成するツールの一覧です．
-
-| 役割   | ツール      | 導入の状況          |
-|------|----------|----------------|
-| CI（本番環境）   | CircleCI | ⭕ |
-| CD（本番環境）    | ArgoCD   | **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** を参照 |
-
-<br>
-
-### 補足
-
-#### ▼ マイクロサービス間通信の方式
-
-リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
-
-#### ▼ トランザクション
+マイクロサービス間通信の方式は，リクエストリプライ方式を採用し，『API Gateway → マイクロサービスA ⇄ マイクロサービスB』という簡単な構成を想定しております．
 
 オーケストレーションベースのSagaパターンを採用する想定です．
-[**orchestratorサービス**](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) を用意し，これが各マイクロサービスの一連のローカルトランザクションを連続的に実行します．
+
+[**orchestratorサービス**](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator) を設置し，以下のようにして，このサービスが各マイクロサービスの一連のローカルトランザクションを連続的に実行します．
 
 ```mermaid
 %%{init:{'theme':'dark'}}%%
@@ -102,7 +76,35 @@ graph TD
     I             --> J[(DB)]
 ```
 
+### 開発ツール
+
+開発環境でのみ使用するツールの一覧です．
+
+| 役割         | ツール                            | 導入の状況          |
+|------------|--------------------------------|----------------|
+| メトリクスの可視化  | Prometheus，Kiali               | ⭕              |
+| ログの可視化     | FluentBit，ElasticSearch，Kibana | coming soon... |
+| 分散トレースの可視化 | Jaeger                    　　　  | ⭕              |
+| ロードテスト     | Fortio                         | ⭕              |
+
+### CI/CD
+
+CI/CDを構成するツールの一覧です．
+
+シナリオにも記載がある通り，本リポジトリではCIまでを実行し，CDは **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** 側で実行します．
+
+| 役割   | ツール      | 導入の状況          |
+|------|----------|----------------|
+| CI（本番環境）   | CircleCI | ⭕ |
+| CD（本番環境）    | ArgoCD   | **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** を参照 |
+
+<br>
 
 ## 環境構築
 
 各マイクロサービスのREADMEをご参照ください．
+
+- [accountサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/account)           
+- [customerサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/customer)
+- [orchestratorサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/orchestrator)
+- [orderサービス](https://github.com/hiroki-it/microservices-backend/tree/main/src/order)               
