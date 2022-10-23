@@ -16,6 +16,8 @@ services:
     networks:
       - default
       - shared
+    ports:
+      - "8000:8000"
     tty: true
     volumes:
       - .:/var/www/customer
