@@ -11,8 +11,8 @@ GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best
 
 参考：
 
-- [マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_microservices.html)
-- [ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook-mkdocs/software/software_application_architecture_backend_domain_driven_design.html)
+- [マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_microservices.html)
+- [ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
 
 <br>
 
