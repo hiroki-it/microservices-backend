@@ -3,15 +3,13 @@
 ## 目次
 
 <!-- TOC -->
-* [microservices-backend](#microservices-backend)
-  * [概要](#概要)
-  * [開発運用シナリオ](#開発運用シナリオ)
-  * [ディレクトリ構成](#ディレクトリ構成)
-  * [使用技術](#使用技術)
-    * [マイクロサービスの一覧](#マイクロサービスの一覧)
-    * [開発ツール](#開発ツール)
-    * [CI/CD](#cicd)
-  * [環境構築](#環境構築)
+* [開発運用シナリオ](#開発運用シナリオ)
+* [ディレクトリ構成](#ディレクトリ構成)
+* [使用技術](#使用技術)
+  * [マイクロサービスの一覧](#マイクロサービスの一覧)
+  * [開発ツール](#開発ツール)
+  * [CI/CD](#cicd)
+* [環境構築](#環境構築)
 <!-- TOC -->
 
 <br>
@@ -25,10 +23,10 @@ GitOpsの **[ベストプラクティス](https://blog.argoproj.io/5-gitops-best
 現状，フロントエンド領域のリポジトリは用意しておりません．
 
 
-参考：
-
-- [マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_microservices.html)
-- [ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
+> ↪️ 参考：
+> 
+> - [マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_microservices.html)
+> - [ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
 
 <br>
 
