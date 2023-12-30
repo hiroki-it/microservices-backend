@@ -111,8 +111,8 @@ CI/CDを構成するツールの一覧です．
 
 | 役割   | ツール      | 導入の状況          |
 |------|----------|----------------|
-| CI（本番環境）   | CircleCI | ⭕ |
-| CD（本番環境）    | ArgoCD   | **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** を参照 |
+| CI   | CircleCI | ⭕ |
+| CD   | ArgoCD   | **[microservices-manifestsリポジトリ](https://github.com/hiroki-it/microservices-manifests)** を参照 |
 
 <br>
 
