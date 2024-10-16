@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@2.1.0
-  github-cli: circleci/github-cli@2.0.0
+  github-cli: circleci/github-cli@2.5.0
 
 parameters:
   account:
@@ -43,7 +43,7 @@ executors:
         type: enum
         enum: [ "fastapi", "gin", "lumen", "nginx" ]
     docker:
-      - image: cimg/base:2022.03
+      - image: cimg/base:2022.12
     environment:
       SERVICE_NAME: << parameters.service_name >>
       VENDOR_NAME: << parameters.vendor_name >>
