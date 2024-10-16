@@ -1,7 +1,7 @@
 #===================
 # Global ARG
 #===================
-ARG NGINX_VERSION=1.19
+ARG NGINX_VERSION=1.27
 ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
 
 #===================
