@@ -34,7 +34,7 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       TZ: "Asia/Tokyo"
-    image: mysql:5.7
+    image: mysql:9.1
     hostname: account-mysql
     ports:
       - "3301:3306"

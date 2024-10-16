@@ -57,7 +57,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       TZ: "Asia/Tokyo"
     hostname: order-mysql
-    image: mysql:5.7
+    image: mysql:9.1
     networks:
       - default
     ports:
